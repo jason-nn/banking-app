@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import Button from "./Button";
 
 export default function Login() {
   const USERNAME = "admin";
@@ -49,9 +50,7 @@ export default function Login() {
           />
         </label>
       </div>
-      <button className="loginSubmitButton" onClick={submit}>
-        Submit
-      </button>
+      <Button className="loginSubmitButton" onClick={submit} text="Submit" />
       <div className="loginMessage">{message}</div>
     </div>
   );
