@@ -36,13 +36,13 @@ export default function Login() {
     <div className="login">
       <div>
         <label>
-          Username:
+          <div>Username</div>
           <input className="usernameInput" ref={usernameInputRef} type="text" />
         </label>
       </div>
       <div>
         <label>
-          Password:
+          <div>Password</div>
           <input
             className="passwordInput"
             ref={passwordInputRef}
