@@ -33,25 +33,31 @@ export default function Login() {
   }
 
   return (
-    <div className="login">
-      <div>
-        <label>
-          <div>Username</div>
-          <input className="usernameInput" ref={usernameInputRef} type="text" />
-        </label>
+    <div className="loginComponent">
+      <div className="loginForm">
+        <div>
+          <label>
+            <div>Username</div>
+            <input
+              className="usernameInput"
+              ref={usernameInputRef}
+              type="text"
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            <div>Password</div>
+            <input
+              className="passwordInput"
+              ref={passwordInputRef}
+              type="password"
+            />
+          </label>
+        </div>
+        <Button className="loginSubmitButton" onClick={submit} text="Submit" />
+        <div className="loginMessage">{message}</div>
       </div>
-      <div>
-        <label>
-          <div>Password</div>
-          <input
-            className="passwordInput"
-            ref={passwordInputRef}
-            type="password"
-          />
-        </label>
-      </div>
-      <Button className="loginSubmitButton" onClick={submit} text="Submit" />
-      <div className="loginMessage">{message}</div>
     </div>
   );
 }
