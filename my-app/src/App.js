@@ -11,7 +11,7 @@ import Transfer from './components/Transfer';
 
 function App() {
 
-  //for admin user details, planning to merge this with 
+  //for admin user details, planning to merge this with users
   const adminUser = {
     username: "admin",
     password: "pass123",
@@ -19,9 +19,12 @@ function App() {
     isAdmin: true
   };
 
+  // list of users (work in progress)
+  const [users, setUserList] = useState([]);
+
 
   //state for user details 
-  const [user, setUser] = useState({ name: "", username: "" });
+  const [currentUser, setUser] = useState({ name: "", username: "" });
 
   //state for error message if login failed
   const [error, setError] = useState("");
@@ -49,12 +52,12 @@ function App() {
   return (
     <div>
       {/* If the user info is not blank, show dashboard */}
-      {(user.username !== "") ? (
+      {(currentUser.username !== "") ? (
 
         <Router>
           <Navbar LogoutFunction={Logout} />
           <Switch>
-            <Route path="/" exact component={() => (<AdminView name={user.name} />)} />
+            <Route path="/" exact component={() => (<AdminView name={currentUser.name} />)} />
             <Route path="/deposit" component={Deposit} />
             <Route path="/withdraw" component={Withdraw} />
             <Route path="/transfer" component={Transfer} />

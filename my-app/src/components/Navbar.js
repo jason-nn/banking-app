@@ -6,10 +6,10 @@ import "./Navbar.css";
 export default function Navbar({ /* onClick, */ LogoutFunction }) {
   return (
     <nav>
-      <Link to="/"><span>Home</span></Link>
-      <Link to="/deposit"><span>Deposit</span></Link>
-      <Link to="/withdraw"><span>Withdraw</span></Link>
-      <Link to="/transfer"><span>Transfer</span></Link>
+      <Link to="/"><span className="navLinks">Home</span></Link>
+      <Link to="/deposit"><span className="navLinks">Deposit</span></Link>
+      <Link to="/withdraw"><span className="navLinks">Withdraw</span></Link>
+      <Link to="/transfer"><span className="navLinks">Transfer</span></Link>
       <Link to="/"><Button text="Logout" onClick={() => { LogoutFunction() }} /></Link>
     </nav>
   );

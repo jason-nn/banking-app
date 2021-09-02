@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import Button from "./Button";
+import './Login.css';
 
 export default function Login({ LoginFunction, error }) {
 
@@ -12,8 +13,9 @@ export default function Login({ LoginFunction, error }) {
   }
 
   return (
-    <form className="loginComponent" onSubmit={submitHandler}>
-      <div className="loginForm">
+    <div className="loginComponent">
+
+      <form className="loginForm" onSubmit={submitHandler}>
 
         <div>
           <label>
@@ -42,7 +44,8 @@ export default function Login({ LoginFunction, error }) {
           text="Submit"
         />
         {(error !== "") ? (<div className="loginError">{error}</div>) : ""}
-      </div>
-    </form>
+        <span>*placeholder design</span>
+      </form>
+    </div>
   );
 }

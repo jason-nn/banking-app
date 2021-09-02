@@ -1,5 +1,5 @@
 
-
+import './AdminView.css';
 
 const AdminView = ({ name }) => {
   return (
@@ -23,6 +23,7 @@ const AdminView = ({ name }) => {
           </tr>
         </tbody>
       </table>
+
     </div>
   )
 }
