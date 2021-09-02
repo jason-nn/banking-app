@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import Button from "./Button";
+import Dashboard from "./Dashboard";
 
 export default function Login() {
   const USERNAME = "admin";
@@ -76,7 +77,7 @@ export default function Login() {
   } else {
     return (
       <div>
-        <div>This is the logged in page</div>
+        <Dashboard />
       </div>
     );
   }
