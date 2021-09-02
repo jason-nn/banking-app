@@ -1,84 +1,48 @@
 import React, { useState, useRef } from "react";
 import Button from "./Button";
-import Dashboard from "./Dashboard";
 
-export default function Login() {
-  const USERNAME = "admin";
-  const PASSWORD = "pass123";
+export default function Login({ LoginFunction, error }) {
 
-  const [credentials] = useState({
-    username: USERNAME,
-    password: PASSWORD,
-  });
+  const [details, setDetails] = useState({ name: "", username: "", password: "" });
 
-  const [message, setMessage] = useState(null);
-
-  const usernameInputRef = useRef();
-  const passwordInputRef = useRef();
-
-  function submit() {
-    const usernameInput = usernameInputRef.current.value;
-    const passwordInput = passwordInputRef.current.value;
-
-    if (
-      usernameInput === credentials.username &&
-      passwordInput === credentials.password
-    ) {
-      setMessage("Login successful.");
-      setTimeout(() => {
-        setMessage("Redirecting you to the logged in page...");
-      }, 500);
-      setTimeout(() => {
-        setIsLoggedIn(true);
-      }, 2000);
-    } else {
-      setMessage("Login failed. Try again.");
-    }
-
-    usernameInputRef.current.value = null;
-    passwordInputRef.current.value = null;
+  // gets submit values then passes it back to parent
+  const submitHandler = e => {
+    e.preventDefault();
+    LoginFunction(details);
   }
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  return (
+    <form className="loginComponent" onSubmit={submitHandler}>
+      <div className="loginForm">
 
-  if (isLoggedIn === false) {
-    return (
-      <div className="loginComponent">
-        <div className="loginForm">
-          <div>
-            <label>
-              <div>Username</div>
-              <input
-                className="usernameInput"
-                ref={usernameInputRef}
-                type="text"
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              <div>Password</div>
-              <input
-                className="passwordInput"
-                ref={passwordInputRef}
-                type="password"
-              />
-            </label>
-          </div>
-          <Button
-            className="loginSubmitButton"
-            onClick={submit}
-            text="Submit"
-          />
-          <div className="loginMessage">{message}</div>
+        <div>
+          <label>
+            <div>Username</div>
+            <input
+              className="usernameInput"
+              onChange={e => setDetails({ ...details, username: e.target.value })}
+              value={details.username}
+              type="text"
+            />
+          </label>
         </div>
+        <div>
+          <label>
+            <div>Password</div>
+            <input
+              className="passwordInput"
+              onChange={e => setDetails({ ...details, password: e.target.value })}
+              value={details.password}
+              type="password"
+            />
+          </label>
+        </div>
+        <Button
+          className="loginSubmitButton"
+          text="Submit"
+        />
+        {(error !== "") ? (<div className="loginError">{error}</div>) : ""}
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <Dashboard />
-      </div>
-    );
-  }
+    </form>
+  );
 }
