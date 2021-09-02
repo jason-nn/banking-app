@@ -1,4 +1,4 @@
 # bankingApp
 
-git fetch --prune
-git branch -d branchName
+- git fetch --prune
+- git branch -d branchName
