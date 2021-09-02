@@ -24,6 +24,12 @@ export default function Login() {
       passwordInput === credentials.password
     ) {
       setMessage("Login successful.");
+      setTimeout(() => {
+        setMessage("Redirecting you to the logged in page...");
+      }, 500);
+      setTimeout(() => {
+        setIsLoggedIn(true);
+      }, 2000);
     } else {
       setMessage("Login failed. Try again.");
     }
@@ -32,32 +38,46 @@ export default function Login() {
     passwordInputRef.current.value = null;
   }
 
-  return (
-    <div className="loginComponent">
-      <div className="loginForm">
-        <div>
-          <label>
-            <div>Username</div>
-            <input
-              className="usernameInput"
-              ref={usernameInputRef}
-              type="text"
-            />
-          </label>
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  if (isLoggedIn === false) {
+    return (
+      <div className="loginComponent">
+        <div className="loginForm">
+          <div>
+            <label>
+              <div>Username</div>
+              <input
+                className="usernameInput"
+                ref={usernameInputRef}
+                type="text"
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              <div>Password</div>
+              <input
+                className="passwordInput"
+                ref={passwordInputRef}
+                type="password"
+              />
+            </label>
+          </div>
+          <Button
+            className="loginSubmitButton"
+            onClick={submit}
+            text="Submit"
+          />
+          <div className="loginMessage">{message}</div>
         </div>
-        <div>
-          <label>
-            <div>Password</div>
-            <input
-              className="passwordInput"
-              ref={passwordInputRef}
-              type="password"
-            />
-          </label>
-        </div>
-        <Button className="loginSubmitButton" onClick={submit} text="Submit" />
-        <div className="loginMessage">{message}</div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        <div>This is the logged in page</div>
+      </div>
+    );
+  }
 }
