@@ -1,33 +1,16 @@
 import React from "react";
 import Button from "./Button";
+import { Link } from 'react-router-dom';
+import "./Navbar.css";
 
-export default function Navbar({ onClick }) {
+export default function Navbar({ /* onClick, */ LogoutFunction }) {
   return (
-    <div>
-      <Button
-        text="User"
-        onClick={() => {
-          onClick("user");
-        }}
-      />
-      <Button
-        text="Withdraw"
-        onClick={() => {
-          onClick("withdraw");
-        }}
-      />
-      <Button
-        text="Deposit"
-        onClick={() => {
-          onClick("deposit");
-        }}
-      />
-      <Button
-        text="Transfer"
-        onClick={() => {
-          onClick("transfer");
-        }}
-      />
-    </div>
+    <nav>
+      <Link to="/"><span className="navLinks">Home</span></Link>
+      <Link to="/deposit"><span className="navLinks">Deposit</span></Link>
+      <Link to="/withdraw"><span className="navLinks">Withdraw</span></Link>
+      <Link to="/transfer"><span className="navLinks">Transfer</span></Link>
+      <Link to="/"><Button text="Logout" onClick={() => { LogoutFunction() }} /></Link>
+    </nav>
   );
 }
