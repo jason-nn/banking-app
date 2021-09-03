@@ -17,7 +17,7 @@ function App() {
     isAdmin: true,
   };
 
-  const [accountNumber, setAccountNumber] = useState(111113);
+  const [accountNumber, setAccountNumber] = useState(111114);
 
   function generateAccountNumber() {
     const oldAccountNumber = JSON.parse(JSON.stringify(accountNumber));
