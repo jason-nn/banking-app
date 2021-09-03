@@ -1,8 +1,9 @@
+import "./AdminView.css";
+import Button from "./Button";
 
-import './AdminView.css';
-import Button from './Button';
+const AdminView = ({ name, users }) => {
+  const nonAdminUsers = users.filter((user) => !user.isAdmin);
 
-const AdminView = ({ name }) => {
   return (
     <div>
       <h1>Welcome, {name}</h1>
@@ -15,7 +16,6 @@ const AdminView = ({ name }) => {
             <th>Name</th>
             <th>Current Balance</th>
           </tr>
-
         </thead>
         <tbody>
           <tr>
@@ -25,9 +25,8 @@ const AdminView = ({ name }) => {
           </tr>
         </tbody>
       </table>
-
     </div>
-  )
-}
+  );
+};
 
-export default AdminView
+export default AdminView;
