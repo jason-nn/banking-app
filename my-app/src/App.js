@@ -17,13 +17,13 @@ function App() {
     isAdmin: true,
   };
 
-  const [accountNumber, setAccountNumber] = useState(111114);
+  const [accountNumber, setAccountNumber] = useState(111113);
 
   function generateAccountNumber() {
-    const oldAccountNumber = JSON.parse(JSON.stringify(accountNumber));
+    const oldAccountNumber = accountNumber;
     const newAccountNumber = oldAccountNumber + 1;
     setAccountNumber(newAccountNumber);
-    return accountNumber;
+    return newAccountNumber;
   }
 
   function addUser(firstName, lastName, balance, username, password) {
@@ -58,7 +58,7 @@ function App() {
       firstName: "JUAN",
       lastName: "DE LA CRUZ",
       balance: 2000,
-      username: "sample",
+      username: "juan",
       password: "pass123",
       isAdmin: false,
     },
