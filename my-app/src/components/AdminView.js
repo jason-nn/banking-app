@@ -10,7 +10,7 @@ const AdminView = ({ name, users, addUser }) => {
     const rows = [];
     for (let i = 0; i < nonAdminUsers.length; i++) {
       rows.push(
-        <UserRow key={nonAdminUsers[i].firstName} client={nonAdminUsers[i]} />
+        <UserRow key={nonAdminUsers[i].accountNo} client={nonAdminUsers[i]} />
       );
     }
     return rows;
