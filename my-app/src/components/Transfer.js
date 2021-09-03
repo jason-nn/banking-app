@@ -1,12 +1,11 @@
-
-import React from 'react'
+import React from "react";
 
 const Transfer = () => {
   return (
     <div>
       <h1>Transfer</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Transfer
+export default Transfer;

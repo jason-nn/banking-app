@@ -1,5 +1,4 @@
-
-import React from 'react'
+import React from "react";
 
 const Withdraw = () => {
   return (
@@ -7,7 +6,7 @@ const Withdraw = () => {
       <h1>Withdraw</h1>
       <span>Select an account to withdraw from</span>
     </div>
-  )
-}
+  );
+};
 
-export default Withdraw
+export default Withdraw;
