@@ -17,6 +17,31 @@ function App() {
     isAdmin: true,
   };
 
+  const [accountNumber, setAccountNumber] = useState(111113);
+
+  function generateAccountNumber() {
+    const oldAccountNumber = JSON.parse(JSON.stringify(accountNumber));
+    const newAccountNumber = oldAccountNumber + 1;
+    setAccountNumber(newAccountNumber);
+    return accountNumber;
+  }
+
+  function addUser(firstName, lastName, balance, username, password) {
+    let newUserList = [
+      ...users,
+      {
+        accountNo: generateAccountNumber(),
+        firstName: firstName,
+        lastName: lastName,
+        balance: balance,
+        username: username,
+        password: password,
+        isAdmin: false,
+      },
+    ];
+    setUserList(newUserList);
+  }
+
   // list of users (work in progress)
   const userList = [
     {
@@ -29,7 +54,7 @@ function App() {
       isAdmin: true,
     },
     {
-      accountNo: 12345678,
+      accountNo: 111111,
       firstName: "JUAN",
       lastName: "DE LA CRUZ",
       balance: 2000,
@@ -38,7 +63,7 @@ function App() {
       isAdmin: false,
     },
     {
-      accountNo: 12345679,
+      accountNo: 111112,
       firstName: "JASON",
       lastName: "HO",
       balance: 6900,
@@ -47,7 +72,7 @@ function App() {
       isAdmin: false,
     },
     {
-      accountNo: 12345689,
+      accountNo: 111113,
       firstName: "EMAN",
       lastName: "SIA",
       balance: 4200,
@@ -99,7 +124,19 @@ function App() {
               path="/"
               exact
               component={() => (
-                <AdminView name={currentUser.name} users={users} />
+                <AdminView
+                  name={currentUser.name}
+                  users={users}
+                  addUser={(
+                    firstName,
+                    lastName,
+                    balance,
+                    username,
+                    password
+                  ) => {
+                    addUser(firstName, lastName, balance, username, password);
+                  }}
+                />
               )}
             />
             <Route path="/deposit" component={Deposit} />
