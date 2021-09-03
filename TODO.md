@@ -28,6 +28,9 @@ TODO:
 - Transfer:
   ( ) 1. Transfer function - Source account - Amount - Destination account - Record to transaction history
 
+- Others:
+  ( ) 1. Change username to email
+
 <!-- -------------------- Future changes (Budget/User) --------------------- -->
 
 - Register (not yet)
