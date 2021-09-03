@@ -1,11 +1,13 @@
 
 import './AdminView.css';
+import Button from './Button';
 
 const AdminView = ({ name }) => {
   return (
     <div>
       <h1>Welcome, {name}</h1>
       <h2>Accounts</h2>
+      <Button text="+" />
       <table>
         <thead>
           <tr>

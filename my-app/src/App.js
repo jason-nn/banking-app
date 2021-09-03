@@ -20,7 +20,27 @@ function App() {
   };
 
   // list of users (work in progress)
-  const [users, setUserList] = useState([]);
+  const userList = [
+    {
+      accountNo: null,
+      name: "Administrator",
+      balance: null,
+      username: "admin",
+      password: "pass123",
+      isAdmin: true
+    },
+    {
+      accountNo: 9000000,
+      name: "Sample",
+      balance: 123,
+      username: "sample",
+      password: "pass123",
+      isAdmin: false
+    },
+  ]
+
+  const [users, setUserList] = useState(userList);
+
 
 
   //state for user details 
@@ -57,7 +77,7 @@ function App() {
         <Router>
           <Navbar LogoutFunction={Logout} />
           <Switch>
-            <Route path="/" exact component={() => (<AdminView name={currentUser.name} />)} />
+            <Route path="/" exact component={() => (<AdminView name={currentUser.name} users={users} />)} />
             <Route path="/deposit" component={Deposit} />
             <Route path="/withdraw" component={Withdraw} />
             <Route path="/transfer" component={Transfer} />
