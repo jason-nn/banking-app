@@ -4,20 +4,24 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  background: var(--dark-shade);
-  justify-content: center;
+  background: var(--light-color);
   align-items: center;
+  position: relative;
 }
 
 .login-form {
-
+  height: 50vh;
+  width: 70vw;
   background: var(--light-color);
-  width: 100vw;
-  height: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-radius: 2vmin;
   box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
 }
 
@@ -26,18 +30,75 @@
 }
 
 .login-hero {
-  width: 100%;
-  height: 40%;
+  width: 100vw;
+  height: 100vh;
   color: var(--light-color);
+  background: var(--dark-shade);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
 }
 
 .login-logo {
-  font-family: 'Fredoka One', cursive;
-  font-size: 2.5em;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.3em;
+  color: white;
 }
 
 .login-hero-title {
   font-size: 4em;
   font-weight: 800;
-    color: var(--light-color);
+  display: none;
+}
+
+.login-hero-text {
+  display: none;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+}
+
+.input-label {
+  z-index: 1;
+  transform: translate(2vmin, 150%);
+  text-transform: uppercase;
+  color: black;
+  font-size: small;
+}
+
+.input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 3em;
+  font-size: 1.5em;
+  font-weight: bolder;
+  padding: 5vmin 2vmin 3vmin 2vmin;
+  border-radius: 1vmin;
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
+  transition: 0.2s ease;
+}
+
+.input:focus {
+  border-bottom: 5px solid var(--light-accent);
+}
+
+.main-button {
+  border: none;
+  background: none;
+  background-color: var(--light-accent);
+  margin-top: 2vmin;  
+  display: flex;
+  border-radius: 1vmin;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bolder;
+  padding: 1vmin 2vmin 1vmin 2vmin;
 }

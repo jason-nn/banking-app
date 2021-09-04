@@ -24,11 +24,11 @@ export default function Login({ LoginFunction, error }) {
         <p className="login-hero-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a nisl molestie, pretium eros sit amet, sollicitudin risus. Etiam finibus non libero et faucibus. Aliquam eu neque eu arcu ultrices placerat. Phasellus nec malesuada elit. Sed eu nibh enim.</p>
       </div>
       <form className="login-form" onSubmit={submitHandler}>
-        <div>
+        <div className="input-container">
           <label>
-            <div>Username</div>
+            <div className="input-label">Username</div>
             <input
-              className="usernameInput"
+              className="usernameInput input"
               onChange={(e) =>
                 setDetails({ ...details, username: e.target.value })
               }
@@ -37,11 +37,11 @@ export default function Login({ LoginFunction, error }) {
             />
           </label>
         </div>
-        <div>
-          <label>
-            <div>Password</div>
+        <div className="input-container">
+          <label >
+            <div className="input-label">Password</div>
             <input
-              className="passwordInput"
+              className="passwordInput input"
               onChange={(e) =>
                 setDetails({ ...details, password: e.target.value })
               }
@@ -50,7 +50,7 @@ export default function Login({ LoginFunction, error }) {
             />
           </label>
         </div>
-        <Button className="loginSubmitButton" text="Submit" />
+        <Button className="loginSubmitButton main-button" text="Log In" />
         {error !== "" ? <div className="login-error">{error}</div> : ""}
         <span>*placeholder design</span>
       </form>
