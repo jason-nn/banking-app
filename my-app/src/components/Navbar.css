@@ -1,16 +1,21 @@
-nav {
-
-  width: 100vw;
-  max-height: 10vh;
-  background-color: rgba(0,0,0,0.8);
+.navbar{
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  background-color: white;
   display: flex;
-  justify-content: space-around;
-  padding: 10px;
+  flex-direction: column;
+  align-items: space-around;
+  padding: 3vmin;
+  margin-right: 50px;
+  box-shadow: 0 0 5vmin 0vmin rgba(0,0,0,0.2);
 }
 
 .navLinks {
-  color: white;
+  color: black;
   text-decoration: none;
+  font-size: 2vmin;
 }
 
 button {

@@ -144,65 +144,68 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="body">
       {/* If the user info is not blank, show dashboard */}
       {currentUser.username !== "" ? (
         <Router>
           <Navbar LogoutFunction={Logout} />
-          <Switch>
-            <Route
-              path="/"
-              exact
-              component={() => (
-                <AdminView
-                  name={currentUser.name}
-                  users={users}
-                  addUser={(
-                    firstName,
-                    lastName,
-                    balance,
-                    username,
-                    password
-                  ) => {
-                    addUser(firstName, lastName, balance, username, password);
-                  }}
-                />
-              )}
-            />
-            <Route
-              path="/deposit"
-              component={() => (
-                <Deposit
-                  users={users}
-                  deposit={(amount, account) => {
-                    deposit(amount, account);
-                  }}
-                />
-              )}
-            />
-            <Route
-              path="/withdraw"
-              component={() => (
-                <Withdraw
-                  users={users}
-                  withdraw={(amount, account) => {
-                    withdraw(amount, account);
-                  }}
-                />
-              )}
-            />
-            <Route
-              path="/transfer"
-              component={() => (
-                <Transfer
-                  users={users}
-                  transfer={(amount, from, to) => {
-                    transfer(amount, from, to);
-                  }}
-                />
-              )}
-            />
-          </Switch>
+          <div className="main-content">
+            <Switch>
+              <Route
+                path="/"
+                exact
+                component={() => (
+                  <AdminView
+                    name={currentUser.name}
+                    users={users}
+                    addUser={(
+                      firstName,
+                      lastName,
+                      balance,
+                      username,
+                      password
+                    ) => {
+                      addUser(firstName, lastName, balance, username, password);
+                    }}
+                  />
+                )}
+              />
+              <Route
+                path="/deposit"
+                component={() => (
+                  <Deposit
+                    users={users}
+                    deposit={(amount, account) => {
+                      deposit(amount, account);
+                    }}
+                  />
+                )}
+              />
+              <Route
+                path="/withdraw"
+                component={() => (
+                  <Withdraw
+                    users={users}
+                    withdraw={(amount, account) => {
+                      withdraw(amount, account);
+                    }}
+                  />
+                )}
+              />
+              <Route
+                path="/transfer"
+                component={() => (
+                  <Transfer
+                    users={users}
+                    transfer={(amount, from, to) => {
+                      transfer(amount, from, to);
+                    }}
+                  />
+                )}
+              />
+            </Switch>
+          </div>
+
         </Router>
       ) : (
         /* If there is no current user, show login page */
