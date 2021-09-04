@@ -41,9 +41,14 @@ export default function Navbar({ /* onClick, */ LogoutFunction }) {
         </div>
 
       </NavLink>
-      <Link to="/transactions">
-        <span className="navLinks">Transactions</span>
-      </Link>
+      <NavLink to="/transactions" activeClassName="nav-active" className="nav-link">
+        <div className="nav-link-content">
+          <span className="material-icons">
+            sync_alt
+          </span>
+          <span className="navLinks">Transactions</span>
+        </div>
+      </NavLink>
       <NavLink to="/" className="nav-button"><Button text="Logout" onClick={() => { LogoutFunction() }} /></NavLink>
 
     </nav>
