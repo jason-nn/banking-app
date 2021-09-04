@@ -5,7 +5,7 @@ import "./Navbar.css";
 
 export default function Navbar({ /* onClick, */ LogoutFunction }) {
   return (
-    <nav>
+    <nav className="navbar">
       <Link to="/"><span className="navLinks">Home</span></Link>
       <Link to="/deposit"><span className="navLinks">Deposit</span></Link>
       <Link to="/withdraw"><span className="navLinks">Withdraw</span></Link>
