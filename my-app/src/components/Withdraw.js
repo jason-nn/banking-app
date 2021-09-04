@@ -42,7 +42,7 @@ const Withdraw = ({ users, withdraw }) => {
       <br />
       <div>{message}</div>
       <Button
-        text="Transfer"
+        text="Withdraw"
         onClick={() => {
           const amount = parseFloat(amountRef.current.value);
           const account = accountRef.current.value;
