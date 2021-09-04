@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import Button from "./Button";
 import "./Login.css";
+import Logo from './bank-logo.svg';
 
 export default function Login({ LoginFunction, error }) {
   const [details, setDetails] = useState({
@@ -16,8 +17,13 @@ export default function Login({ LoginFunction, error }) {
   };
 
   return (
-    <div className="loginComponent">
-      <form className="loginForm" onSubmit={submitHandler}>
+    <div className="login-component">
+      <div className="login-hero">
+        <h1 className="login-logo">banque.</h1>
+        <h1 className="login-hero-title">The bank you can trust.</h1>
+        <p className="login-hero-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a nisl molestie, pretium eros sit amet, sollicitudin risus. Etiam finibus non libero et faucibus. Aliquam eu neque eu arcu ultrices placerat. Phasellus nec malesuada elit. Sed eu nibh enim.</p>
+      </div>
+      <form className="login-form" onSubmit={submitHandler}>
         <div>
           <label>
             <div>Username</div>
@@ -45,7 +51,7 @@ export default function Login({ LoginFunction, error }) {
           </label>
         </div>
         <Button className="loginSubmitButton" text="Submit" />
-        {error !== "" ? <div className="loginError">{error}</div> : ""}
+        {error !== "" ? <div className="login-error">{error}</div> : ""}
         <span>*placeholder design</span>
       </form>
     </div>
