@@ -24,6 +24,24 @@ const Transfer = ({ users, transfer }) => {
 
   const [message, setMessage] = useState(null);
 
+  const accountNos = users.map((user) => user.accountNo);
+  const index = accountNos.findIndex((accountNo) => accountNo == 111111);
+  const juanbalance = users[index].balance;
+
+  const [displayBalance1, setDisplayBalance1] = useState(juanbalance);
+  const [displayBalance2, setDisplayBalance2] = useState(juanbalance);
+
+  function handleChange(userToDisplay, n) {
+    const userCopy = [...users];
+    const accountNos = userCopy.map((user) => user.accountNo);
+    const index = accountNos.findIndex(
+      (accountNo) => accountNo == userToDisplay
+    );
+    n === 1
+      ? setDisplayBalance1(userCopy[index].balance)
+      : setDisplayBalance2(userCopy[index].balance);
+  }
+
   return (
     <div>
       <h1>Transfer</h1>
@@ -37,14 +55,34 @@ const Transfer = ({ users, transfer }) => {
       <br />
       <label>
         <div>From</div>
-        <select ref={fromRef}>{renderSelectOptions()}</select>
+        <select
+          onChange={(e) => {
+            handleChange(e.target.value, 1);
+          }}
+          ref={fromRef}
+        >
+          {renderSelectOptions()}
+        </select>
       </label>
+      <br />
+      <br />
+      <div>Current Balance: ₱{displayBalance1}</div>
       <br />
       <br />
       <label>
         <div>To</div>
-        <select ref={toRef}>{renderSelectOptions()}</select>
+        <select
+          onChange={(e) => {
+            handleChange(e.target.value, 2);
+          }}
+          ref={toRef}
+        >
+          {renderSelectOptions()}
+        </select>
       </label>
+      <br />
+      <br />
+      <div>Current Balance: ₱{displayBalance2}</div>
       <br />
       <br />
       <div>{message}</div>

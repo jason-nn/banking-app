@@ -23,6 +23,22 @@ const Withdraw = ({ users, withdraw }) => {
 
   const [message, setMessage] = useState(null);
 
+  const accountNos = users.map((user) => user.accountNo);
+  const index = accountNos.findIndex((accountNo) => accountNo == 111111);
+  const juanbalance = users[index].balance;
+
+  const [displayBalance, setDisplayBalance] = useState(juanbalance);
+
+  function handleChange(userToDisplay) {
+    const userCopy = [...users];
+    const accountNos = userCopy.map((user) => user.accountNo);
+    const index = accountNos.findIndex(
+      (accountNo) => accountNo == userToDisplay
+    );
+
+    setDisplayBalance(userCopy[index].balance);
+  }
+
   return (
     <div>
       <h1>Withdraw</h1>
@@ -36,8 +52,18 @@ const Withdraw = ({ users, withdraw }) => {
       <br />
       <label>
         <div>Account</div>
-        <select ref={accountRef}>{renderSelectOptions()}</select>
+        <select
+          ref={accountRef}
+          onChange={(e) => {
+            handleChange(e.target.value);
+          }}
+        >
+          {renderSelectOptions()}
+        </select>
       </label>
+      <br />
+      <br />
+      <div>Current Balance: ₱{displayBalance}</div>
       <br />
       <br />
       <div>{message}</div>
