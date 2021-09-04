@@ -11,8 +11,8 @@
 
 .login-form {
   height: 50vh;
-  width: 70vw;
-  background: var(--light-color);
+  width: 80vw;
+  /* background: var(--light-color); */
   position: absolute;
   top: 50%;
   left: 50%;
@@ -22,7 +22,7 @@
   align-items: center;
   flex-direction: column;
   border-radius: 2vmin;
-  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
+ /*  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1); */
 }
 
 .login-error {
@@ -38,13 +38,15 @@
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  display: flex;
+/*   display: flex;
+  justify-content: center; */
 }
 
 .login-logo {
   font-family: 'Quicksand', sans-serif;
   font-size: 1.3em;
   color: white;
+  margin-top: 5vmin;
 }
 
 .login-hero-title {
@@ -61,14 +63,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .input-label {
   z-index: 1;
-  transform: translate(2vmin, 150%);
+  transform: translate(4vmin, 150%);
   text-transform: uppercase;
-  color: black;
+  color: rgba(0, 0, 0, 0.5);
   font-size: small;
 }
 
@@ -79,26 +82,38 @@
   height: 3em;
   font-size: 1.5em;
   font-weight: bolder;
-  padding: 5vmin 2vmin 3vmin 2vmin;
+  padding: 5vmin 2vmin 3vmin 4vmin;
   border-radius: 1vmin;
-  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 0px 0px 0px 0px var(--light-accent);
   transition: 0.2s ease;
 }
 
 .input:focus {
-  border-bottom: 5px solid var(--light-accent);
+  /* border-bottom: 5px solid var(--light-accent); */
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 5px -5px 0px 0px var(--light-accent);
 }
 
 .main-button {
   border: none;
   background: none;
   background-color: var(--light-accent);
-  margin-top: 2vmin;  
+  margin-top: 30px;  
   display: flex;
   border-radius: 1vmin;
   justify-content: center;
   align-items: center;
   font-size: 1.2em;
   font-weight: bolder;
-  padding: 1vmin 2vmin 1vmin 2vmin;
+  padding: 10px;
+  width: 100%;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+.main-button:hover {
+  background: #cf9d3f;
+}
+
+.main-button:active {
+  background: #a57d32;
 }
