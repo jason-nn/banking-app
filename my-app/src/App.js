@@ -102,6 +102,16 @@ function App() {
     setUserList(userCopy);
   }
 
+  function withdraw(amount, account) {
+    const userCopy = [...users];
+    const accountNos = userCopy.map((user) => user.accountNo);
+    const accountIndex = accountNos.findIndex(
+      (accountNo) => accountNo == account
+    );
+    userCopy[accountIndex].balance -= amount;
+    setUserList(userCopy);
+  }
+
   const [users, setUserList] = useState(userList);
 
   //state for user details
@@ -170,7 +180,17 @@ function App() {
                 />
               )}
             />
-            <Route path="/withdraw" component={Withdraw} />
+            <Route
+              path="/withdraw"
+              component={() => (
+                <Withdraw
+                  users={users}
+                  withdraw={(amount, account) => {
+                    withdraw(amount, account);
+                  }}
+                />
+              )}
+            />
             <Route
               path="/transfer"
               component={() => (

@@ -47,10 +47,10 @@ const Deposit = ({ users, deposit }) => {
           const amount = parseFloat(amountRef.current.value);
           const account = accountRef.current.value;
 
-          if (!amount) {
-            setMessage("Please enter an amount.");
-          } else if (amount <= 0) {
+          if (amount <= 0) {
             setMessage("Please enter an amount greater than 0.");
+          } else if (!amount) {
+            setMessage("Please enter an amount.");
           } else {
             setTimeout(() => {
               deposit(amount, account);

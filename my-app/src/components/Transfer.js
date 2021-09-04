@@ -61,7 +61,9 @@ const Transfer = ({ users, transfer }) => {
           );
           const fromBalance = users[fromIndex].balance;
 
-          if (!amount) {
+          if (amount <= 0) {
+            setMessage("Please enter an amount greater than 0.");
+          } else if (!amount) {
             setMessage("Please enter an amount.");
           } else if (from === to) {
             setMessage("Cannot transfer to the same account.");
