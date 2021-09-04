@@ -187,33 +187,33 @@ function App() {
   };
 
   const [transactions, setTransactions] = useState([
-    {
-      key: 222221,
-      type: "deposit",
-      accountNo: 111111,
-      firstName: "JUAN",
-      lastName: "DE LA CRUZ",
-      amount: 200,
-    },
-    {
-      key: 222222,
-      type: "withdrawal",
-      accountNo: 111112,
-      firstName: "JASON",
-      lastName: "HO",
-      amount: 100,
-    },
-    {
-      key: 222223,
-      type: "transfer",
-      from: 111112,
-      fromFirstName: "JASON",
-      fromLastName: "HO",
-      to: 111113,
-      toFirstName: "EMAN",
-      toLastName: "SIA",
-      amount: 200,
-    },
+    // {
+    //   key: 222221,
+    //   type: "deposit",
+    //   accountNo: 111111,
+    //   firstName: "JUAN",
+    //   lastName: "DE LA CRUZ",
+    //   amount: 200,
+    // },
+    // {
+    //   key: 222222,
+    //   type: "withdrawal",
+    //   accountNo: 111112,
+    //   firstName: "JASON",
+    //   lastName: "HO",
+    //   amount: 100,
+    // },
+    // {
+    //   key: 222223,
+    //   type: "transfer",
+    //   from: 111112,
+    //   fromFirstName: "JASON",
+    //   fromLastName: "HO",
+    //   to: 111113,
+    //   toFirstName: "EMAN",
+    //   toLastName: "SIA",
+    //   amount: 200,
+    // },
   ]);
 
   const [transactionKey, setTransactionKey] = useState(222223);

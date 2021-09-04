@@ -89,6 +89,9 @@ const AdminView = ({ name, users, addUser }) => {
             usernameRef.current.value = null;
             passwordRef.current.value = null;
             balanceRef.current.value = null;
+          } else if (balance <= 0) {
+            setError("Please enter an amount greater than 0.");
+            balanceRef.current.value = null;
           } else {
             addUser(firstName, lastName, balance, username, password);
             setError(null);
