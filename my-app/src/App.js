@@ -7,6 +7,7 @@ import AdminView from "./components/AdminView";
 import Deposit from "./components/Deposit";
 import Withdraw from "./components/Withdraw";
 import Transfer from "./components/Transfer";
+import Transactions from "./components/Transactions";
 
 function App() {
   //for admin user details, planning to merge this with users
@@ -90,6 +91,22 @@ function App() {
     userCopy[fromIndex].balance -= amount;
     userCopy[toIndex].balance += amount;
     setUserList(userCopy);
+
+    const newTransactions = [
+      ...transactions,
+      {
+        key: generateTransactionKey(),
+        type: "transfer",
+        from: from,
+        fromFirstName: userCopy[fromIndex].firstName,
+        fromLastName: userCopy[fromIndex].lastName,
+        to: to,
+        toFirstName: userCopy[toIndex].firstName,
+        toLastName: userCopy[toIndex].lastName,
+        amount: amount,
+      },
+    ];
+    setTransactions(newTransactions);
   }
 
   function deposit(amount, account) {
@@ -100,6 +117,19 @@ function App() {
     );
     userCopy[accountIndex].balance += amount;
     setUserList(userCopy);
+
+    const newTransactions = [
+      ...transactions,
+      {
+        key: generateTransactionKey(),
+        type: "deposit",
+        accountNo: account,
+        firstName: userCopy[accountIndex].firstName,
+        lastName: userCopy[accountIndex].lastName,
+        amount: amount,
+      },
+    ];
+    setTransactions(newTransactions);
   }
 
   function withdraw(amount, account) {
@@ -110,6 +140,19 @@ function App() {
     );
     userCopy[accountIndex].balance -= amount;
     setUserList(userCopy);
+
+    const newTransactions = [
+      ...transactions,
+      {
+        key: generateTransactionKey(),
+        type: "withdrawal",
+        accountNo: account,
+        firstName: userCopy[accountIndex].firstName,
+        lastName: userCopy[accountIndex].lastName,
+        amount: amount,
+      },
+    ];
+    setTransactions(newTransactions);
   }
 
   const [users, setUserList] = useState(userList);
@@ -142,6 +185,45 @@ function App() {
     console.log("Logout");
     setUser({ name: "", username: "" });
   };
+
+  const [transactions, setTransactions] = useState([
+    {
+      key: 222221,
+      type: "deposit",
+      accountNo: 111111,
+      firstName: "JUAN",
+      lastName: "DE LA CRUZ",
+      amount: 200,
+    },
+    {
+      key: 222222,
+      type: "withdrawal",
+      accountNo: 111112,
+      firstName: "JASON",
+      lastName: "HO",
+      amount: 100,
+    },
+    {
+      key: 222223,
+      type: "transfer",
+      from: 111112,
+      fromFirstName: "JASON",
+      fromLastName: "HO",
+      to: 111113,
+      toFirstName: "EMAN",
+      toLastName: "SIA",
+      amount: 200,
+    },
+  ]);
+
+  const [transactionKey, setTransactionKey] = useState(222223);
+
+  function generateTransactionKey() {
+    const oldTransactionKey = transactionKey;
+    const newTransactionKey = oldTransactionKey + 1;
+    setAccountNumber(newTransactionKey);
+    return newTransactionKey;
+  }
 
   return (
     <div className="body">
@@ -203,9 +285,12 @@ function App() {
                   />
                 )}
               />
+              <Route
+                path="/transactions"
+                component={() => <Transactions transactions={transactions} />}
+              />
             </Switch>
           </div>
-
         </Router>
       ) : (
         /* If there is no current user, show login page */
