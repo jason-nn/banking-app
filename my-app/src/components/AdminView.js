@@ -59,7 +59,7 @@ const AdminView = ({ name, users, addUser }) => {
           const lastName = lastNameRef.current.value.toUpperCase();
           const username = usernameRef.current.value;
           const password = passwordRef.current.value;
-          const balance = balanceRef.current.value;
+          const balance = parseFloat(balanceRef.current.value);
 
           const firstNames = users.map((user) => user.firstName);
           const lastNames = users.map((user) => user.lastName);
