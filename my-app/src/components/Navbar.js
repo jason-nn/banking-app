@@ -6,12 +6,13 @@ import "./Navbar.css";
 export default function Navbar({ /* onClick, */ LogoutFunction }) {
   return (
     <nav className="navbar">
+      <h1 className="navbar-logo">banque.</h1>
       <NavLink to="/" activeClassName="nav-active" exact className="nav-link">
         <div className="nav-link-content">
           <span className="material-icons">
             home
           </span>
-          <span>HOME</span>
+          <span>Home</span>
         </div>
       </NavLink>
       <NavLink to="/deposit" activeClassName="nav-active" className="nav-link">
@@ -19,7 +20,7 @@ export default function Navbar({ /* onClick, */ LogoutFunction }) {
           <span className="material-icons">
             download
           </span>
-          <span>DEPOSIT</span>
+          <span>Deposit</span>
         </div>
 
       </NavLink>
@@ -28,7 +29,7 @@ export default function Navbar({ /* onClick, */ LogoutFunction }) {
           <span className="material-icons">
             upload
           </span>
-          <span>WITHDRAW</span>
+          <span>Withdraw</span>
         </div>
 
       </NavLink>
@@ -37,7 +38,7 @@ export default function Navbar({ /* onClick, */ LogoutFunction }) {
           <span className="material-icons">
             sync_alt
           </span>
-          <span>TRANSFER</span>
+          <span>Transfer</span>
         </div>
 
       </NavLink>
@@ -46,10 +47,17 @@ export default function Navbar({ /* onClick, */ LogoutFunction }) {
           <span className="material-icons">
             history
           </span>
-          <span className="navLinks">Transactions</span>
+          <span>Transactions</span>
         </div>
       </NavLink>
-      <NavLink to="/" className="nav-button"><Button text="Logout" onClick={() => { LogoutFunction() }} /></NavLink>
+      <NavLink to="/" className="nav-link" onClick={() => { LogoutFunction() }}>
+        <div className="nav-link-content">
+          <span className="material-icons">
+            logout
+          </span>
+          <span>Logout</span>
+        </div>
+      </NavLink>
 
     </nav>
   );
