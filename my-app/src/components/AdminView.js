@@ -25,7 +25,7 @@ const AdminView = ({ name, users, addUser }) => {
   const [error, setError] = useState(null);
 
   return (
-    <div>
+    <>
       <h1>Welcome, {name}</h1>
       <h2>Accounts</h2>
       <br />
@@ -112,7 +112,7 @@ const AdminView = ({ name, users, addUser }) => {
         </thead>
         <tbody>{renderRows()}</tbody>
       </table>
-    </div>
+    </>
   );
 };
 
