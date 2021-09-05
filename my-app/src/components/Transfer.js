@@ -44,7 +44,10 @@ const Transfer = ({ users, transfer }) => {
 
   return (
     <div>
-      <h1>Transfer</h1>
+      <div className="main-header">
+        <h1>Transfer</h1>
+      </div>
+
       <br />
       <br />
       <label>

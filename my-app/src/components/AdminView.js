@@ -26,7 +26,10 @@ const AdminView = ({ name, users, addUser }) => {
 
   return (
     <>
-      <h1>Welcome, {name}</h1>
+      <div className="main-header">
+        <h1>Welcome, {name}</h1>
+      </div>
+
       <h2>Accounts</h2>
       <br />
       <br />

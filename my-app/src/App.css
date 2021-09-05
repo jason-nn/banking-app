@@ -23,7 +23,21 @@
 }
 
 .main-content {
-  padding: 5vmin 5vmin 20vmin 5vmin;
+  padding: 0vmin 0vmin 20vmin 0vmin;
   width: 100vw;
   overflow: scroll;
+}
+
+.main-header {
+  background-color: var(--brand-color);
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  color: var(--light-color);
+}
+
+table {
+  width: 100%;
+  text-align: center;
 }

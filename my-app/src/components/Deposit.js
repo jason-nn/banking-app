@@ -40,8 +40,11 @@ const Deposit = ({ users, deposit }) => {
   }
 
   return (
-    <div>
-      <h1>Deposit</h1>
+    <>
+      <div className="main-header">
+        <h1>Deposit</h1>
+      </div>
+
       <br />
       <br />
       <label>
@@ -85,7 +88,7 @@ const Deposit = ({ users, deposit }) => {
           }
         }}
       />
-    </div>
+    </>
   );
 };
 

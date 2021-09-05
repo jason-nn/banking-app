@@ -41,7 +41,10 @@ const Withdraw = ({ users, withdraw }) => {
 
   return (
     <div>
-      <h1>Withdraw</h1>
+      <div className="main-header">
+        <h1>Withdraw</h1>
+      </div>
+
       <br />
       <br />
       <label>
