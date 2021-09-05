@@ -27,7 +27,7 @@
 }
 
 .login-error {
-  color: var(--light-color);
+  color: white;
   position: absolute;
   top: 0;
   font-weight: bold;
@@ -58,7 +58,7 @@
 
 .login-logo {
   font-family: 'Quicksand', sans-serif;
-  font-size: 1.3em;
+  font-size: 2em;
 }
 
 .login-logo-mobile {
@@ -69,14 +69,13 @@
   width: 80%;
 }
 
-.login-message-mobile {
+.login-message {
   font-size: xx-large;
   width: 80%;
   color: var(--dark-shade)
 }
 
 .login-hero-title {
-
   display: none;
 }
 
@@ -114,7 +113,7 @@
 }
 
 .input:focus {
-  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 5px -5px 0px 0px var(--light-accent);
+  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 5px -5px 0px 0px var(--light-accent);
 }
 
 .main-button {
@@ -183,7 +182,9 @@
   .login-form {
     width: 60%;
   }
-  .login-message-mobile {
+  .login-message {
     width: 60%;
+    font-size: 4vmin;
+    margin-bottom: 3vmin;
   }
 }

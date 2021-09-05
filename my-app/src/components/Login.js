@@ -28,7 +28,7 @@ export default function Login({ LoginFunction, error }) {
       </div>
       <div className="form-container">
         <h1 className="login-logo-mobile">banque.</h1>
-        <h2 className="login-message-mobile">Log in to your account</h2>
+        <h2 className="login-message">Log in to your account</h2>
         <form className="login-form" onSubmit={submitHandler}>
           <div className="input-container">
             <label>
