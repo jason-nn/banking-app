@@ -3,7 +3,6 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-direction: column;
   background: var(--light-color);
   align-items: center;
   position: relative;
@@ -19,19 +18,12 @@
 }
 
 .login-form {
-/*   height: 50vh; */
   width: 80vw;
-  /* background: var(--light-color); */
-/*   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   border-radius: 2vmin;
- /*  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1); */
 }
 
 .login-error {
@@ -62,24 +54,11 @@
 
 .login-hero {
   display: none;
-  width: 100vw;
-  height: 100vh;
-  padding: 10%;
-  color: var(--light-color);
-  background: var(--dark-shade);
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-/*   display: flex;
-  justify-content: center; */
 }
 
 .login-logo {
   font-family: 'Quicksand', sans-serif;
   font-size: 1.3em;
-  color: var(--brand-color);
-  margin-top: 5vmin;
 }
 
 .login-logo-mobile {
@@ -97,8 +76,7 @@
 }
 
 .login-hero-title {
-  font-size: 4em;
-  font-weight: 800;
+
   display: none;
 }
 
@@ -136,7 +114,6 @@
 }
 
 .input:focus {
-  /* border-bottom: 5px solid var(--light-accent); */
   box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 5px -5px 0px 0px var(--light-accent);
 }
 
@@ -164,4 +141,49 @@
 
 .main-button:active {
   background: #a57d32;
+}
+
+@media only screen and (min-width: 900px) {
+  .login-component {
+    overflow: hidden;
+  }
+  .login-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40%;
+    height: 100vh;
+    padding: 5%;
+    color: var(--light-color);
+    background-image: linear-gradient(to top, #3f394a85,#3f394ac5),url('./hero.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .login-hero-title {
+    display: block;
+    font-size: 3em;
+    font-weight: 800;
+    line-height: 100%;
+    margin-bottom: 5%;
+  }
+  
+  .login-hero-text {
+    display: block;
+  }
+  .login-logo-mobile {
+    display: none;
+  }
+  .form-container {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+  }
+  .login-form {
+    width: 60%;
+  }
+  .login-message-mobile {
+    width: 60%;
+  }
 }

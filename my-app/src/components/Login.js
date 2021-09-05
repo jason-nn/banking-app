@@ -20,9 +20,11 @@ export default function Login({ LoginFunction, error }) {
     <div className="login-component">
       <div className="login-hero">
         <h1 className="login-logo">banque.</h1>
+        <div className="hero-content">
+          <h1 className="login-hero-title">The bank you can trust.</h1>
+          <p className="login-hero-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a nisl molestie, pretium eros sit amet, sollicitudin risus. Etiam finibus non libero et faucibus. Aliquam eu neque eu arcu ultrices placerat. Phasellus nec malesuada elit. Sed eu nibh enim.</p>
+        </div>
 
-        <h1 className="login-hero-title">The bank you can trust.</h1>
-        <p className="login-hero-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a nisl molestie, pretium eros sit amet, sollicitudin risus. Etiam finibus non libero et faucibus. Aliquam eu neque eu arcu ultrices placerat. Phasellus nec malesuada elit. Sed eu nibh enim.</p>
       </div>
       <div className="form-container">
         <h1 className="login-logo-mobile">banque.</h1>
