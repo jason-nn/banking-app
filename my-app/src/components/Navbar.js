@@ -44,7 +44,7 @@ export default function Navbar({ /* onClick, */ LogoutFunction }) {
       <NavLink to="/transactions" activeClassName="nav-active" className="nav-link">
         <div className="nav-link-content">
           <span className="material-icons">
-            sync_alt
+            history
           </span>
           <span className="navLinks">Transactions</span>
         </div>
