@@ -30,31 +30,9 @@ const AdminView = ({ name, users, addUser }) => {
       <h2>Accounts</h2>
       <br />
       <br />
-      <label>
-        <div>First Name</div>
-        <input type="text" ref={firstNameRef} required />
-      </label>
-      <label>
-        <div>Last Name</div>
-        <input type="text" ref={lastNameRef}></input>
-      </label>
-      <label>
-        <div>Balance</div>
-        <input type="number" ref={balanceRef}></input>
-      </label>
-      <label>
-        <div>Username</div>
-        <input type="text" ref={usernameRef}></input>
-      </label>
-      <label>
-        <div>Password</div>
-        <input type="text" ref={passwordRef}></input>
-      </label>
-      <br />
-      <br />
-      <div>{error}</div>
-      <Button
-        onClick={() => {
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
           const firstName = firstNameRef.current.value.toUpperCase();
           const lastName = lastNameRef.current.value.toUpperCase();
           const username = usernameRef.current.value;
@@ -97,8 +75,32 @@ const AdminView = ({ name, users, addUser }) => {
             setError(null);
           }
         }}
-        text="Add User"
-      />
+      >
+        <label>
+          <div>First Name</div>
+          <input type="text" ref={firstNameRef} />
+        </label>
+        <label>
+          <div>Last Name</div>
+          <input type="text" ref={lastNameRef}></input>
+        </label>
+        <label>
+          <div>Balance</div>
+          <input type="number" ref={balanceRef}></input>
+        </label>
+        <label>
+          <div>Username</div>
+          <input type="text" ref={usernameRef}></input>
+        </label>
+        <label>
+          <div>Password</div>
+          <input type="text" ref={passwordRef}></input>
+        </label>
+        <br />
+        <br />
+        <div>{error}</div>
+        <Button text="Add User" />
+      </form>
       <br />
       <br />
       <table>

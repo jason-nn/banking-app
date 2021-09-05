@@ -44,32 +44,10 @@ const Deposit = ({ users, deposit }) => {
       <h1>Deposit</h1>
       <br />
       <br />
-      <label>
-        <div>Amount</div>
-        ₱<input type="number" ref={amountRef} />
-      </label>
-      <br />
-      <br />
-      <label>
-        <div>Account</div>
-        <select
-          ref={accountRef}
-          onChange={(e) => {
-            handleChange(e.target.value);
-          }}
-        >
-          {renderSelectOptions()}
-        </select>
-      </label>
-      <br />
-      <br />
-      <div>Current Balance: ₱{displayBalance}</div>
-      <br />
-      <br />
-      <div>{message}</div>
-      <Button
-        text="Deposit"
-        onClick={() => {
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+
           const amount = parseFloat(amountRef.current.value);
           const account = accountRef.current.value;
 
@@ -84,7 +62,32 @@ const Deposit = ({ users, deposit }) => {
             setMessage(`Depositing ₱${amount}...`);
           }
         }}
-      />
+      >
+        <label>
+          <div>Amount</div>
+          ₱<input type="number" ref={amountRef} />
+        </label>
+        <br />
+        <br />
+        <label>
+          <div>Account</div>
+          <select
+            ref={accountRef}
+            onChange={(e) => {
+              handleChange(e.target.value);
+            }}
+          >
+            {renderSelectOptions()}
+          </select>
+        </label>
+        <br />
+        <br />
+        <div>Current Balance: ₱{displayBalance}</div>
+        <br />
+        <br />
+        <div>{message}</div>
+        <Button text="Deposit" />
+      </form>
     </div>
   );
 };
