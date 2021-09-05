@@ -47,48 +47,9 @@ const Transfer = ({ users, transfer }) => {
       <h1>Transfer</h1>
       <br />
       <br />
-      <label>
-        <div>Amount</div>
-        ₱<input type="number" ref={amountRef} />
-      </label>
-      <br />
-      <br />
-      <label>
-        <div>From</div>
-        <select
-          onChange={(e) => {
-            handleChange(e.target.value, 1);
-          }}
-          ref={fromRef}
-        >
-          {renderSelectOptions()}
-        </select>
-      </label>
-      <br />
-      <br />
-      <div>Current Balance: ₱{displayBalance1}</div>
-      <br />
-      <br />
-      <label>
-        <div>To</div>
-        <select
-          onChange={(e) => {
-            handleChange(e.target.value, 2);
-          }}
-          ref={toRef}
-        >
-          {renderSelectOptions()}
-        </select>
-      </label>
-      <br />
-      <br />
-      <div>Current Balance: ₱{displayBalance2}</div>
-      <br />
-      <br />
-      <div>{message}</div>
-      <Button
-        text="Transfer"
-        onClick={() => {
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
           const amount = parseFloat(amountRef.current.value);
           const from = fromRef.current.value;
           const to = toRef.current.value;
@@ -114,7 +75,48 @@ const Transfer = ({ users, transfer }) => {
             setMessage(`Transferring ₱${amount}...`);
           }
         }}
-      />
+      >
+        <label>
+          <div>Amount</div>
+          ₱<input type="number" ref={amountRef} />
+        </label>
+        <br />
+        <br />
+        <label>
+          <div>From</div>
+          <select
+            onChange={(e) => {
+              handleChange(e.target.value, 1);
+            }}
+            ref={fromRef}
+          >
+            {renderSelectOptions()}
+          </select>
+        </label>
+        <br />
+        <br />
+        <div>Current Balance: ₱{displayBalance1}</div>
+        <br />
+        <br />
+        <label>
+          <div>To</div>
+          <select
+            onChange={(e) => {
+              handleChange(e.target.value, 2);
+            }}
+            ref={toRef}
+          >
+            {renderSelectOptions()}
+          </select>
+        </label>
+        <br />
+        <br />
+        <div>Current Balance: ₱{displayBalance2}</div>
+        <br />
+        <br />
+        <div>{message}</div>
+        <Button text="Transfer" />
+      </form>
     </div>
   );
 };
