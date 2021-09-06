@@ -37,7 +37,20 @@
 .card-container {
   background-color: white;
   width: 100%;
-  
+  transform: translateY(-5%);
+  opacity: 0;
+  animation: card 0.2s ease forwards;
+}
+
+@keyframes card {
+  0% {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .main-header {
@@ -112,19 +125,24 @@ table {
 }
 
 th {
-  background-color: rgba(0, 0, 0, 0.04);
+  text-align: left;
+  padding: 1.2em;
+  color: var(--lighter-color);
+  font-weight: 500;
 }
 
 
 tr:not(:first-child):hover {
   box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(233, 242, 248, 0.1);
+  border-bottom: 1px solid rgba(233, 242, 248, 0.1);
 }
 
 td {
   color: var(--light-color);
   border: none;
-  padding: 1.2em;
+  padding: 1em;
+  font-size: 1.1em;
+  font-weight: bold;
   transition: 0.2s ease;
   border-bottom: 1px solid rgba(233, 242, 248, 0);
 }
@@ -137,7 +155,7 @@ tr:hover td {
   background-color: #28242F ;
   color: var(--light-color);
   border: none;
-  padding: 1.2em;
+  padding: 1em;
   border-bottom: 1px solid rgba(233, 242, 248, 0);
 }
 
