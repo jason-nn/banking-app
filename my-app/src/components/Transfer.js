@@ -50,6 +50,36 @@ const Transfer = ({ users, transfer }) => {
 
       <br />
       <br />
+
+    <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const amount = parseFloat(amountRef.current.value);
+          const from = fromRef.current.value;
+          const to = toRef.current.value;
+
+          const accountNos = users.map((user) => user.accountNo);
+          const fromIndex = accountNos.findIndex(
+            (accountNo) => accountNo == from
+          );
+          const fromBalance = users[fromIndex].balance;
+
+          if (amount <= 0) {
+            setMessage("Please enter an amount greater than 0.");
+          } else if (!amount) {
+            setMessage("Please enter an amount.");
+          } else if (from === to) {
+            setMessage("Cannot transfer to the same account.");
+          } else if (fromBalance < amount) {
+            setMessage("Insufficient funds.");
+          } else {
+            setTimeout(() => {
+              transfer(amount, from, to);
+            }, 1500);
+            setMessage(`Transferring ₱${amount}...`);
+          }
+        }}
+      >
       <label>
         <div className="input-label">Amount (₱)</div>
         <input className="input-field" type="number" ref={amountRef} />
@@ -89,33 +119,8 @@ const Transfer = ({ users, transfer }) => {
       <div>{message}</div>
       <Button className="main-button"
         text="Transfer"
-        onClick={() => {
-          const amount = parseFloat(amountRef.current.value);
-          const from = fromRef.current.value;
-          const to = toRef.current.value;
-
-          const accountNos = users.map((user) => user.accountNo);
-          const fromIndex = accountNos.findIndex(
-            (accountNo) => accountNo == from
-          );
-          const fromBalance = users[fromIndex].balance;
-
-          if (amount <= 0) {
-            setMessage("Please enter an amount greater than 0.");
-          } else if (!amount) {
-            setMessage("Please enter an amount.");
-          } else if (from === to) {
-            setMessage("Cannot transfer to the same account.");
-          } else if (fromBalance < amount) {
-            setMessage("Insufficient funds.");
-          } else {
-            setTimeout(() => {
-              transfer(amount, from, to);
-            }, 1500);
-            setMessage(`Transferring ₱${amount}...`);
-          }
-        }}
-      />
+        />
+      </form>
     </div>
   );
 };

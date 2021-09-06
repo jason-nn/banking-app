@@ -10,6 +10,7 @@ import Transfer from "./components/Transfer";
 import Transactions from "./components/Transactions";
 
 function App() {
+  // localStorage.clear();
   //for admin user details, planning to merge this with users
   const adminUser = {
     username: "admin",
@@ -17,8 +18,6 @@ function App() {
     name: "Administrator",
     isAdmin: true,
   };
-
-  const [accountNumber, setAccountNumber] = useState(111113);
 
   // list of users (work in progress)
   const userList = [
@@ -60,11 +59,83 @@ function App() {
     },
   ];
 
+  const transactionList = [
+    // {
+    //   key: 222221,
+    //   type: "deposit",
+    //   accountNo: 111111,
+    //   firstName: "JUAN",
+    //   lastName: "DE LA CRUZ",
+    //   amount: 200,
+    // },
+    // {
+    //   key: 222222,
+    //   type: "withdrawal",
+    //   accountNo: 111112,
+    //   firstName: "JASON",
+    //   lastName: "HO",
+    //   amount: 100,
+    // },
+    // {
+    //   key: 222223,
+    //   type: "transfer",
+    //   from: 111112,
+    //   fromFirstName: "JASON",
+    //   fromLastName: "HO",
+    //   to: 111113,
+    //   toFirstName: "EMAN",
+    //   toLastName: "SIA",
+    //   amount: 200,
+    // },
+  ];
+
+  if (localStorage.bankUsers) {
+    console.log("bankUsers exists in local storage");
+    console.log(localStorage.bankUsers);
+  } else {
+    localStorage.bankUsers = JSON.stringify(userList);
+    console.log("bankUsers does not exist in local storage, just created.");
+    console.log(localStorage.bankUsers);
+  }
+
+  if (localStorage.transactionHistory) {
+    console.log("transactionHistory exists in local storage");
+    console.log(localStorage.transactionHistory);
+  } else {
+    localStorage.transactionHistory = JSON.stringify(transactionList);
+    console.log(
+      "transactionHistory does not exist in local storage, just created."
+    );
+    console.log(localStorage.transactionHistory);
+  }
+
+  if (localStorage.accountNumber) {
+    console.log("accountNumber already exists in local storage.");
+    console.log(localStorage.accountNumber);
+  } else {
+    localStorage.accountNumber = 111113;
+    console.log(localStorage.accountNumber);
+  }
+
+  if (localStorage.transactionKey) {
+    console.log("transactionKey already exists in local storage.");
+    console.log(localStorage.transactionKey);
+  } else {
+    localStorage.transactionKey = 222220;
+    console.log(localStorage.transactionKey);
+  }
+
   function generateAccountNumber() {
-    const oldAccountNumber = accountNumber;
+    const oldAccountNumber = parseInt(localStorage.accountNumber);
     const newAccountNumber = oldAccountNumber + 1;
-    setAccountNumber(newAccountNumber);
+    localStorage.accountNumber = newAccountNumber;
     return newAccountNumber;
+  }
+  function generateTransactionKey() {
+    const oldTransactionKey = parseInt(localStorage.transactionKey);
+    const newTransactionKey = oldTransactionKey + 1;
+    localStorage.transactionKey = newTransactionKey;
+    return newTransactionKey;
   }
 
   function addUser(firstName, lastName, balance, username, password) {
@@ -81,6 +152,8 @@ function App() {
       },
     ];
     setUserList(newUserList);
+    localStorage.bankUsers = JSON.stringify(newUserList);
+    console.log(localStorage.bankUsers);
   }
 
   function transfer(amount, from, to) {
@@ -107,6 +180,8 @@ function App() {
       },
     ];
     setTransactions(newTransactions);
+    localStorage.transactionHistory = JSON.stringify(newTransactions);
+    localStorage.bankUsers = JSON.stringify(userCopy);
   }
 
   function deposit(amount, account) {
@@ -130,6 +205,8 @@ function App() {
       },
     ];
     setTransactions(newTransactions);
+    localStorage.transactionHistory = JSON.stringify(newTransactions);
+    localStorage.bankUsers = JSON.stringify(userCopy);
   }
 
   function withdraw(amount, account) {
@@ -153,9 +230,11 @@ function App() {
       },
     ];
     setTransactions(newTransactions);
+    localStorage.transactionHistory = JSON.stringify(newTransactions);
+    localStorage.bankUsers = JSON.stringify(userCopy);
   }
 
-  const [users, setUserList] = useState(userList);
+  const [users, setUserList] = useState(JSON.parse(localStorage.bankUsers));
 
   //state for user details
   const [currentUser, setUser] = useState({ name: "", username: "" });
@@ -186,44 +265,9 @@ function App() {
     setUser({ name: "", username: "" });
   };
 
-  const [transactions, setTransactions] = useState([
-    // {
-    //   key: 222221,
-    //   type: "deposit",
-    //   accountNo: 111111,
-    //   firstName: "JUAN",
-    //   lastName: "DE LA CRUZ",
-    //   amount: 200,
-    // },
-    // {
-    //   key: 222222,
-    //   type: "withdrawal",
-    //   accountNo: 111112,
-    //   firstName: "JASON",
-    //   lastName: "HO",
-    //   amount: 100,
-    // },
-    // {
-    //   key: 222223,
-    //   type: "transfer",
-    //   from: 111112,
-    //   fromFirstName: "JASON",
-    //   fromLastName: "HO",
-    //   to: 111113,
-    //   toFirstName: "EMAN",
-    //   toLastName: "SIA",
-    //   amount: 200,
-    // },
-  ]);
-
-  const [transactionKey, setTransactionKey] = useState(222223);
-
-  function generateTransactionKey() {
-    const oldTransactionKey = transactionKey;
-    const newTransactionKey = oldTransactionKey + 1;
-    setAccountNumber(newTransactionKey);
-    return newTransactionKey;
-  }
+  const [transactions, setTransactions] = useState(
+    JSON.parse(localStorage.transactionHistory)
+  );
 
   return (
     <div className="body">

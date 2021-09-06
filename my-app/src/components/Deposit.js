@@ -47,6 +47,24 @@ const Deposit = ({ users, deposit }) => {
 
       <br />
       <br />
+          <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const amount = parseFloat(amountRef.current.value);
+          const account = accountRef.current.value;
+
+          if (amount <= 0) {
+            setMessage("Please enter an amount greater than 0.");
+          } else if (!amount) {
+            setMessage("Please enter an amount.");
+          } else {
+            setTimeout(() => {
+              deposit(amount, account);
+            }, 1500);
+            setMessage(`Depositing ₱${amount}...`);
+          }
+        }}
+      >
       <label>
         <div className="input-label">Amount (₱)</div>
         <input className="input-field" type="number" ref={amountRef} />
@@ -71,23 +89,8 @@ const Deposit = ({ users, deposit }) => {
       <br />
       <div>{message}</div>
       <Button className="main-button"
-        text="Deposit"
-        onClick={() => {
-          const amount = parseFloat(amountRef.current.value);
-          const account = accountRef.current.value;
-
-          if (amount <= 0) {
-            setMessage("Please enter an amount greater than 0.");
-          } else if (!amount) {
-            setMessage("Please enter an amount.");
-          } else {
-            setTimeout(() => {
-              deposit(amount, account);
-            }, 1500);
-            setMessage(`Depositing ₱${amount}...`);
-          }
-        }}
-      />
+        text="Deposit" />
+      </form>
     </div>
   );
 };

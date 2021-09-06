@@ -47,6 +47,32 @@ const Withdraw = ({ users, withdraw }) => {
 
       <br />
       <br />
+    <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          const amount = parseFloat(amountRef.current.value);
+          const account = accountRef.current.value;
+
+          const accountNos = users.map((user) => user.accountNo);
+          const accountIndex = accountNos.findIndex(
+            (accountNo) => accountNo == account
+          );
+          const accountBalance = users[accountIndex].balance;
+
+          if (amount <= 0) {
+            setMessage("Please enter an amount greater than 0.");
+          } else if (!amount) {
+            setMessage("Please enter an amount.");
+          } else if (accountBalance < amount) {
+            setMessage("Insufficient funds.");
+          } else {
+            setTimeout(() => {
+              withdraw(amount, account);
+            }, 1500);
+            setMessage(`Withdrawing ₱${amount}...`);
+          }
+        }}
+      >
       <label>
         <div className="input-label">Amount (₱)</div>
         <input className="input-field" type="number" ref={amountRef} />
@@ -72,30 +98,8 @@ const Withdraw = ({ users, withdraw }) => {
       <div>{message}</div>
       <Button className="main-button"
         text="Withdraw"
-        onClick={() => {
-          const amount = parseFloat(amountRef.current.value);
-          const account = accountRef.current.value;
-
-          const accountNos = users.map((user) => user.accountNo);
-          const accountIndex = accountNos.findIndex(
-            (accountNo) => accountNo == account
-          );
-          const accountBalance = users[accountIndex].balance;
-
-          if (amount <= 0) {
-            setMessage("Please enter an amount greater than 0.");
-          } else if (!amount) {
-            setMessage("Please enter an amount.");
-          } else if (accountBalance < amount) {
-            setMessage("Insufficient funds.");
-          } else {
-            setTimeout(() => {
-              withdraw(amount, account);
-            }, 1500);
-            setMessage(`Withdrawing ₱${amount}...`);
-          }
-        }}
-      />
+        />
+      </form>
     </div>
   );
 };
