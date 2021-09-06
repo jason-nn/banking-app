@@ -3,41 +3,191 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  flex-direction: column;
   background: var(--dark-shade);
+  align-items: center;
+  position: relative;
+}
+
+.form-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .login-form {
-
-  background: var(--light-color);
-  width: 100vw;
-  height: 80%;
+  width: 80vw;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
+  border-radius: 2vmin;
 }
 
 .login-error {
-  color: red;
+  color: white;
+  position: absolute;
+  top: 0;
+  font-weight: bold;
+  border-radius: 2vmin;
+  background-color: var(--dark-accent);
+  padding: 1em;
+  border: 0.5px solid var(--lighter-color);
+  margin-top: 5%;
+  transform: translateY(-10%);
+  opacity: 0;
+  animation: error 0.2s ease forwards;
+}
+
+@keyframes error {
+  0% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .login-hero {
-  width: 100%;
-  height: 40%;
-  color: var(--light-color);
+  display: none;
 }
 
 .login-logo {
-  font-family: 'Fredoka One', cursive;
-  font-size: 2.5em;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2em;
+  color: var(--light-accent);
+}
+
+.login-logo-mobile {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.3em;
+  color: var(--light-accent);
+  margin-top: 5vmin;
+  width: 80%;
+}
+
+.login-message {
+  font-size: xx-large;
+  width: 80%;
+  color: var(--light-color)
 }
 
 .login-hero-title {
-  font-size: 4em;
-  font-weight: 800;
+  display: none;
+}
+
+.login-hero-text {
+  display: none;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.login-input-label {
+  z-index: 1;
+  transform: translate(4vmin, 150%);
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: small;
+}
+
+.input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 3em;
+  background-color: var(--light-color);
+  font-size: 1.5em;
+  font-weight: bolder;
+  padding: 5vmin 2vmin 3vmin 4vmin;
+  border-radius: 1vmin;
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 0px 0px 0px 0px var(--light-accent);
+  transition: 0.2s ease;
+}
+
+.input:focus {
+  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 5px -5px 0px 0px var(--dark-accent);
+}
+
+.login-button {
+  border: none;
+  background: none;
+  background-color: var(--dark-accent);
+  margin-top: 30px;  
+  display: flex;
+  border-radius: 1vmin;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bolder;
+  padding: 10px 1em 10px 1em;
+  align-self: flex-start;
+  transition: 0.1s ease;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
+}
+
+.login-button:hover {
+  background: #b94248e8;
+}
+
+.login-button:active {
+  background: #9c373c;
+}
+
+@media only screen and (min-width: 900px) {
+  .login-component {
+    overflow: hidden;
+  }
+  .login-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40%;
+    height: 100vh;
+    padding: 5%;
     color: var(--light-color);
+    background-image: linear-gradient(to top, #3f394a85,#3f394ac5),url('./hero.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .login-hero-title {
+    display: block;
+    font-size: 3em;
+    font-weight: 800;
+    line-height: 100%;
+    margin-bottom: 5%;
+  }
+  
+  .login-hero-text {
+    display: block;
+  }
+  .login-logo-mobile {
+    display: none;
+  }
+  .form-container {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+  }
+  .login-form {
+    width: 60%;
+  }
+  .login-message {
+    width: 60%;
+    font-size: 4vmin;
+    margin-bottom: 3vmin;
+  }
 }

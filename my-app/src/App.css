@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
 
 :root {
   --light-color: #E0E9EF;
@@ -6,7 +6,11 @@
   --brand-color: #7D96B3;
   --dark-accent: #B94247;
   --dark-shade: #3F394A;
+  --lighter-color: rgba(233, 242, 248, 0.6);
+  --darker-shade: #322d3b;
 }
+
+
 
 * {
   margin: 0;
@@ -19,11 +23,185 @@
   display: flex;
   width: 100vw;
   height: 100vh;
+  background-color: var(--dark-shade);
+  color: var(--light-color);
 }
 
 .main-content {
-  padding: 5vmin;
-  overflow: scroll;
+  padding: 0vmin 0vmin 20vmin 0vmin;
   width: 100vw;
-  
+  overflow: scroll;
+  padding: 50px;
+}
+
+.card-container {
+  background-color: white;
+  width: 100%;
+  transform: translateY(-5%);
+  opacity: 0;
+  animation: card 0.2s ease forwards;
+  position: relative;
+}
+
+@keyframes card {
+  0% {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-header {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.main-title {
+  color: var(--light-accent);
+  font-size: 0.9em;
+  text-transform: uppercase;
+
+}
+
+.greeting-text {
+  color: var(--light-accent);
+  transform: translateY(-100%);
+  font-weight: 400;
+}
+
+.card-container {
+  padding: 20px;
+  background-color: var(--darker-shade);
+  border-radius: 2vmin;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.admin-dashboard{
+  width: 100%;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.form-input-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.input-label {
+  z-index: 1;
+  transform: translate(2vmin, 130%);
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: small;
+}
+
+.input-field {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bolder;
+  padding: 1.5em 2vmin 0.5em 2vmin;
+  border-radius: 1vmin;
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 0px 0px 0px 0px var(--light-accent);
+  transition: 0.2s ease;
+  background-color: var(--light-color);
+}
+
+.input-field:focus {
+  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 4px -4px 0px 0px var(--dark-accent);
+}
+
+.main-button {
+  border: none;
+  background: none;
+  background-color: var(--dark-accent);
+  display: flex;
+  height: 100%;
+  border-radius: 1vmin;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bolder;
+  padding: 10px 1em 10px 1em;
+  transition: 0.1s ease;
+  margin-top: 15px;
+  align-self: flex-start;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
+}
+
+.main-button:hover {
+  background: #b94248e8;
+}
+
+.main-button:active {
+  background: #9c373c;
+}
+
+table {
+  width: 100%;
+  border-spacing: 0 10px;
+}
+
+th {
+  text-align: left;
+  padding: 1em;
+  color: var(--lighter-color);
+  font-weight: 500;
+  border-bottom: 1px solid rgba(233, 242, 248, 0.4);
+}
+
+
+tr:not(:first-child):hover {
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(233, 242, 248, 0.1);
+}
+
+td {
+  color: var(--light-color);
+  border: none;
+  padding: 1em;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: 0.2s ease;
+  border-bottom: 1px solid rgba(233, 242, 248, 0);
+}
+
+tr:not(:last-child) td {
+  border-bottom: 1px solid rgba(233, 242, 248, 0.05);
+}
+
+tr:hover td {
+  background-color: #28242F ;
+  color: var(--light-color);
+  border: none;
+  padding: 1em;
+  border-bottom: 1px solid rgba(233, 242, 248, 0);
+}
+
+tr:hover td:first-child{
+  border-radius: 1vmin 0 0 1vmin;
+}
+
+tr:hover td:last-child{
+  border-radius: 0vmin 1vmin 1vmin 0vmin;
 }

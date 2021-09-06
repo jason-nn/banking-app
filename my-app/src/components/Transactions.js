@@ -46,7 +46,10 @@ export default function Transactions({ transactions }) {
 
   return (
     <div>
-      <h1>Transactions</h1>
+      <div className="main-header">
+        <h1 className="main-title">Transaction History</h1>
+      </div>
+
       <br />
       <br />
       <h2>Deposits</h2>

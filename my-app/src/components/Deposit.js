@@ -40,14 +40,16 @@ const Deposit = ({ users, deposit }) => {
   }
 
   return (
-    <div>
-      <h1>Deposit</h1>
+    <div className="card-container">
+      <div className="main-header">
+        <h1 className="main-title">Deposit</h1>
+      </div>
+
       <br />
       <br />
-      <form
+          <form
         onSubmit={(e) => {
           e.preventDefault();
-
           const amount = parseFloat(amountRef.current.value);
           const account = accountRef.current.value;
 
@@ -63,30 +65,31 @@ const Deposit = ({ users, deposit }) => {
           }
         }}
       >
-        <label>
-          <div>Amount</div>
-          ₱<input type="number" ref={amountRef} />
-        </label>
-        <br />
-        <br />
-        <label>
-          <div>Account</div>
-          <select
-            ref={accountRef}
-            onChange={(e) => {
-              handleChange(e.target.value);
-            }}
-          >
-            {renderSelectOptions()}
-          </select>
-        </label>
-        <br />
-        <br />
-        <div>Current Balance: ₱{displayBalance}</div>
-        <br />
-        <br />
-        <div>{message}</div>
-        <Button text="Deposit" />
+      <label>
+        <div className="input-label">Amount (₱)</div>
+        <input className="input-field" type="number" ref={amountRef} />
+      </label>
+      <br />
+      <br />
+      <label>
+        <div className="input-label">Account</div>
+        <select className="input-field"
+          ref={accountRef}
+          onChange={(e) => {
+            handleChange(e.target.value);
+          }}
+        >
+          {renderSelectOptions()}
+        </select>
+      </label>
+      <br />
+      <br />
+      <div>Current Balance: ₱{displayBalance}</div>
+      <br />
+      <br />
+      <div>{message}</div>
+      <Button className="main-button"
+        text="Deposit" />
       </form>
     </div>
   );
