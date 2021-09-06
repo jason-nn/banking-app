@@ -108,4 +108,43 @@
 
 table {
   width: 100%;
+  border-spacing: 0 10px;
+}
+
+th {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+
+tr:not(:first-child):hover {
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(233, 242, 248, 0.1);
+}
+
+td {
+  color: var(--light-color);
+  border: none;
+  padding: 1.2em;
+  transition: 0.2s ease;
+  border-bottom: 1px solid rgba(233, 242, 248, 0);
+}
+
+tr:not(:last-child) td {
+  border-bottom: 1px solid rgba(233, 242, 248, 0.05);
+}
+
+tr:hover td {
+  background-color: #28242F ;
+  color: var(--light-color);
+  border: none;
+  padding: 1.2em;
+  border-bottom: 1px solid rgba(233, 242, 248, 0);
+}
+
+tr:hover td:first-child{
+  border-radius: 1vmin 0 0 1vmin;
+}
+
+tr:hover td:last-child{
+  border-radius: 0vmin 1vmin 1vmin 0vmin;
 }

@@ -55,7 +55,8 @@ const AdminView = ({ name, users, addUser }) => {
             </label>
             {error !== null ? <div className="login-error">{error}</div> : ""}
             <Button className="main-button"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 const firstName = firstNameRef.current.value.toUpperCase();
                 const lastName = lastNameRef.current.value.toUpperCase();
                 const username = usernameRef.current.value;
