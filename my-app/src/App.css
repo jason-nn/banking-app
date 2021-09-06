@@ -6,7 +6,11 @@
   --brand-color: #7D96B3;
   --dark-accent: #B94247;
   --dark-shade: #3F394A;
+  --lighter-color: rgba(233, 242, 248, 0.6);
+  --darker-shade: #322d3b;
 }
+
+
 
 * {
   margin: 0;
@@ -19,26 +23,89 @@
   display: flex;
   width: 100vw;
   height: 100vh;
-  background-color: var(--light-color);
-  color: var(--dark-shade);
+  background-color: var(--dark-shade);
+  color: var(--light-color);
 }
 
 .main-content {
   padding: 0vmin 0vmin 20vmin 0vmin;
   width: 100vw;
   overflow: scroll;
+  padding: 50px;
+}
+
+.card-container {
+  background-color: white;
+  width: 100%;
+  
 }
 
 .main-header {
-  background-color: var(--brand-color);
-  height: 10vh;
-  width: 100%;
+  width: auto;
   display: flex;
-  align-items: flex-end;
-  color: var(--light-color);
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.main-title {
+  color: var(--light-accent);
+  font-size: 0.9em;
+  text-transform: uppercase;
+
+}
+
+.greeting-text {
+  color: var(--light-accent);
+  transform: translateY(-100%);
+  font-weight: 400;
+}
+
+.card-container {
+  padding: 20px;
+  background-color: var(--darker-shade);
+  border-radius: 2vmin;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-dashboard{
+  width: 100%;
+}
+
+.account-form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.input-label {
+  z-index: 1;
+  transform: translate(2vmin, 130%);
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: small;
+}
+
+.input-field {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 1em;
+  font-weight: bolder;
+  padding: 1.5em 2vmin 0.5em 2vmin;
+  border-radius: 1vmin;
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 0px 0px 0px 0px var(--light-accent);
+  transition: 0.2s ease;
+  background-color: var(--light-color);
+}
+
+.input-field:focus {
+  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 4px -4px 0px 0px var(--dark-accent);
 }
 
 table {
   width: 100%;
-  text-align: center;
 }

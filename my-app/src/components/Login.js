@@ -32,7 +32,7 @@ export default function Login({ LoginFunction, error }) {
         <form className="login-form" onSubmit={submitHandler}>
           <div className="input-container">
             <label>
-              <div className="input-label">Username</div>
+              <div className="login-input-label">Username</div>
               <input
                 className="usernameInput input"
                 onChange={(e) =>
@@ -45,7 +45,7 @@ export default function Login({ LoginFunction, error }) {
           </div>
           <div className="input-container">
             <label >
-              <div className="input-label">Password</div>
+              <div className="login-input-label">Password</div>
               <input
                 className="passwordInput input"
                 onChange={(e) =>

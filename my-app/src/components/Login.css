@@ -3,7 +3,7 @@
   height: 100vh;
   width: 100vw;
   display: flex;
-  background: var(--light-color);
+  background: var(--dark-shade);
   align-items: center;
   position: relative;
 }
@@ -33,8 +33,8 @@
   font-weight: bold;
   border-radius: 2vmin;
   background-color: var(--dark-accent);
-  padding: 3vmin;
-  border: 1px solid var(--dark-shade);
+  padding: 1em;
+  border: 0.5px solid var(--lighter-color);
   margin-top: 5%;
   transform: translateY(-10%);
   opacity: 0;
@@ -59,12 +59,13 @@
 .login-logo {
   font-family: 'Quicksand', sans-serif;
   font-size: 2em;
+  color: var(--light-accent);
 }
 
 .login-logo-mobile {
   font-family: 'Quicksand', sans-serif;
   font-size: 1.3em;
-  color: var(--brand-color);
+  color: var(--light-accent);
   margin-top: 5vmin;
   width: 80%;
 }
@@ -72,7 +73,7 @@
 .login-message {
   font-size: xx-large;
   width: 80%;
-  color: var(--dark-shade)
+  color: var(--light-color)
 }
 
 .login-hero-title {
@@ -91,7 +92,7 @@
   margin-bottom: 10px;
 }
 
-.input-label {
+.login-input-label {
   z-index: 1;
   transform: translate(4vmin, 150%);
   text-transform: uppercase;
@@ -113,13 +114,13 @@
 }
 
 .input:focus {
-  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 5px -5px 0px 0px var(--light-accent);
+  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 5px -5px 0px 0px var(--dark-accent);
 }
 
 .main-button {
   border: none;
   background: none;
-  background-color: var(--light-accent);
+  background-color: var(--dark-accent);
   margin-top: 30px;  
   display: flex;
   border-radius: 1vmin;
@@ -128,18 +129,19 @@
   font-size: 1.2em;
   font-weight: bolder;
   padding: 10px;
-  width: 100%;
+  align-self: flex-start;
   transition: 0.1s ease;
   cursor: pointer;
   color: white;
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
 }
 
 .main-button:hover {
-  background: #cf9d3f;
+  background: #b94248e8;
 }
 
 .main-button:active {
-  background: #a57d32;
+  background: #9c373c;
 }
 
 @media only screen and (min-width: 900px) {

@@ -2,12 +2,12 @@
   position: fixed;
   bottom: 0;
   width: 100vw;
-  background-color: var(--dark-shade);
+  background-color: var(--darker-shade);
   display: flex;
   justify-content: center;
   padding: 10px;
   text-decoration: none;
-  box-shadow: 0 0 5vmin 0vmin rgba(0,0,0,0.2);
+  box-shadow: 0 0 5vmin 0vmin rgba(0,0,0,0.05);
 }
 
 .navbar-logo {
@@ -17,9 +17,9 @@
 .main-nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   width: auto;
-  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(106, 126, 150, 0.2);
   margin-right: 20px;
   padding-right: 20px;
 }
@@ -35,19 +35,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: 0.2s ease;
+  transition: 0.1s ease;
 }
 
 
 .nav-link:hover {
-  color: var(--light-accent);
-  background-color: rgba(0,0,0,0.1);
+  /* color: var(--light-accent); */
+  background-color: rgba(106, 126, 150, 0.2);
   box-shadow: 0 0.1vmin -0.4vmin 0.1vmin rgba(0,0,0,0.2);
 }
 
 .nav-link:active {
   color: var(--light-accent);
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(106, 126, 150, 0.2);
   box-shadow: 0 0.1vmin -0.4vmin 0.1vmin rgba(0,0,0,0.2);
   transform: scale(0.9);
 }
@@ -80,8 +80,8 @@ button {
 
 .nav-active {
   color: var(--light-accent);
-  background-color: rgba(0,0,0,0.1);
-  box-shadow: 0 0.1vmin -0.4vmin 0.1vmin rgba(0,0,0,0.2);
+  background-color: rgba(106, 126, 150, 0.2);
+  box-shadow: inset 0 0vmin 0.1vmin 0vmin rgba(0,0,0,0.1);
   
 }
 
@@ -120,7 +120,7 @@ button {
     display: block;
     font-family: 'Quicksand', sans-serif;
     font-size: 1.5em;
-    color: var(--light-color);
+    color: var(--light-accent);
     margin-bottom: 10vmin;
     user-select: none;
   }

@@ -47,7 +47,7 @@ export default function Transactions({ transactions }) {
   return (
     <div>
       <div className="main-header">
-        <h1>Transaction History</h1>
+        <h1 className="main-title">Transaction History</h1>
       </div>
 
       <br />

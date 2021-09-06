@@ -43,9 +43,9 @@ const Transfer = ({ users, transfer }) => {
   }
 
   return (
-    <div>
+    <div className="card-container">
       <div className="main-header">
-        <h1>Transfer</h1>
+        <h1 className="main-title">Transfer</h1>
       </div>
 
       <br />

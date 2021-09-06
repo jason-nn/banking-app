@@ -40,9 +40,9 @@ const Deposit = ({ users, deposit }) => {
   }
 
   return (
-    <>
+    <div className="card-container">
       <div className="main-header">
-        <h1>Deposit</h1>
+        <h1 className="main-title">Deposit</h1>
       </div>
 
       <br />
@@ -88,7 +88,7 @@ const Deposit = ({ users, deposit }) => {
           }
         }}
       />
-    </>
+    </div>
   );
 };
 

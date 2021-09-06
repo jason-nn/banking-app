@@ -40,9 +40,9 @@ const Withdraw = ({ users, withdraw }) => {
   }
 
   return (
-    <div>
+    <div className="card-container">
       <div className="main-header">
-        <h1>Withdraw</h1>
+        <h1 className="main-title">Withdraw</h1>
       </div>
 
       <br />
