@@ -33,26 +33,30 @@ const AdminView = ({ name, users, addUser }) => {
             <h1 className="main-title">Add an account</h1>
           </div>
           <form className="account-form">
-            <label>
-              <div className="input-label">First Name</div>
-              <input type="text" ref={firstNameRef} required className="input-field" />
-            </label>
-            <label>
-              <div className="input-label">Last Name</div>
-              <input type="text" ref={lastNameRef} className="input-field"></input>
-            </label>
-            <label>
-              <div className="input-label">Balance</div>
-              <input type="number" ref={balanceRef} className="input-field"></input>
-            </label>
-            <label>
-              <div className="input-label">Username</div>
-              <input type="text" ref={usernameRef} className="input-field"></input>
-            </label>
-            <label>
-              <div className="input-label">Password</div>
-              <input type="text" ref={passwordRef} className="input-field"></input>
-            </label>
+            <div className="form-input-container">
+              <label>
+                <div className="input-label">First Name</div>
+                <input type="text" ref={firstNameRef} required className="input-field" />
+              </label>
+              <label>
+                <div className="input-label">Last Name</div>
+                <input type="text" ref={lastNameRef} className="input-field"></input>
+              </label>
+              <label>
+                <div className="input-label">Balance</div>
+                <input type="number" ref={balanceRef} className="input-field"></input>
+              </label>
+              <label>
+                <div className="input-label">Username</div>
+                <input type="text" ref={usernameRef} className="input-field"></input>
+              </label>
+              <label>
+                <div className="input-label">Password</div>
+                <input type="text" ref={passwordRef} className="input-field"></input>
+              </label>
+            </div>
+
+
             {error !== null ? <div className="login-error">{error}</div> : ""}
             <Button className="main-button"
               onClick={(e) => {

@@ -51,14 +51,14 @@ const Transfer = ({ users, transfer }) => {
       <br />
       <br />
       <label>
-        <div>Amount</div>
-        ₱<input type="number" ref={amountRef} />
+        <div className="input-label">Amount (₱)</div>
+        <input className="input-field" type="number" ref={amountRef} />
       </label>
       <br />
       <br />
       <label>
-        <div>From</div>
-        <select
+        <div className="input-label">From</div>
+        <select className="input-field"
           onChange={(e) => {
             handleChange(e.target.value, 1);
           }}
@@ -68,13 +68,12 @@ const Transfer = ({ users, transfer }) => {
         </select>
       </label>
       <br />
-      <br />
       <div>Current Balance: ₱{displayBalance1}</div>
       <br />
       <br />
       <label>
-        <div>To</div>
-        <select
+        <div className="input-label">To</div>
+        <select className="input-field"
           onChange={(e) => {
             handleChange(e.target.value, 2);
           }}
@@ -83,13 +82,12 @@ const Transfer = ({ users, transfer }) => {
           {renderSelectOptions()}
         </select>
       </label>
-      <br />
+
       <br />
       <div>Current Balance: ₱{displayBalance2}</div>
-      <br />
-      <br />
+
       <div>{message}</div>
-      <Button
+      <Button className="main-button"
         text="Transfer"
         onClick={() => {
           const amount = parseFloat(amountRef.current.value);

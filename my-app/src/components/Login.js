@@ -56,7 +56,7 @@ export default function Login({ LoginFunction, error }) {
               />
             </label>
           </div>
-          <Button className="loginSubmitButton main-button" text="Log In" />
+          <Button className="loginSubmitButton login-button" text="Log In" />
           {error !== "" ? <div className="login-error">{error}</div> : ""}
         </form>
       </div>

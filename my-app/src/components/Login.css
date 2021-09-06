@@ -118,7 +118,7 @@
   box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 5px -5px 0px 0px var(--dark-accent);
 }
 
-.main-button {
+.login-button {
   border: none;
   background: none;
   background-color: var(--dark-accent);
@@ -129,7 +129,7 @@
   align-items: center;
   font-size: 1.2em;
   font-weight: bolder;
-  padding: 10px;
+  padding: 10px 1em 10px 1em;
   align-self: flex-start;
   transition: 0.1s ease;
   cursor: pointer;
@@ -137,11 +137,11 @@
   box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
 }
 
-.main-button:hover {
+.login-button:hover {
   background: #b94248e8;
 }
 
-.main-button:active {
+.login-button:active {
   background: #9c373c;
 }
 

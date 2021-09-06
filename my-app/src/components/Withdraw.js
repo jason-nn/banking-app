@@ -48,14 +48,14 @@ const Withdraw = ({ users, withdraw }) => {
       <br />
       <br />
       <label>
-        <div>Amount</div>
-        ₱<input type="number" ref={amountRef} />
+        <div className="input-label">Amount (₱)</div>
+        <input className="input-field" type="number" ref={amountRef} />
       </label>
       <br />
       <br />
       <label>
-        <div>Account</div>
-        <select
+        <div className="input-label">Account</div>
+        <select className="input-field"
           ref={accountRef}
           onChange={(e) => {
             handleChange(e.target.value);
@@ -70,7 +70,7 @@ const Withdraw = ({ users, withdraw }) => {
       <br />
       <br />
       <div>{message}</div>
-      <Button
+      <Button className="main-button"
         text="Withdraw"
         onClick={() => {
           const amount = parseFloat(amountRef.current.value);

@@ -40,6 +40,7 @@
   transform: translateY(-5%);
   opacity: 0;
   animation: card 0.2s ease forwards;
+  position: relative;
 }
 
 @keyframes card {
@@ -81,6 +82,7 @@
   box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 }
 
 .admin-dashboard{
@@ -89,9 +91,17 @@
 
 .account-form {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
+}
+
+.form-input-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .input-label {
@@ -119,6 +129,34 @@
   box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 4px -4px 0px 0px var(--dark-accent);
 }
 
+.main-button {
+  border: none;
+  background: none;
+  background-color: var(--dark-accent);
+  display: flex;
+  height: 100%;
+  border-radius: 1vmin;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bolder;
+  padding: 10px 1em 10px 1em;
+  transition: 0.1s ease;
+  margin-top: 15px;
+  align-self: flex-start;
+  cursor: pointer;
+  color: white;
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
+}
+
+.main-button:hover {
+  background: #b94248e8;
+}
+
+.main-button:active {
+  background: #9c373c;
+}
+
 table {
   width: 100%;
   border-spacing: 0 10px;
@@ -126,9 +164,10 @@ table {
 
 th {
   text-align: left;
-  padding: 1.2em;
+  padding: 1em;
   color: var(--lighter-color);
   font-weight: 500;
+  border-bottom: 1px solid rgba(233, 242, 248, 0.4);
 }
 
 
