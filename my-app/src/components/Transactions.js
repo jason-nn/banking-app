@@ -56,9 +56,8 @@ export default function Transactions({ transactions }) {
       <table>
         <thead>
           <tr>
-            <th>Account Number</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Date</th>
+            <th>Account</th>
             <th>Amount</th>
           </tr>
         </thead>
@@ -70,9 +69,8 @@ export default function Transactions({ transactions }) {
       <table>
         <thead>
           <tr>
-            <th>Account Number</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Date</th>
+            <th>Account</th>
             <th>Amount</th>
           </tr>
         </thead>
@@ -84,12 +82,9 @@ export default function Transactions({ transactions }) {
       <table>
         <thead>
           <tr>
-            <th>Sending Account Number</th>
-            <th>Sending First Name</th>
-            <th>Sending Last Name</th>
-            <th>Receiving Account Number</th>
-            <th>Receiving First Name</th>
-            <th>Receiving Last Name</th>
+            <th>Date</th>
+            <th>Sender</th>
+            <th>Receiver</th>
             <th>Amount</th>
           </tr>
         </thead>

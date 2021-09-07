@@ -10,6 +10,21 @@ import Transfer from "./components/Transfer";
 import Transactions from "./components/Transactions";
 
 function App() {
+  const months = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC",
+  ];
+
   // localStorage.clear();
   //for admin user details, planning to merge this with users
   const adminUser = {
@@ -125,6 +140,34 @@ function App() {
     console.log(localStorage.transactionKey);
   }
 
+  function formatDate(number) {
+    if (number < 10) {
+      return "0" + number;
+    } else {
+      return number;
+    }
+  }
+
+  function getSuffix(hour, minutes) {
+    if (hour === 12 && minutes === 0) {
+      return "NN";
+    } else if (hour >= 12) {
+      return "PM";
+    } else {
+      return "AM";
+    }
+  }
+
+  function twelveHour(hour) {
+    if (hour > 12) {
+      return hour - 12;
+    } else if (hour === 0) {
+      return 12;
+    } else {
+      return hour;
+    }
+  }
+
   function generateAccountNumber() {
     const oldAccountNumber = parseInt(localStorage.accountNumber);
     const newAccountNumber = oldAccountNumber + 1;
@@ -165,6 +208,14 @@ function App() {
     userCopy[toIndex].balance += amount;
     setUserList(userCopy);
 
+    const date = new Date();
+    const hours = formatDate(twelveHour(date.getHours()));
+    const minutes = formatDate(date.getMinutes());
+    const seconds = formatDate(date.getSeconds());
+    const month = months[date.getMonth()];
+    const day = formatDate(date.getDate());
+    const suffix = getSuffix(date.getHours(), date.getMinutes());
+
     const newTransactions = [
       ...transactions,
       {
@@ -177,6 +228,8 @@ function App() {
         toFirstName: userCopy[toIndex].firstName,
         toLastName: userCopy[toIndex].lastName,
         amount: amount,
+        date: `${month} ${day}`,
+        time: `${hours}:${minutes} ${suffix}`,
       },
     ];
     setTransactions(newTransactions);
@@ -193,6 +246,14 @@ function App() {
     userCopy[accountIndex].balance += amount;
     setUserList(userCopy);
 
+    const date = new Date();
+    const hours = formatDate(twelveHour(date.getHours()));
+    const minutes = formatDate(date.getMinutes());
+    const seconds = formatDate(date.getSeconds());
+    const month = months[date.getMonth()];
+    const day = formatDate(date.getDate());
+    const suffix = getSuffix(date.getHours(), date.getMinutes());
+
     const newTransactions = [
       ...transactions,
       {
@@ -202,6 +263,8 @@ function App() {
         firstName: userCopy[accountIndex].firstName,
         lastName: userCopy[accountIndex].lastName,
         amount: amount,
+        date: `${month} ${day}`,
+        time: `${hours}:${minutes} ${suffix}`,
       },
     ];
     setTransactions(newTransactions);
@@ -218,6 +281,14 @@ function App() {
     userCopy[accountIndex].balance -= amount;
     setUserList(userCopy);
 
+    const date = new Date();
+    const hours = formatDate(twelveHour(date.getHours()));
+    const minutes = formatDate(date.getMinutes());
+    const seconds = formatDate(date.getSeconds());
+    const month = months[date.getMonth()];
+    const day = formatDate(date.getDate());
+    const suffix = getSuffix(date.getHours(), date.getMinutes());
+
     const newTransactions = [
       ...transactions,
       {
@@ -227,6 +298,8 @@ function App() {
         firstName: userCopy[accountIndex].firstName,
         lastName: userCopy[accountIndex].lastName,
         amount: amount,
+        date: `${month} ${day}`,
+        time: `${hours}:${minutes} ${suffix}`,
       },
     ];
     setTransactions(newTransactions);
