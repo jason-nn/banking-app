@@ -31,7 +31,7 @@
   padding: 0vmin 0vmin 20vmin 0vmin;
   width: 100vw;
   overflow: scroll;
-  padding: 50px;
+  padding: 50px 25px 100px 25px;
 }
 
 .card-container {
@@ -99,6 +99,7 @@
 
 .form-input-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -138,7 +139,7 @@
   border-radius: 1vmin;
   justify-content: center;
   align-items: center;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: bolder;
   padding: 10px 1em 10px 1em;
   transition: 0.1s ease;
@@ -159,12 +160,12 @@
 
 table {
   width: 100%;
-  border-spacing: 0 10px;
+  border-spacing: 0 0px;
 }
 
 th {
   text-align: left;
-  padding: 1em;
+  padding: 1em 1em 0.5em 1em;
   color: var(--lighter-color);
   font-weight: 500;
   border-bottom: 1px solid rgba(233, 242, 248, 0.4);
@@ -204,4 +205,19 @@ tr:hover td:first-child{
 
 tr:hover td:last-child{
   border-radius: 0vmin 1vmin 1vmin 0vmin;
+}
+
+.account-selection-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.current-balance {
+  background-color: var(--dark-shade);
+  padding: 2em 1em 1em 1em;
+  margin-top: -1em;
+  z-index: -1;
+  width: auto;
+  border-radius: 1vmin;
 }
