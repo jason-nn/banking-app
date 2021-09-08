@@ -75,33 +75,36 @@ function App() {
   ];
 
   const transactionList = [
-    // {
-    //   key: 222221,
-    //   type: "deposit",
-    //   accountNo: 111111,
-    //   firstName: "JUAN",
-    //   lastName: "DE LA CRUZ",
-    //   amount: 200,
-    // },
-    // {
-    //   key: 222222,
-    //   type: "withdrawal",
-    //   accountNo: 111112,
-    //   firstName: "JASON",
-    //   lastName: "HO",
-    //   amount: 100,
-    // },
-    // {
-    //   key: 222223,
-    //   type: "transfer",
-    //   from: 111112,
-    //   fromFirstName: "JASON",
-    //   fromLastName: "HO",
-    //   to: 111113,
-    //   toFirstName: "EMAN",
-    //   toLastName: "SIA",
-    //   amount: 200,
-    // },
+    {
+      key: 222221,
+      type: "deposit",
+      accountNo: 111111,
+      firstName: "JUAN",
+      lastName: "DE LA CRUZ",
+      amount: 2000,
+      date: "SEP 08",
+      time: "8:08 PM",
+    },
+    {
+      key: 222222,
+      type: "deposit",
+      accountNo: 111112,
+      firstName: "JASON",
+      lastName: "HO",
+      amount: 6900,
+      date: "SEP 08",
+      time: "8:08 PM",
+    },
+    {
+      key: 222223,
+      type: "deposit",
+      accountNo: 111113,
+      firstName: "EMAN",
+      lastName: "SIA",
+      amount: 4200,
+      date: "SEP 08",
+      time: "8:08 PM",
+    },
   ];
 
   if (localStorage.bankUsers) {
@@ -136,7 +139,7 @@ function App() {
     console.log("transactionKey already exists in local storage.");
     console.log(localStorage.transactionKey);
   } else {
-    localStorage.transactionKey = 222220;
+    localStorage.transactionKey = 222223;
     console.log(localStorage.transactionKey);
   }
 
@@ -182,10 +185,12 @@ function App() {
   }
 
   function addUser(firstName, lastName, balance, username, password) {
+    const newAccountNumber = generateAccountNumber();
+
     let newUserList = [
       ...users,
       {
-        accountNo: generateAccountNumber(),
+        accountNo: newAccountNumber,
         firstName: firstName,
         lastName: lastName,
         balance: balance,
@@ -197,6 +202,30 @@ function App() {
     setUserList(newUserList);
     localStorage.bankUsers = JSON.stringify(newUserList);
     console.log(localStorage.bankUsers);
+
+    const date = new Date();
+    const hours = formatDate(twelveHour(date.getHours()));
+    const minutes = formatDate(date.getMinutes());
+    const seconds = formatDate(date.getSeconds());
+    const month = months[date.getMonth()];
+    const day = formatDate(date.getDate());
+    const suffix = getSuffix(date.getHours(), date.getMinutes());
+
+    const newTransactions = [
+      ...transactions,
+      {
+        key: generateTransactionKey(),
+        type: "deposit",
+        accountNo: newAccountNumber,
+        firstName: firstName,
+        lastName: lastName,
+        amount: balance,
+        date: `${month} ${day}`,
+        time: `${hours}:${minutes} ${suffix}`,
+      },
+    ];
+    setTransactions(newTransactions);
+    localStorage.transactionHistory = JSON.stringify(newTransactions);
   }
 
   function transfer(amount, from, to) {
