@@ -45,9 +45,7 @@ const Withdraw = ({ users, withdraw }) => {
         <h1 className="main-title">Withdraw</h1>
       </div>
 
-      <br />
-      <br />
-    <form
+      <form
         onSubmit={(e) => {
           e.preventDefault();
           const amount = parseFloat(amountRef.current.value);
@@ -73,31 +71,34 @@ const Withdraw = ({ users, withdraw }) => {
           }
         }}
       >
-      <label>
-        <div className="input-label">Amount (₱)</div>
-        <input className="input-field" type="number" ref={amountRef} />
-      </label>
-      <br />
-      <br />
-      <label>
-        <div className="input-label">Account</div>
-        <select className="input-field"
-          ref={accountRef}
-          onChange={(e) => {
-            handleChange(e.target.value);
-          }}
-        >
-          {renderSelectOptions()}
-        </select>
-      </label>
-      <br />
-      <br />
-      <div>Current Balance: ₱{displayBalance}</div>
-      <br />
-      <br />
-      <div>{message}</div>
-      <Button className="main-button"
-        text="Withdraw"
+        <div className="account-selection-info">
+          <label>
+            <div className="input-label">Account</div>
+            <select className="input-field"
+              ref={accountRef}
+              onChange={(e) => {
+                handleChange(e.target.value);
+              }}
+            >
+              {renderSelectOptions()}
+            </select>
+          </label>
+          <div className="current-balance">Current Balance: ₱{displayBalance}</div>
+        </div>
+        <label>
+          <div className="input-label">Amount (₱)</div>
+          <input className="input-field" type="number" ref={amountRef} />
+        </label>
+
+
+        <br />
+        <br />
+
+        <br />
+        <br />
+        {message !== null ? <div className="login-error">{message}</div> : ""}
+        <Button className="main-button"
+          text="Withdraw"
         />
       </form>
     </div>

@@ -26,58 +26,59 @@ const AdminView = ({ name, users, addUser }) => {
 
   return (
     <>
+      {/* <Button className="main-button" text="+" /> */}
       <h3 className="greeting-text">Welcome, {name}</h3>
       <div className="admin-dashboard">
         <div className="card-container">
           <div className="main-header">
             <h1 className="main-title">Add an account</h1>
           </div>
-          <form className="account-form" 
-          onSubmit={(e) => {
-          e.preventDefault();
-          const firstName = firstNameRef.current.value.toUpperCase();
-          const lastName = lastNameRef.current.value.toUpperCase();
-          const username = usernameRef.current.value;
-          const password = passwordRef.current.value;
-          const balance = parseFloat(balanceRef.current.value);
-            
-            const firstNames = users.map((user) => user.firstName);
-                const lastNames = users.map((user) => user.lastName);
-                const usernames = users.map((user) => user.username);
-            
-            const firstNameIndex = firstNames.findIndex(
-                  (value) => value === firstName
-                );
-                const lastNameIndex = lastNames.findIndex(
-                  (value) => value === lastName
-                );
-                const usernameIndex = usernames.findIndex(
-                  (users) => users === username
-                );
+          <form className="account-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const firstName = firstNameRef.current.value.toUpperCase();
+              const lastName = lastNameRef.current.value.toUpperCase();
+              const username = usernameRef.current.value;
+              const password = passwordRef.current.value;
+              const balance = parseFloat(balanceRef.current.value);
 
-                console.log(usernameIndex);
+              const firstNames = users.map((user) => user.firstName);
+              const lastNames = users.map((user) => user.lastName);
+              const usernames = users.map((user) => user.username);
 
-                if (!firstName || !lastName || !username || !password || !balance) {
-                  setError("Incomplete information. Please fill in all fields.");
-                } else if (usernameIndex >= 0) {
-                  setError("Username has been taken.");
-                  usernameRef.current.value = null;
-                } else if (firstNameIndex === lastNameIndex && firstNameIndex >= 0) {
-                  setError("User already exists");
-                  firstNameRef.current.value = null;
-                  lastNameRef.current.value = null;
-                  usernameRef.current.value = null;
-                  passwordRef.current.value = null;
-                  balanceRef.current.value = null;
-                } else if (balance <= 0) {
-                  setError("Please enter an amount greater than 0.");
-                  balanceRef.current.value = null;
-                } else {
-                  addUser(firstName, lastName, balance, username, password);
-                  setError(null);
-                }
-              }}
-            >
+              const firstNameIndex = firstNames.findIndex(
+                (value) => value === firstName
+              );
+              const lastNameIndex = lastNames.findIndex(
+                (value) => value === lastName
+              );
+              const usernameIndex = usernames.findIndex(
+                (users) => users === username
+              );
+
+              console.log(usernameIndex);
+
+              if (!firstName || !lastName || !username || !password || !balance) {
+                setError("Incomplete information. Please fill in all fields.");
+              } else if (usernameIndex >= 0) {
+                setError("Username has been taken.");
+                usernameRef.current.value = null;
+              } else if (firstNameIndex === lastNameIndex && firstNameIndex >= 0) {
+                setError("User already exists");
+                firstNameRef.current.value = null;
+                lastNameRef.current.value = null;
+                usernameRef.current.value = null;
+                passwordRef.current.value = null;
+                balanceRef.current.value = null;
+              } else if (balance <= 0) {
+                setError("Please enter an amount greater than 0.");
+                balanceRef.current.value = null;
+              } else {
+                addUser(firstName, lastName, balance, username, password);
+                setError(null);
+              }
+            }}
+          >
             <div className="form-input-container">
               <label>
                 <div className="input-label">First Name</div>
@@ -88,7 +89,7 @@ const AdminView = ({ name, users, addUser }) => {
                 <input type="text" ref={lastNameRef} className="input-field"></input>
               </label>
               <label>
-                <div className="input-label">Balance</div>
+                <div className="input-label">Balance (₱)</div>
                 <input type="number" ref={balanceRef} className="input-field"></input>
               </label>
               <label>
