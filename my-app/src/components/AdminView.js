@@ -33,7 +33,8 @@ const AdminView = ({ name, users, addUser }) => {
           <div className="main-header">
             <h1 className="main-title">Add an account</h1>
           </div>
-          <form className="account-form"
+          <form
+            className="account-form"
             onSubmit={(e) => {
               e.preventDefault();
               const firstName = firstNameRef.current.value.toUpperCase();
@@ -58,12 +59,21 @@ const AdminView = ({ name, users, addUser }) => {
 
               console.log(usernameIndex);
 
-              if (!firstName || !lastName || !username || !password || !balance) {
+              if (
+                !firstName ||
+                !lastName ||
+                !username ||
+                !password ||
+                !balance
+              ) {
                 setError("Incomplete information. Please fill in all fields.");
               } else if (usernameIndex >= 0) {
                 setError("Username has been taken.");
                 usernameRef.current.value = null;
-              } else if (firstNameIndex === lastNameIndex && firstNameIndex >= 0) {
+              } else if (
+                firstNameIndex === lastNameIndex &&
+                firstNameIndex >= 0
+              ) {
                 setError("User already exists");
                 firstNameRef.current.value = null;
                 lastNameRef.current.value = null;
@@ -82,29 +92,48 @@ const AdminView = ({ name, users, addUser }) => {
             <div className="form-input-container">
               <label>
                 <div className="input-label">First Name</div>
-                <input type="text" ref={firstNameRef} required className="input-field" />
+                <input
+                  type="text"
+                  ref={firstNameRef}
+                  required
+                  className="input-field"
+                />
               </label>
               <label>
                 <div className="input-label">Last Name</div>
-                <input type="text" ref={lastNameRef} className="input-field"></input>
+                <input
+                  type="text"
+                  ref={lastNameRef}
+                  className="input-field"
+                ></input>
               </label>
               <label>
                 <div className="input-label">Balance (₱)</div>
-                <input type="number" ref={balanceRef} className="input-field"></input>
+                <input
+                  type="number"
+                  ref={balanceRef}
+                  className="input-field"
+                ></input>
               </label>
               <label>
                 <div className="input-label">Username</div>
-                <input type="text" ref={usernameRef} className="input-field"></input>
+                <input
+                  type="text"
+                  ref={usernameRef}
+                  className="input-field"
+                ></input>
               </label>
               <label>
                 <div className="input-label">Password</div>
-                <input type="text" ref={passwordRef} className="input-field"></input>
+                <input
+                  type="text"
+                  ref={passwordRef}
+                  className="input-field"
+                ></input>
               </label>
             </div>
             {error !== null ? <div className="login-error">{error}</div> : ""}
-            <Button className="main-button"
-              text="Add User"
-            />
+            <Button className="main-button" text="Add User" />
           </form>
         </div>
         <br />
@@ -116,9 +145,7 @@ const AdminView = ({ name, users, addUser }) => {
           <table>
             <thead>
               <tr>
-                <th>Account Number</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Account</th>
                 <th>Current Balance</th>
               </tr>
             </thead>
