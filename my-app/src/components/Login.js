@@ -1,13 +1,12 @@
 import React, { useState, useRef } from "react";
 import Button from "./Button";
 import "./Login.css";
-import Logo from './bank-logo.svg';
+import Logo from "./bank-logo.svg";
 
 export default function Login({ LoginFunction, error }) {
   const [details, setDetails] = useState({
-    name: "",
-    username: "",
-    password: "",
+    usernameInput: "",
+    passwordInput: "",
   });
 
   // gets submit values then passes it back to parent
@@ -22,9 +21,13 @@ export default function Login({ LoginFunction, error }) {
         <h1 className="login-logo">banque.</h1>
         <div className="hero-content">
           <h1 className="login-hero-title">The bank you can trust.</h1>
-          <p className="login-hero-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a nisl molestie, pretium eros sit amet, sollicitudin risus. Etiam finibus non libero et faucibus. Aliquam eu neque eu arcu ultrices placerat. Phasellus nec malesuada elit. Sed eu nibh enim.</p>
+          <p className="login-hero-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a nisl
+            molestie, pretium eros sit amet, sollicitudin risus. Etiam finibus
+            non libero et faucibus. Aliquam eu neque eu arcu ultrices placerat.
+            Phasellus nec malesuada elit. Sed eu nibh enim.
+          </p>
         </div>
-
       </div>
       <div className="form-container">
         <h1 className="login-logo-mobile">banque.</h1>
@@ -36,7 +39,7 @@ export default function Login({ LoginFunction, error }) {
               <input
                 className="usernameInput input"
                 onChange={(e) =>
-                  setDetails({ ...details, username: e.target.value })
+                  setDetails({ ...details, usernameInput: e.target.value })
                 }
                 value={details.username}
                 type="text"
@@ -44,12 +47,12 @@ export default function Login({ LoginFunction, error }) {
             </label>
           </div>
           <div className="input-container">
-            <label >
+            <label>
               <div className="login-input-label">Password</div>
               <input
                 className="passwordInput input"
                 onChange={(e) =>
-                  setDetails({ ...details, password: e.target.value })
+                  setDetails({ ...details, passwordInput: e.target.value })
                 }
                 value={details.password}
                 type="password"
@@ -60,7 +63,6 @@ export default function Login({ LoginFunction, error }) {
           {error !== "" ? <div className="login-error">{error}</div> : ""}
         </form>
       </div>
-
     </div>
   );
 }

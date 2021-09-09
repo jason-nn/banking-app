@@ -52,7 +52,7 @@ function App() {
       lastName: "DE LA CRUZ",
       balance: 2000,
       username: "juan",
-      password: "pass123",
+      password: "juan23",
       isAdmin: false,
     },
     {
@@ -110,38 +110,30 @@ function App() {
 
   if (localStorage.bankUsers) {
     console.log("bankUsers exists in local storage");
-    console.log(localStorage.bankUsers);
   } else {
     localStorage.bankUsers = JSON.stringify(userList);
     console.log("bankUsers does not exist in local storage, just created.");
-    console.log(localStorage.bankUsers);
   }
 
   if (localStorage.transactionHistory) {
     console.log("transactionHistory exists in local storage");
-    console.log(localStorage.transactionHistory);
   } else {
     localStorage.transactionHistory = JSON.stringify(transactionList);
     console.log(
       "transactionHistory does not exist in local storage, just created."
     );
-    console.log(localStorage.transactionHistory);
   }
 
   if (localStorage.accountNumber) {
     console.log("accountNumber already exists in local storage.");
-    console.log(localStorage.accountNumber);
   } else {
     localStorage.accountNumber = 111113;
-    console.log(localStorage.accountNumber);
   }
 
   if (localStorage.transactionKey) {
     console.log("transactionKey already exists in local storage.");
-    console.log(localStorage.transactionKey);
   } else {
     localStorage.transactionKey = 222223;
-    console.log(localStorage.transactionKey);
   }
 
   function formatDate(number) {
@@ -202,7 +194,6 @@ function App() {
     ];
     setUserList(newUserList);
     localStorage.bankUsers = JSON.stringify(newUserList);
-    console.log(localStorage.bankUsers);
 
     const date = new Date();
     const hours = formatDate(twelveHour(date.getHours()));
@@ -346,25 +337,56 @@ function App() {
   const [error, setError] = useState("");
 
   //function for logging in
-  const LoginFunction = (details) => {
-    console.log(details);
-    if (
-      details.username === adminUser.username &&
-      details.password === adminUser.password
+  // const LoginFunction = (details) => {
+  //   console.log(details);
+  //   if (
+  //     details.username === adminUser.username &&
+  //     details.password === adminUser.password
+  //   ) {
+  //     setUser({
+  //       name: adminUser.name,
+  //       username: adminUser.username,
+  //     });
+  //     setError("");
+  //   } else {
+  //     setError("Login failed. Please try again.");
+  //   }
+  // };
+
+  function LoginFunction({ usernameInput, passwordInput }) {
+    const usernames = users.map((user) => user.username);
+    const passwords = users.map((user) => user.password);
+    const firstNames = users.map((user) => user.firstName);
+    const lastNames = users.map((user) => user.lastName);
+
+    const usernameIndex = usernames.findIndex((i) => i === usernameInput);
+    const passwordIndex = passwords.findIndex((i) => i === passwordInput);
+
+    if (usernameInput === "") {
+      setError("Please enter a username.");
+    } else if (passwordInput === "") {
+      setError("Please enter a password.");
+    } else if (
+      usernameIndex === passwordIndex &&
+      usernameIndex >= 0 &&
+      passwordIndex >= 0
     ) {
       setUser({
-        name: adminUser.name,
-        username: adminUser.username,
+        name: firstNames[usernameIndex] + " " + lastNames[usernameIndex],
+        username: usernameInput,
       });
       setError("");
+    } else if (usernameIndex === -1) {
+      setError("User does not exist.");
+    } else if (usernameIndex >= 0) {
+      setError("Incorrect password.");
     } else {
       setError("Login failed. Please try again.");
     }
-  };
+  }
 
   //function for logging out
   const Logout = () => {
-    console.log("Logout");
     setUser({ name: "", username: "" });
   };
 
@@ -438,11 +460,7 @@ function App() {
               />
               <Route
                 path="/settings"
-                component={() => (
-                  <Settings
-                    LogoutFunction={Logout}
-                  />
-                )}
+                component={() => <Settings LogoutFunction={Logout} />}
               />
             </Switch>
           </div>
