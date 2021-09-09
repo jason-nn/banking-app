@@ -8,6 +8,7 @@ import Deposit from "./components/Deposit";
 import Withdraw from "./components/Withdraw";
 import Transfer from "./components/Transfer";
 import Transactions from "./components/Transactions";
+import Settings from "./components/Settings";
 
 function App() {
   const months = [
@@ -434,6 +435,14 @@ function App() {
               <Route
                 path="/transactions"
                 component={() => <Transactions transactions={transactions} />}
+              />
+              <Route
+                path="/settings"
+                component={() => (
+                  <Settings
+                    LogoutFunction={Logout}
+                  />
+                )}
               />
             </Switch>
           </div>
