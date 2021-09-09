@@ -80,7 +80,7 @@ const Deposit = ({ users, deposit }) => {
 
         <br />
         <br />
-        <div>Current Balance: ₱{displayBalance}</div>
+        <div>Current Balance: ₱{displayBalance.toLocaleString()}</div>
         <br />
         <br />
         {message !== null ? <div className="login-error">{message}</div> : ""}

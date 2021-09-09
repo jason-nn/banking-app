@@ -16,7 +16,7 @@ export default function TransactionRow2({ transaction }) {
           {transaction.to} {transaction.toFirstName} {transaction.toLastName}
         </td>
 
-        <td>₱{transaction.amount}</td>
+        <td>₱{transaction.amount.toLocaleString()}</td>
       </tr>
     </>
   );

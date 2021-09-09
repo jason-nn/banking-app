@@ -4,7 +4,7 @@ export default function SelectOptions({ client }) {
   return (
     <>
       <option value={client.accountNo}>
-        {client.accountNo} {client.firstName} {client.lastName}
+        {client.firstName} {client.lastName} ({client.accountNo})
       </option>
     </>
   );
