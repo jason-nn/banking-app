@@ -14,6 +14,7 @@ export default function Login({ LoginFunction, error }) {
   const submitHandler = (e) => {
     e.preventDefault();
     LoginFunction(details);
+    e.target.value = '';
   };
 
   return (

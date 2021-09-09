@@ -10,7 +10,7 @@ export default function TransactionRow1({ transaction }) {
         <td>
           {transaction.accountNo} {transaction.firstName} {transaction.lastName}
         </td>
-        <td>₱{transaction.amount}</td>
+        <td>₱{transaction.amount.toLocaleString()}</td>
       </tr>
     </>
   );

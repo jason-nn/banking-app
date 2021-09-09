@@ -98,11 +98,13 @@
 }
 
 .form-input-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  /* flex-direction: column; */
   width: 100%;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  /* justify-content: space-between;
+  flex-wrap: wrap; */
 }
 
 .input-label {
@@ -215,9 +217,15 @@ tr:hover td:last-child{
 
 .current-balance {
   background-color: var(--dark-shade);
-  padding: 2em 1em 1em 1em;
-  margin-top: -1em;
+  padding: 2em 1em 0.5em 1em;
+  margin-top: -1.5em;
   z-index: -1;
   width: auto;
   border-radius: 1vmin;
+}
+
+@media screen and (min-width:900px) {
+  .form-input-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

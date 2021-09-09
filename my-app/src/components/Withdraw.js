@@ -83,7 +83,7 @@ const Withdraw = ({ users, withdraw }) => {
               {renderSelectOptions()}
             </select>
           </label>
-          <div className="current-balance">Current Balance: ₱{displayBalance}</div>
+          <div className="current-balance">Current Balance: ₱{displayBalance.toLocaleString()}</div>
         </div>
         <label>
           <div className="input-label">Amount (₱)</div>

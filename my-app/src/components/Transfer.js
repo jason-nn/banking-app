@@ -95,7 +95,7 @@ const Transfer = ({ users, transfer }) => {
           </select>
         </label>
         <br />
-        <div>Current Balance: ₱{displayBalance1}</div>
+        <div>Current Balance: ₱{displayBalance1.toLocaleString()}</div>
         <br />
         <br />
         <label>
@@ -111,7 +111,7 @@ const Transfer = ({ users, transfer }) => {
         </label>
 
         <br />
-        <div>Current Balance: ₱{displayBalance2}</div>
+        <div>Current Balance: ₱{displayBalance2.toLocaleString()}</div>
 
         {message !== null ? <div className="login-error">{message}</div> : ""}
         <Button className="main-button"
