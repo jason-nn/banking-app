@@ -364,8 +364,10 @@ function App() {
 
     if (usernameInput === "") {
       setError("Please enter a username.");
+      setTimeout(() => setError(""), 2000);
     } else if (passwordInput === "") {
       setError("Please enter a password.");
+      setTimeout(() => setError(""), 2000);
     } else if (
       usernameIndex === passwordIndex &&
       usernameIndex >= 0 &&
@@ -378,10 +380,13 @@ function App() {
       setError("");
     } else if (usernameIndex === -1) {
       setError("User does not exist.");
+      setTimeout(() => setError(""), 2000);
     } else if (usernameIndex >= 0) {
       setError("Incorrect password.");
+      setTimeout(() => setError(""), 2000);
     } else {
       setError("Login failed. Please try again.");
+      setTimeout(() => setError(""), 2000);
     }
   }
 

@@ -85,7 +85,8 @@ const Transfer = ({ users, transfer }) => {
         <br />
         <label>
           <div className="input-label">From</div>
-          <select className="input-field"
+          <select
+            className="input-field"
             onChange={(e) => {
               handleChange(e.target.value, 1);
             }}
@@ -100,7 +101,8 @@ const Transfer = ({ users, transfer }) => {
         <br />
         <label>
           <div className="input-label">To</div>
-          <select className="input-field"
+          <select
+            className="input-field"
             onChange={(e) => {
               handleChange(e.target.value, 2);
             }}
@@ -114,9 +116,7 @@ const Transfer = ({ users, transfer }) => {
         <div>Current Balance: ₱{displayBalance2}</div>
 
         {message !== null ? <div className="login-error">{message}</div> : ""}
-        <Button className="main-button"
-          text="Transfer"
-        />
+        <Button className="main-button" text="Transfer" />
       </form>
     </div>
   );
