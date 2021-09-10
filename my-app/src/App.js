@@ -399,6 +399,17 @@ function App() {
     JSON.parse(localStorage.transactionHistory)
   );
 
+  function editUser(username, newUsername, newPassword) {
+    const userCopy = [...users];
+    const usernames = userCopy.map((user) => user.username);
+    const usernameIndex = usernames.findIndex((i) => i === username);
+
+    userCopy[usernameIndex].username = newUsername;
+    userCopy[usernameIndex].password = newPassword;
+    setUserList(userCopy);
+    localStorage.bankUsers = JSON.stringify(userCopy);
+  }
+
   return (
     <div className="body">
       {/* If the user info is not blank, show dashboard */}
@@ -465,7 +476,15 @@ function App() {
               />
               <Route
                 path="/settings"
-                component={() => <Settings LogoutFunction={Logout} />}
+                component={() => (
+                  <Settings
+                    LogoutFunction={Logout}
+                    users={users}
+                    editUser={(username, newUsername, newPassword) =>
+                      editUser(username, newUsername, newPassword)
+                    }
+                  />
+                )}
               />
             </Switch>
           </div>
