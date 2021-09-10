@@ -77,44 +77,42 @@ const Transfer = ({ users, transfer }) => {
           }
         }}
       >
-        <label>
-          <div className="input-label">Amount (₱)</div>
-          <input className="input-field" type="number" ref={amountRef} />
-        </label>
-        <br />
-        <br />
-        <label>
-          <div className="input-label">From</div>
-          <select
-            className="input-field"
-            onChange={(e) => {
-              handleChange(e.target.value, 1);
-            }}
-            ref={fromRef}
-          >
-            {renderSelectOptions()}
-          </select>
-        </label>
-        <br />
-        <div>Current Balance: ₱{displayBalance1.toLocaleString()}</div>
-        <br />
-        <br />
-        <label>
-          <div className="input-label">To</div>
-          <select
-            className="input-field"
-            onChange={(e) => {
-              handleChange(e.target.value, 2);
-            }}
-            ref={toRef}
-          >
-            {renderSelectOptions()}
-          </select>
-        </label>
+        <div className="transaction-form">
+          <label>
+            <div className="input-label">From</div>
+            <select
+              className="input-field"
+              onChange={(e) => {
+                handleChange(e.target.value, 1);
+              }}
+              ref={fromRef}
+            >
+              {renderSelectOptions()}
+            </select>
+            <div className="current-balance">Current Balance: ₱{displayBalance1.toLocaleString()}</div>
+          </label>
 
-        <br />
-        <div>Current Balance: ₱{displayBalance2.toLocaleString()}</div>
+          <label>
+            <div className="input-label">Amount (₱)</div>
+            <input className="input-field" type="number" ref={amountRef} />
+          </label>
+          <label>
+            <div className="input-label">To</div>
+            <select
+              className="input-field"
+              onChange={(e) => {
+                handleChange(e.target.value, 2);
+              }}
+              ref={toRef}
+            >
+              {renderSelectOptions()}
+            </select>
+            <div className="current-balance">Current Balance: ₱{displayBalance2.toLocaleString()}</div>
+          </label>
 
+          <br />
+
+        </div>
         {message !== null ? <div className="login-error">{message}</div> : ""}
         <Button className="main-button" text="Transfer" />
       </form>

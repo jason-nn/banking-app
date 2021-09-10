@@ -5,15 +5,15 @@ export default function TransactionRow2({ transaction }) {
     <>
       <tr>
         <td>
-          {transaction.date} {transaction.time}
+          {transaction.date} <p className="account-number">{transaction.time}</p>
         </td>
         <td>
-          {transaction.from} {transaction.fromFirstName}{" "}
-          {transaction.fromLastName}
+          {transaction.fromFirstName}{" "}
+          {transaction.fromLastName}<p className="account-number">{transaction.from}</p>
         </td>
 
         <td>
-          {transaction.to} {transaction.toFirstName} {transaction.toLastName}
+          {transaction.toFirstName} {transaction.toLastName}<p className="account-number">{transaction.to}</p>
         </td>
 
         <td>₱{transaction.amount.toLocaleString()}</td>

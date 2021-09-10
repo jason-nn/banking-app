@@ -44,6 +44,7 @@ const Deposit = ({ users, deposit }) => {
       <div className="main-header">
         <h1 className="main-title">Deposit</h1>
       </div>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -62,27 +63,26 @@ const Deposit = ({ users, deposit }) => {
           }
         }}
       >
-        <label>
-          <div className="input-label">Account</div>
-          <select className="input-field"
-            ref={accountRef}
-            onChange={(e) => {
-              handleChange(e.target.value);
-            }}
-          >
-            {renderSelectOptions()}
-          </select>
-        </label>
-        <label>
-          <div className="input-label">Amount (₱)</div>
-          <input className="input-field" type="number" ref={amountRef} />
-        </label>
+        <div className="transaction-form">
+          <label>
+            <div className="input-label">Account</div>
+            <select className="input-field"
+              ref={accountRef}
+              onChange={(e) => {
+                handleChange(e.target.value);
+              }}
+            >
+              {renderSelectOptions()}
+            </select>
+            <div className="current-balance">Current Balance: ₱{displayBalance.toLocaleString()}</div>
+          </label>
 
-        <br />
-        <br />
-        <div>Current Balance: ₱{displayBalance.toLocaleString()}</div>
-        <br />
-        <br />
+          <label>
+            <div className="input-label">Amount (₱)</div>
+            <input className="input-field" type="number" ref={amountRef} />
+          </label>
+
+        </div>
         {message !== null ? <div className="login-error">{message}</div> : ""}
         <Button className="main-button"
           text="Deposit" />

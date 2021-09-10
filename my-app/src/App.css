@@ -74,6 +74,16 @@
   font-weight: 400;
 }
 
+.greeting-name {
+  text-transform: lowercase;
+  display: inline-block;
+}
+
+.greeting-name:first-letter {
+  text-transform: uppercase;
+}
+
+
 .card-container {
   padding: 20px;
   background-color: var(--darker-shade);
@@ -97,12 +107,19 @@
   justify-content: space-between;
 }
 
+.transaction-form {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr;
+  column-gap: 10px;
+}
+
 .form-input-container {
   display: grid;
   /* flex-direction: column; */
   width: 100%;
   grid-template-columns: 1fr;
-  grid-gap: 10px;
+  column-gap: 10px;
   /* justify-content: space-between;
   flex-wrap: wrap; */
 }
@@ -112,24 +129,29 @@
   transform: translate(2vmin, 130%);
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.5);
-  font-size: small;
+  font-size: 0.7em;
 }
 
 .input-field {
   border: none;
   outline: none;
   width: 100%;
-  font-size: 1em;
-  font-weight: bolder;
+  font-size: 0.9em;
+  font-weight: bold;
   padding: 1.5em 2vmin 0.5em 2vmin;
   border-radius: 1vmin;
   box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 0px 0px 0px 0px var(--light-accent);
   transition: 0.2s ease;
   background-color: var(--light-color);
+  
+}
+
+.input-password {
+  -webkit-text-security: disc;
 }
 
 .input-field:focus {
-  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 4px -4px 0px 0px var(--dark-accent);
+  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset -4px -4px 0px 0px var(--dark-accent);
 }
 
 .main-button {
@@ -170,6 +192,7 @@ th {
   padding: 1em 1em 0.5em 1em;
   color: var(--lighter-color);
   font-weight: 500;
+  font-size: 0.9em;
   border-bottom: 1px solid rgba(233, 242, 248, 0.4);
 }
 
@@ -183,7 +206,7 @@ td {
   color: var(--light-color);
   border: none;
   padding: 1em;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: bold;
   transition: 0.2s ease;
   border-bottom: 1px solid rgba(233, 242, 248, 0);
@@ -209,6 +232,11 @@ tr:hover td:last-child{
   border-radius: 0vmin 1vmin 1vmin 0vmin;
 }
 
+.account-number {
+  font-size: smaller;
+  font-weight: 200;
+}
+
 .account-selection-info {
   display: flex;
   flex-direction: column;
@@ -224,8 +252,12 @@ tr:hover td:last-child{
   border-radius: 1vmin;
 }
 
+
 @media screen and (min-width:900px) {
   .form-input-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .transaction-form{
     grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -20,9 +20,6 @@
   flex-direction: row;
   justify-content: space-around;
   width: auto;
-  border-right: 1px solid rgba(106, 126, 150, 0.2);
-  margin-right: 20px;
-  padding-right: 20px;
 }
 
 .nav-link {
@@ -37,6 +34,8 @@
   justify-content: center;
   align-items: center;
   transition: 0.1s ease;
+  margin: 0 5px 0 5px;
+  min-width: 7em;
 }
 
 
@@ -132,10 +131,12 @@ button {
     justify-content: flex-start;
     padding: 10px;
     margin-top: 10px;
+    font-size: 1em;
   }
   .nav-link-content {
     flex-direction: row;
     text-transform: uppercase;
+    
   }
   .nav-link > .nav-link-content > span:last-child {
     opacity: unset;

@@ -374,7 +374,7 @@ function App() {
       passwordIndex >= 0
     ) {
       setUser({
-        name: firstNames[usernameIndex] + " " + lastNames[usernameIndex],
+        name: firstNames[usernameIndex] /* + " " + lastNames[usernameIndex] */,
         username: usernameInput,
       });
       setError("");
