@@ -27,7 +27,7 @@ const AdminView = ({ name, users, addUser }) => {
   return (
     <>
       {/* <Button className="main-button" text="+" /> */}
-      <h3 className="greeting-text">Welcome, {name}</h3>
+      <h3 className="greeting-text">Welcome, <p className="greeting-name">{name}</p></h3>
       <div className="admin-dashboard">
         <div className="card-container">
           <div className="main-header">
@@ -128,7 +128,7 @@ const AdminView = ({ name, users, addUser }) => {
                 <input
                   type="text"
                   ref={passwordRef}
-                  className="input-field"
+                  className="input-field input-password"
                 ></input>
               </label>
             </div>
@@ -146,7 +146,7 @@ const AdminView = ({ name, users, addUser }) => {
             <thead>
               <tr>
                 <th>Account</th>
-                <th>Current Balance</th>
+                <th>Balance</th>
               </tr>
             </thead>
             <tbody>{renderRows()}</tbody>

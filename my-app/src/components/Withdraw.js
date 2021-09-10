@@ -71,31 +71,27 @@ const Withdraw = ({ users, withdraw }) => {
           }
         }}
       >
-        <div className="account-selection-info">
+        <div className="transaction-form">
+          <div className="account-selection-info">
+            <label>
+              <div className="input-label">Account</div>
+              <select className="input-field"
+                ref={accountRef}
+                onChange={(e) => {
+                  handleChange(e.target.value);
+                }}
+              >
+                {renderSelectOptions()}
+              </select>
+            </label>
+            <div className="current-balance">Current Balance: ₱{displayBalance.toLocaleString()}</div>
+          </div>
           <label>
-            <div className="input-label">Account</div>
-            <select className="input-field"
-              ref={accountRef}
-              onChange={(e) => {
-                handleChange(e.target.value);
-              }}
-            >
-              {renderSelectOptions()}
-            </select>
+            <div className="input-label">Amount (₱)</div>
+            <input className="input-field" type="number" ref={amountRef} />
           </label>
-          <div className="current-balance">Current Balance: ₱{displayBalance.toLocaleString()}</div>
+
         </div>
-        <label>
-          <div className="input-label">Amount (₱)</div>
-          <input className="input-field" type="number" ref={amountRef} />
-        </label>
-
-
-        <br />
-        <br />
-
-        <br />
-        <br />
         {message !== null ? <div className="login-error">{message}</div> : ""}
         <Button className="main-button"
           text="Withdraw"

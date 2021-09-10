@@ -5,7 +5,7 @@ export default function UserRow({ client }) {
     <>
       <tr>
         <td>
-          {client.accountNo} {client.firstName} {client.lastName}
+          {client.firstName} {client.lastName} <p className="account-number">{client.accountNo}</p>
         </td>
         <td>₱{client.balance.toLocaleString()}</td>
       </tr>
