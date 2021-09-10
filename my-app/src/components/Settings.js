@@ -4,7 +4,6 @@ import SettingsSelect from "./SettingsSelect";
 import { useState, useRef } from "react";
 import Button from "./Button";
 
-
 const Settings = ({ LogoutFunction, users, editUser }) => {
   function renderSelectOptions() {
     const options = [];
@@ -23,12 +22,8 @@ const Settings = ({ LogoutFunction, users, editUser }) => {
   const newPasswordRef = useRef();
   const newPasswordRef2 = useRef();
 
-
-
-
   return (
     <>
-
       <form
         onSubmit={(e) => {
           e.preventDefault();
