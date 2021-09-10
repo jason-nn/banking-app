@@ -15,7 +15,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transform: translateY(-5%);
+  opacity: 0;
+  animation: card 0.2s ease forwards;
+  position: relative;
 }
+
+@keyframes card {
+  0% {
+    opacity: 0;
+    transform: translateY(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .login-form {
   width: 80vw;
@@ -115,7 +131,7 @@
 }
 
 .input:focus {
-  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset 5px -5px 0px 0px var(--dark-accent);
+  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset -5px -5px 0px 0px var(--dark-accent);
 }
 
 .login-button {

@@ -5,10 +5,10 @@ export default function TransactionRow1({ transaction }) {
     <>
       <tr>
         <td>
-          {transaction.date} {transaction.time}
+          {transaction.date} <p className="account-number">{transaction.time}</p>
         </td>
         <td>
-          {transaction.accountNo} {transaction.firstName} {transaction.lastName}
+          {transaction.firstName} {transaction.lastName} <p className="account-number">{transaction.accountNo}</p>
         </td>
         <td>₱{transaction.amount.toLocaleString()}</td>
       </tr>
