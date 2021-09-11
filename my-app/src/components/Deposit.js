@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import SelectOptions from "./SelectOptions";
 import Button from "./Button";
 
-const Deposit = ({ users, deposit }) => {
+const Deposit = ({ users, deposit, isAdmin }) => {
   const nonAdminUsers = users.filter((user) => !user.isAdmin);
 
   function renderSelectOptions() {
@@ -39,57 +39,70 @@ const Deposit = ({ users, deposit }) => {
     setDisplayBalance(userCopy[index].balance);
   }
 
-  return (
-    <div className="card-container">
-      <div className="main-header">
-        <h1 className="main-title">Deposit</h1>
-      </div>
-
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const amount = parseFloat(amountRef.current.value);
-          const account = accountRef.current.value;
-
-          if (amount <= 0) {
-            setMessage("Please enter an amount greater than 0.");
-          } else if (!amount) {
-            setMessage("Please enter an amount.");
-          } else {
-            setTimeout(() => {
-              deposit(amount, account);
-            }, 1500);
-            setMessage(`Depositing ₱${amount}...`);
-          }
-        }}
-      >
-        <div className="transaction-form">
-          <label>
-            <div className="input-label">Account</div>
-            <select
-              className="input-field"
-              ref={accountRef}
-              onChange={(e) => {
-                handleChange(e.target.value);
-              }}
-            >
-              {renderSelectOptions()}
-            </select>
-            <div className="current-balance">
-              Current Balance: ₱{displayBalance.toLocaleString()}
-            </div>
-          </label>
-
-          <label>
-            <div className="input-label">Amount (₱)</div>
-            <input className="input-field" type="number" ref={amountRef} />
-          </label>
+  if (isAdmin) {
+    return (
+      <div className="card-container">
+        <div className="main-header">
+          <h1 className="main-title">Deposit</h1>
         </div>
-        {message !== null ? <div className="login-error">{message}</div> : ""}
-        <Button className="main-button" text="Deposit" />
-      </form>
-    </div>
-  );
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const amount = parseFloat(amountRef.current.value);
+            const account = accountRef.current.value;
+
+            if (amount <= 0) {
+              setMessage("Please enter an amount greater than 0.");
+              setTimeout(() => setMessage(null), 2000);
+            } else if (!amount) {
+              setMessage("Please enter an amount.");
+              setTimeout(() => setMessage(null), 2000);
+            } else {
+              setTimeout(() => {
+                deposit(amount, account);
+              }, 1500);
+              setMessage(`Depositing ₱${amount}...`);
+              setTimeout(() => setMessage(null), 2000);
+            }
+          }}
+        >
+          <div className="transaction-form">
+            <label>
+              <div className="input-label">Account</div>
+              <select
+                className="input-field"
+                ref={accountRef}
+                onChange={(e) => {
+                  handleChange(e.target.value);
+                }}
+              >
+                {renderSelectOptions()}
+              </select>
+              <div className="current-balance">
+                Current Balance: ₱{displayBalance.toLocaleString()}
+              </div>
+            </label>
+
+            <label>
+              <div className="input-label">Amount (₱)</div>
+              <input className="input-field" type="number" ref={amountRef} />
+            </label>
+          </div>
+          {message !== null ? <div className="login-error">{message}</div> : ""}
+          <Button className="main-button" text="Deposit" />
+        </form>
+      </div>
+    );
+  } else {
+    return (
+      <div className="card-container">
+        <div className="main-header">
+          <h1 className="main-title">Deposit</h1>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Deposit;

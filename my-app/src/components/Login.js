@@ -3,7 +3,14 @@ import Button from "./Button";
 import "./Login.css";
 import Logo from "./bank-logo.svg";
 
-export default function Login({ setError, setUser, error, users, addUser }) {
+export default function Login({
+  setError,
+  setUser,
+  error,
+  users,
+  addUser,
+  setIsAdmin,
+}) {
   // const [details, setDetails] = useState({
   //   usernameInput: "",
   //   passwordInput: "",
@@ -47,6 +54,11 @@ export default function Login({ setError, setUser, error, users, addUser }) {
         name: firstNames[usernameIndex] /* + " " + lastNames[usernameIndex] */,
         username: usernameInput,
       });
+      if (users[usernameIndex].isAdmin) {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
       setError("");
     } else if (usernameIndex === -1) {
       setError("User does not exist.");

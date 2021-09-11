@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import SelectOptions from "./SelectOptions";
 import Button from "./Button";
 
-const Transfer = ({ users, transfer }) => {
+const Transfer = ({ users, transfer, isAdmin }) => {
   const nonAdminUsers = users.filter((user) => !user.isAdmin);
 
   function renderSelectOptions() {
@@ -42,82 +42,100 @@ const Transfer = ({ users, transfer }) => {
       : setDisplayBalance2(userCopy[index].balance);
   }
 
-  return (
-    <div className="card-container">
-      <div className="main-header">
-        <h1 className="main-title">Transfer</h1>
-      </div>
-
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const amount = parseFloat(amountRef.current.value);
-          const from = fromRef.current.value;
-          const to = toRef.current.value;
-
-          const accountNos = users.map((user) => user.accountNo);
-          const fromIndex = accountNos.findIndex(
-            (accountNo) => accountNo == from
-          );
-          const fromBalance = users[fromIndex].balance;
-
-          if (amount <= 0) {
-            setMessage("Please enter an amount greater than 0.");
-          } else if (!amount) {
-            setMessage("Please enter an amount.");
-          } else if (from === to) {
-            setMessage("Cannot transfer to the same account.");
-          } else if (fromBalance < amount) {
-            setMessage("Insufficient funds.");
-          } else {
-            setTimeout(() => {
-              transfer(amount, from, to);
-            }, 1500);
-            setMessage(`Transferring ₱${amount}...`);
-          }
-        }}
-      >
-        <div className="transaction-form">
-          <label>
-            <div className="input-label">From</div>
-            <select
-              className="input-field"
-              onChange={(e) => {
-                handleChange(e.target.value, 1);
-              }}
-              ref={fromRef}
-            >
-              {renderSelectOptions()}
-            </select>
-            <div className="current-balance">Current Balance: ₱{displayBalance1.toLocaleString()}</div>
-          </label>
-
-          <label>
-            <div className="input-label">Amount (₱)</div>
-            <input className="input-field" type="number" ref={amountRef} />
-          </label>
-          <label>
-            <div className="input-label">To</div>
-            <select
-              className="input-field"
-              onChange={(e) => {
-                handleChange(e.target.value, 2);
-              }}
-              ref={toRef}
-            >
-              {renderSelectOptions()}
-            </select>
-            <div className="current-balance">Current Balance: ₱{displayBalance2.toLocaleString()}</div>
-          </label>
-
-          <br />
-
+  if (isAdmin) {
+    return (
+      <div className="card-container">
+        <div className="main-header">
+          <h1 className="main-title">Transfer</h1>
         </div>
-        {message !== null ? <div className="login-error">{message}</div> : ""}
-        <Button className="main-button" text="Transfer" />
-      </form>
-    </div>
-  );
+
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const amount = parseFloat(amountRef.current.value);
+            const from = fromRef.current.value;
+            const to = toRef.current.value;
+
+            const accountNos = users.map((user) => user.accountNo);
+            const fromIndex = accountNos.findIndex(
+              (accountNo) => accountNo == from
+            );
+            const fromBalance = users[fromIndex].balance;
+
+            if (amount <= 0) {
+              setMessage("Please enter an amount greater than 0.");
+              setTimeout(() => setMessage(null), 2000);
+            } else if (!amount) {
+              setMessage("Please enter an amount.");
+              setTimeout(() => setMessage(null), 2000);
+            } else if (from === to) {
+              setMessage("Cannot transfer to the same account.");
+              setTimeout(() => setMessage(null), 2000);
+            } else if (fromBalance < amount) {
+              setMessage("Insufficient funds.");
+              setTimeout(() => setMessage(null), 2000);
+            } else {
+              setTimeout(() => {
+                transfer(amount, from, to);
+              }, 1500);
+              setMessage(`Transferring ₱${amount}...`);
+              setTimeout(() => setMessage(null), 2000);
+            }
+          }}
+        >
+          <div className="transaction-form">
+            <label>
+              <div className="input-label">From</div>
+              <select
+                className="input-field"
+                onChange={(e) => {
+                  handleChange(e.target.value, 1);
+                }}
+                ref={fromRef}
+              >
+                {renderSelectOptions()}
+              </select>
+              <div className="current-balance">
+                Current Balance: ₱{displayBalance1.toLocaleString()}
+              </div>
+            </label>
+
+            <label>
+              <div className="input-label">Amount (₱)</div>
+              <input className="input-field" type="number" ref={amountRef} />
+            </label>
+            <label>
+              <div className="input-label">To</div>
+              <select
+                className="input-field"
+                onChange={(e) => {
+                  handleChange(e.target.value, 2);
+                }}
+                ref={toRef}
+              >
+                {renderSelectOptions()}
+              </select>
+              <div className="current-balance">
+                Current Balance: ₱{displayBalance2.toLocaleString()}
+              </div>
+            </label>
+
+            <br />
+          </div>
+          {message !== null ? <div className="login-error">{message}</div> : ""}
+          <Button className="main-button" text="Transfer" />
+        </form>
+      </div>
+    );
+  } else {
+    return (
+      <div className="card-container">
+        <div className="main-header">
+          <h1 className="main-title">Transfer</h1>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Transfer;

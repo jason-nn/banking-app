@@ -27,13 +27,8 @@ function App() {
   ];
 
   // localStorage.clear();
-  //for admin user details, planning to merge this with users
-  const adminUser = {
-    username: "admin",
-    password: "pass123",
-    name: "Administrator",
-    isAdmin: true,
-  };
+
+  const [isAdmin, setIsAdmin] = useState(false);
 
   // list of users (work in progress)
   const userList = [
@@ -393,6 +388,7 @@ function App() {
   //function for logging out
   const Logout = () => {
     setUser({ name: "", username: "" });
+    setIsAdmin(false);
   };
 
   const [transactions, setTransactions] = useState(
@@ -415,7 +411,7 @@ function App() {
       {/* If the user info is not blank, show dashboard */}
       {currentUser.username !== "" ? (
         <Router>
-          <Navbar LogoutFunction={Logout} />
+          <Navbar LogoutFunction={Logout} isAdmin={isAdmin} />
           <div className="main-content">
             <Switch>
               <Route
@@ -434,6 +430,7 @@ function App() {
                     ) => {
                       addUser(firstName, lastName, balance, username, password);
                     }}
+                    isAdmin={isAdmin}
                   />
                 )}
               />
@@ -445,6 +442,7 @@ function App() {
                     deposit={(amount, account) => {
                       deposit(amount, account);
                     }}
+                    isAdmin={isAdmin}
                   />
                 )}
               />
@@ -456,6 +454,7 @@ function App() {
                     withdraw={(amount, account) => {
                       withdraw(amount, account);
                     }}
+                    isAdmin={isAdmin}
                   />
                 )}
               />
@@ -467,12 +466,14 @@ function App() {
                     transfer={(amount, from, to) => {
                       transfer(amount, from, to);
                     }}
+                    isAdmin={isAdmin}
                   />
                 )}
               />
               <Route
                 path="/transactions"
                 component={() => <Transactions transactions={transactions} />}
+                isAdmin={isAdmin}
               />
               <Route
                 path="/settings"
@@ -483,6 +484,7 @@ function App() {
                     editUser={(username, newUsername, newPassword) =>
                       editUser(username, newUsername, newPassword)
                     }
+                    isAdmin={isAdmin}
                   />
                 )}
               />
@@ -500,6 +502,7 @@ function App() {
           addUser={(firstName, lastName, balance, username, password) => {
             addUser(firstName, lastName, balance, username, password);
           }}
+          setIsAdmin={(a) => setIsAdmin(a)}
         />
       )}
     </div>
