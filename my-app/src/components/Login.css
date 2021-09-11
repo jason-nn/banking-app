@@ -1,4 +1,3 @@
-
 .login-component {
   height: 100vh;
   width: 100vw;
@@ -31,7 +30,6 @@
     transform: translateY(0);
   }
 }
-
 
 .login-form {
   width: 80vw;
@@ -73,13 +71,13 @@
 }
 
 .login-logo {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 2em;
   color: var(--light-accent);
 }
 
 .login-logo-mobile {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-size: 1.3em;
   color: var(--light-accent);
   margin-top: 5vmin;
@@ -89,7 +87,7 @@
 .login-message {
   font-size: xx-large;
   width: 80%;
-  color: var(--light-color)
+  color: var(--light-color);
 }
 
 .login-hero-title {
@@ -126,19 +124,21 @@
   font-weight: bolder;
   padding: 5vmin 2vmin 3vmin 4vmin;
   border-radius: 1vmin;
-  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 0px 0px 0px 0px var(--light-accent);
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1),
+    inset 0px 0px 0px 0px var(--light-accent);
   transition: 0.2s ease;
 }
 
 .input:focus {
-  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1), inset -5px -5px 0px 0px var(--dark-accent);
+  box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1),
+    inset -5px -5px 0px 0px var(--dark-accent);
 }
 
 .login-button {
   border: none;
   background: none;
   background-color: var(--dark-accent);
-  margin-top: 30px;  
+  margin-top: 30px;
   display: flex;
   border-radius: 1vmin;
   justify-content: center;
@@ -173,7 +173,8 @@
     height: 100vh;
     padding: 5%;
     color: var(--light-color);
-    background-image: linear-gradient(to top, #3f394a85,#3f394ac5),url('./hero.jpeg');
+    background-image: linear-gradient(to top, #3f394a85, #3f394ac5),
+      url("./hero.jpeg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -186,7 +187,7 @@
     line-height: 100%;
     margin-bottom: 5%;
   }
-  
+
   .login-hero-text {
     display: block;
   }
