@@ -27,7 +27,9 @@ const AdminView = ({ name, users, addUser }) => {
   return (
     <>
       {/* <Button className="main-button" text="+" /> */}
-      <h3 className="greeting-text">Welcome, <p className="greeting-name">{name}</p></h3>
+      <h3 className="greeting-text">
+        Welcome, <p className="greeting-name">{name}</p>
+      </h3>
       <div className="admin-dashboard">
         <div className="card-container">
           <div className="main-header">
