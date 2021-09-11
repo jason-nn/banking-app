@@ -3,18 +3,68 @@ import Button from "./Button";
 import "./Login.css";
 import Logo from "./bank-logo.svg";
 
-export default function Login({ LoginFunction, error }) {
-  const [details, setDetails] = useState({
-    usernameInput: "",
-    passwordInput: "",
-  });
+export default function Login({ setError, setUser, error, users }) {
+  // const [details, setDetails] = useState({
+  //   usernameInput: "",
+  //   passwordInput: "",
+  // });
 
   // gets submit values then passes it back to parent
-  const submitHandler = (e) => {
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   LoginFunction(details);
+  //   e.target.value = "";
+  // };
+
+  const usernameInputRef = useRef();
+  const passwordInputRef = useRef();
+
+  function submitDetails(e) {
     e.preventDefault();
-    LoginFunction(details);
-    e.target.value = '';
-  };
+    const usernameInput = usernameInputRef.current.value;
+    const passwordInput = passwordInputRef.current.value;
+
+    const usernames = users.map((user) => user.username);
+    const passwords = users.map((user) => user.password);
+    const firstNames = users.map((user) => user.firstName);
+    const lastNames = users.map((user) => user.lastName);
+
+    const usernameIndex = usernames.findIndex((i) => i === usernameInput);
+    const passwordIndex = passwords.findIndex((i) => i === passwordInput);
+
+    if (usernameInput === "") {
+      setError("Please enter a username.");
+      setTimeout(() => setError(""), 2000);
+    } else if (passwordInput === "") {
+      setError("Please enter a password.");
+      setTimeout(() => setError(""), 2000);
+    } else if (
+      usernameIndex === passwordIndex &&
+      usernameIndex >= 0 &&
+      passwordIndex >= 0
+    ) {
+      setUser({
+        name: firstNames[usernameIndex] /* + " " + lastNames[usernameIndex] */,
+        username: usernameInput,
+      });
+      setError("");
+    } else if (usernameIndex === -1) {
+      setError("User does not exist.");
+      usernameInputRef.current.value = "";
+      passwordInputRef.current.value = "";
+      setTimeout(() => setError(""), 2000);
+    } else if (usernameIndex >= 0) {
+      setError("Incorrect password.");
+      passwordInputRef.current.value = "";
+      setTimeout(() => setError(""), 2000);
+    } else {
+      setError("Login failed. Please try again.");
+      usernameInputRef.current.value = "";
+      passwordInputRef.current.value = "";
+      setTimeout(() => setError(""), 2000);
+    }
+    // LoginFunction(usernameInput, passwordInput);
+  }
 
   return (
     <div className="login-component">
@@ -33,16 +83,18 @@ export default function Login({ LoginFunction, error }) {
       <div className="form-container">
         <h1 className="login-logo-mobile">banque.</h1>
         <h2 className="login-message">Log in to your account</h2>
-        <form className="login-form" onSubmit={submitHandler}>
+        {/* <form className="login-form" onSubmit={submitHandler}> */}
+        <form className="login-form" onSubmit={(e) => submitDetails(e)}>
           <div className="input-container">
             <label>
               <div className="login-input-label">Username</div>
               <input
                 className="usernameInput input"
-                onChange={(e) =>
-                  setDetails({ ...details, usernameInput: e.target.value })
-                }
-                value={details.username}
+                ref={usernameInputRef}
+                // onChange={(e) =>
+                //   setDetails({ ...details, usernameInput: e.target.value })
+                // }
+                // value={details.username}
                 type="text"
               />
             </label>
@@ -52,10 +104,11 @@ export default function Login({ LoginFunction, error }) {
               <div className="login-input-label">Password</div>
               <input
                 className="passwordInput input"
-                onChange={(e) =>
-                  setDetails({ ...details, passwordInput: e.target.value })
-                }
-                value={details.password}
+                ref={passwordInputRef}
+                // onChange={(e) =>
+                //   setDetails({ ...details, passwordInput: e.target.value })
+                // }
+                // value={details.password}
                 type="password"
               />
             </label>

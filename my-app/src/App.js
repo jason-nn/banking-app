@@ -353,42 +353,42 @@ function App() {
   //   }
   // };
 
-  function LoginFunction({ usernameInput, passwordInput }) {
-    const usernames = users.map((user) => user.username);
-    const passwords = users.map((user) => user.password);
-    const firstNames = users.map((user) => user.firstName);
-    const lastNames = users.map((user) => user.lastName);
+  // function LoginFunction(usernameInput, passwordInput) {
+  //   const usernames = users.map((user) => user.username);
+  //   const passwords = users.map((user) => user.password);
+  //   const firstNames = users.map((user) => user.firstName);
+  //   const lastNames = users.map((user) => user.lastName);
 
-    const usernameIndex = usernames.findIndex((i) => i === usernameInput);
-    const passwordIndex = passwords.findIndex((i) => i === passwordInput);
+  //   const usernameIndex = usernames.findIndex((i) => i === usernameInput);
+  //   const passwordIndex = passwords.findIndex((i) => i === passwordInput);
 
-    if (usernameInput === "") {
-      setError("Please enter a username.");
-      setTimeout(() => setError(""), 2000);
-    } else if (passwordInput === "") {
-      setError("Please enter a password.");
-      setTimeout(() => setError(""), 2000);
-    } else if (
-      usernameIndex === passwordIndex &&
-      usernameIndex >= 0 &&
-      passwordIndex >= 0
-    ) {
-      setUser({
-        name: firstNames[usernameIndex] /* + " " + lastNames[usernameIndex] */,
-        username: usernameInput,
-      });
-      setError("");
-    } else if (usernameIndex === -1) {
-      setError("User does not exist.");
-      setTimeout(() => setError(""), 2000);
-    } else if (usernameIndex >= 0) {
-      setError("Incorrect password.");
-      setTimeout(() => setError(""), 2000);
-    } else {
-      setError("Login failed. Please try again.");
-      setTimeout(() => setError(""), 2000);
-    }
-  }
+  //   if (usernameInput === "") {
+  //     setError("Please enter a username.");
+  //     setTimeout(() => setError(""), 2000);
+  //   } else if (passwordInput === "") {
+  //     setError("Please enter a password.");
+  //     setTimeout(() => setError(""), 2000);
+  //   } else if (
+  //     usernameIndex === passwordIndex &&
+  //     usernameIndex >= 0 &&
+  //     passwordIndex >= 0
+  //   ) {
+  //     setUser({
+  //       name: firstNames[usernameIndex] /* + " " + lastNames[usernameIndex] */,
+  //       username: usernameInput,
+  //     });
+  //     setError("");
+  //   } else if (usernameIndex === -1) {
+  //     setError("User does not exist.");
+  //     setTimeout(() => setError(""), 2000);
+  //   } else if (usernameIndex >= 0) {
+  //     setError("Incorrect password.");
+  //     setTimeout(() => setError(""), 2000);
+  //   } else {
+  //     setError("Login failed. Please try again.");
+  //     setTimeout(() => setError(""), 2000);
+  //   }
+  // }
 
   //function for logging out
   const Logout = () => {
@@ -491,7 +491,13 @@ function App() {
         </Router>
       ) : (
         /* If there is no current user, show login page */
-        <Login LoginFunction={LoginFunction} error={error} />
+        <Login
+          // LoginFunction={LoginFunction}
+          users={users}
+          error={error}
+          setError={(a) => setError(a)}
+          setUser={(a) => setUser(a)}
+        />
       )}
     </div>
   );
