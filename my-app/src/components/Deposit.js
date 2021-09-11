@@ -66,7 +66,8 @@ const Deposit = ({ users, deposit }) => {
         <div className="transaction-form">
           <label>
             <div className="input-label">Account</div>
-            <select className="input-field"
+            <select
+              className="input-field"
               ref={accountRef}
               onChange={(e) => {
                 handleChange(e.target.value);
@@ -74,18 +75,18 @@ const Deposit = ({ users, deposit }) => {
             >
               {renderSelectOptions()}
             </select>
-            <div className="current-balance">Current Balance: ₱{displayBalance.toLocaleString()}</div>
+            <div className="current-balance">
+              Current Balance: ₱{displayBalance.toLocaleString()}
+            </div>
           </label>
 
           <label>
             <div className="input-label">Amount (₱)</div>
             <input className="input-field" type="number" ref={amountRef} />
           </label>
-
         </div>
         {message !== null ? <div className="login-error">{message}</div> : ""}
-        <Button className="main-button"
-          text="Deposit" />
+        <Button className="main-button" text="Deposit" />
       </form>
     </div>
   );
