@@ -3,7 +3,7 @@ import Button from "./Button";
 import "./Login.css";
 import Logo from "./bank-logo.svg";
 
-export default function Login({ setError, setUser, error, users }) {
+export default function Login({ setError, setUser, error, users, addUser }) {
   // const [details, setDetails] = useState({
   //   usernameInput: "",
   //   passwordInput: "",
@@ -66,6 +66,15 @@ export default function Login({ setError, setUser, error, users }) {
     // LoginFunction(usernameInput, passwordInput);
   }
 
+  const [register, setRegister] = useState(false);
+
+  const [signupError, setSignupError] = useState("");
+
+  const signupFirstNameRef = useRef();
+  const signupLastNameRef = useRef();
+  const signupUsernameRef = useRef();
+  const signupPasswordRef = useRef();
+
   return (
     <div className="login-component">
       <div className="login-hero">
@@ -80,43 +89,154 @@ export default function Login({ setError, setUser, error, users }) {
           </p>
         </div>
       </div>
-      <div className="form-container">
-        <h1 className="login-logo-mobile">banque.</h1>
-        <h2 className="login-message">Log in to your account</h2>
-        {/* <form className="login-form" onSubmit={submitHandler}> */}
-        <form className="login-form" onSubmit={(e) => submitDetails(e)}>
-          <div className="input-container">
-            <label>
-              <div className="login-input-label">Username</div>
-              <input
-                className="usernameInput input"
-                ref={usernameInputRef}
-                // onChange={(e) =>
-                //   setDetails({ ...details, usernameInput: e.target.value })
-                // }
-                // value={details.username}
-                type="text"
-              />
-            </label>
-          </div>
-          <div className="input-container">
-            <label>
-              <div className="login-input-label">Password</div>
-              <input
-                className="passwordInput input"
-                ref={passwordInputRef}
-                // onChange={(e) =>
-                //   setDetails({ ...details, passwordInput: e.target.value })
-                // }
-                // value={details.password}
-                type="password"
-              />
-            </label>
-          </div>
-          <Button className="loginSubmitButton login-button" text="Log In" />
-          {error !== "" ? <div className="login-error">{error}</div> : ""}
-        </form>
-      </div>
+      {!register ? (
+        <div className="form-container">
+          <h1 className="login-logo-mobile">banque.</h1>
+          <h2 className="login-message">Log in to your account</h2>
+          <form className="login-form" onSubmit={(e) => submitDetails(e)}>
+            <div className="input-container">
+              <label>
+                <div className="login-input-label">Username</div>
+                <input
+                  className="usernameInput input"
+                  ref={usernameInputRef}
+                  type="text"
+                />
+              </label>
+            </div>
+            <div className="input-container">
+              <label>
+                <div className="login-input-label">Password</div>
+                <input
+                  className="passwordInput input"
+                  ref={passwordInputRef}
+                  type="password"
+                />
+              </label>
+            </div>
+            <Button className="loginSubmitButton login-button" text="Log In" />
+            {error !== "" ? <div className="login-error">{error}</div> : ""}
+          </form>
+
+          <Button
+            text="Sign Up"
+            onClick={() => {
+              setRegister(true);
+              usernameInputRef.current.value = "";
+              passwordInputRef.current.value = "";
+            }}
+          />
+        </div>
+      ) : (
+        <div className="form-container">
+          <h1 className="login-logo-mobile">banque.</h1>
+          <h2 className="login-message">Sign up for an account</h2>
+          <form
+            className="login-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const firstName = signupFirstNameRef.current.value.toUpperCase();
+              const lastName = signupLastNameRef.current.value.toUpperCase();
+              const username = signupUsernameRef.current.value;
+              const password = signupPasswordRef.current.value;
+
+              const firstNames = users.map((user) => user.firstName);
+              const lastNames = users.map((user) => user.lastName);
+              const usernames = users.map((user) => user.username);
+
+              const firstNameIndex = firstNames.findIndex(
+                (value) => value === firstName
+              );
+              const lastNameIndex = lastNames.findIndex(
+                (value) => value === lastName
+              );
+              const usernameIndex = usernames.findIndex(
+                (users) => users === username
+              );
+
+              if (!firstName || !lastName || !username || !password) {
+                setSignupError(
+                  "Incomplete information. Please fill in all fields."
+                );
+                setTimeout(() => setSignupError(""), 2000);
+              } else if (usernameIndex >= 0) {
+                setSignupError("Username has been taken.");
+                setTimeout(() => setSignupError(""), 2000);
+                signupUsernameRef.current.value = null;
+              } else if (
+                firstNameIndex === lastNameIndex &&
+                firstNameIndex >= 0
+              ) {
+                setSignupError("User already exists");
+                setTimeout(() => setSignupError(""), 2000);
+                signupFirstNameRef.current.value = null;
+                signupLastNameRef.current.value = null;
+                signupUsernameRef.current.value = null;
+                signupPasswordRef.current.value = null;
+              } else {
+                addUser(firstName, lastName, 0, username, password);
+                setSignupError("");
+                setRegister(false);
+                setError("Account successfully created.");
+                setTimeout(() => setError(""), 3000);
+                signupFirstNameRef.current.value = null;
+                signupLastNameRef.current.value = null;
+                signupUsernameRef.current.value = null;
+                signupPasswordRef.current.value = null;
+              }
+            }}
+          >
+            <div className="input-container">
+              <label>
+                <div className="login-input-label">First Name</div>
+                <input
+                  className="usernameInput input"
+                  ref={signupFirstNameRef}
+                  type="text"
+                />
+              </label>
+            </div>
+            <div className="input-container">
+              <label>
+                <div className="login-input-label">Last Name</div>
+                <input
+                  className="usernameInput input"
+                  ref={signupLastNameRef}
+                  type="text"
+                />
+              </label>
+            </div>
+            <div className="input-container">
+              <label>
+                <div className="login-input-label">Username</div>
+                <input
+                  className="usernameInput input"
+                  ref={signupUsernameRef}
+                  type="text"
+                />
+              </label>
+            </div>
+            <div className="input-container">
+              <label>
+                <div className="login-input-label">Password</div>
+                <input
+                  className="passwordInput input"
+                  ref={signupPasswordRef}
+                  type="password"
+                />
+              </label>
+            </div>
+            <Button className="loginSubmitButton login-button" text="Sign Up" />
+            {signupError !== "" ? (
+              <div className="login-error">{signupError}</div>
+            ) : (
+              ""
+            )}
+          </form>
+
+          <Button text="Return to Log In" onClick={() => setRegister(false)} />
+        </div>
+      )}
     </div>
   );
 }

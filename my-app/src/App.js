@@ -497,6 +497,9 @@ function App() {
           error={error}
           setError={(a) => setError(a)}
           setUser={(a) => setUser(a)}
+          addUser={(firstName, lastName, balance, username, password) => {
+            addUser(firstName, lastName, balance, username, password);
+          }}
         />
       )}
     </div>
