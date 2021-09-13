@@ -59,6 +59,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  position: sticky;
+  top:0;
+  left: 0;
 }
 
 .main-title {
@@ -120,6 +123,7 @@
   width: 100%;
   grid-template-columns: 1fr;
   column-gap: 10px;
+  row-gap: 5px;
   /* justify-content: space-between;
   flex-wrap: wrap; */
 }
@@ -205,7 +209,7 @@ tr:not(:first-child):hover {
 td {
   color: var(--light-color);
   border: none;
-  padding: 1em;
+  padding: 0.8em;
   font-size: 1em;
   font-weight: bold;
   transition: 0.2s ease;
@@ -220,7 +224,7 @@ tr:hover td {
   background-color: #28242F ;
   color: var(--light-color);
   border: none;
-  padding: 1em;
+  padding: 0.8em;
   border-bottom: 1px solid rgba(233, 242, 248, 0);
 }
 
@@ -237,6 +241,16 @@ tr:hover td:last-child{
   font-weight: 200;
 }
 
+.transaction-date {
+  font-size: 0.8em;
+}
+
+
+.transaction-time {
+  font-size: 0.8em;
+  font-weight: 200;
+}
+
 .account-selection-info {
   display: flex;
   flex-direction: column;
@@ -250,6 +264,36 @@ tr:hover td:last-child{
   z-index: -1;
   width: auto;
   border-radius: 1vmin;
+}
+
+
+  
+.logout-button {
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  color: var(--light-color);
+}
+.logout-button-content {
+  flex-direction: row;
+  text-transform: uppercase;
+}
+
+.logout-button:hover {
+  /* color: var(--light-accent); */
+  background-color: rgba(106, 126, 150, 0.2);
+  box-shadow: 0 0.1vmin -0.4vmin 0.1vmin rgba(0,0,0,0.2);
+}
+
+.logout-button:active {
+  color: var(--light-accent);
+  background-color: rgba(106, 126, 150, 0.2);
+  box-shadow: 0 0.1vmin -0.4vmin 0.1vmin rgba(0,0,0,0.2);
+  transform: scale(0.9);
 }
 
 

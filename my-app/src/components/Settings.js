@@ -72,15 +72,15 @@ const Settings = ({ LogoutFunction, users, editUser }) => {
 
       <NavLink
         to="/"
-        activeClassName="nav-active"
+
         exact
-        className="nav-link"
+        className="logout-button"
         onClick={() => {
           LogoutFunction();
         }}
       >
-        <div className="nav-link-content">
-          <span className="material-icons">logout</span>
+        <div className="logout-button-content">
+          <span className="material-icons logout-icon">logout</span>
           <span>Logout</span>
         </div>
       </NavLink>
