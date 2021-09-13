@@ -14,21 +14,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transform: translateY(-5%);
+  transform: translateY(5%);
   opacity: 0;
   animation: card 0.2s ease forwards;
   position: relative;
-}
-
-@keyframes card {
-  0% {
-    opacity: 0;
-    transform: translateY(-5%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .login-form {
@@ -40,7 +29,7 @@
   border-radius: 2vmin;
 }
 
-.login-error {
+/* .login-error {
   color: white;
   position: absolute;
   top: 0;
@@ -53,6 +42,21 @@
   transform: translateY(-10%);
   opacity: 0;
   animation: error 0.2s ease forwards;
+} */
+
+.login-error {
+  color: white;
+  position: absolute;
+  top: 5%;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: var(--dark-accent);
+  padding: 1em;
+  width:80%;
+  transform: translate(0,-10%);
+  opacity: 0;
+  animation: error 0.2s ease forwards;
+  text-align: center;
 }
 
 @keyframes error {
@@ -108,10 +112,10 @@
 
 .login-input-label {
   z-index: 1;
-  transform: translate(4vmin, 150%);
+  transform: translate(2vmin, 140%);
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.5);
-  font-size: small;
+  color: var(--light-color);
+  font-size: 0.7em;
 }
 
 .input {
@@ -119,25 +123,40 @@
   outline: none;
   width: 100%;
   height: 3em;
-  background-color: var(--light-color);
-  font-size: 1.5em;
+  /* background-color: var(--light-color); */
+  background-color: var(--darker-shade);
+  font-size: 1.1em;
   font-weight: bolder;
-  padding: 5vmin 2vmin 3vmin 4vmin;
+  color: var(--light-color);
+  padding: 2em 2vmin 1em 2vmin;
+  /* padding: 5vmin 2vmin 3vmin 4vmin; */
   border-radius: 1vmin;
   box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1),
     inset 0px 0px 0px 0px var(--light-accent);
   transition: 0.2s ease;
 }
 
+.input:hover {
+  background-color: var(--darkest-shade);
+}
+
 .input:focus {
   box-shadow: 0 0.7vmin 2vmin 1vmin rgba(104, 76, 76, 0.1),
-    inset -5px -5px 0px 0px var(--dark-accent);
+    inset -4px -4px 0px 0px var(--light-accent);
+  background-color: var(--darkest-shade);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  width: 100%;
 }
 
 .login-button {
   border: none;
   background: none;
-  background-color: var(--dark-accent);
+  background-color: var(--light-accent);
   margin-top: 30px;
   display: flex;
   border-radius: 1vmin;
@@ -149,16 +168,52 @@
   align-self: flex-start;
   transition: 0.1s ease;
   cursor: pointer;
-  color: white;
+  color:var(--darkest-shade);
   box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1);
 }
 
 .login-button:hover {
-  background: #b94248e8;
+  background: var(--darker-light-accent);
+  color: var(--darkest-shade);
 }
 
 .login-button:active {
-  background: #9c373c;
+  background: var(--darkest-light-accent);
+  color: var(--darkest-shade);
+  transform: scale(0.9);
+}
+
+.secondary-button {
+  border: none;
+  background: none;
+  background-color: none;
+  margin-top: 30px;
+  margin-left: 10%;
+  display: flex;
+  border-radius: 1vmin;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: bolder;
+  padding: 10px 1em 10px 1em;
+  align-self: flex-start;
+  transition: 0.1s ease;
+  cursor: pointer;
+  color: var(--light-accent);
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 0 0vmin 0vmin 0.05em var(--light-accent);
+}
+
+.secondary-button:hover {
+  background: var(--darker-light-accent);
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 0 0vmin 0vmin 0.05em var(--darker-light-accent);
+  color: var(--darkest-shade);
+}
+
+.secondary-button:active {
+  background: var(--darkest-light-accent);
+  box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1), inset 0 0vmin 0vmin 0.05em var(--darkest-light-accent);
+  color: var(--darkest-shade);
+  transform: scale(0.9);
 }
 
 @media only screen and (min-width: 900px) {

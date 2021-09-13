@@ -139,10 +139,12 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
                   ></input>
                 </label>
               </div>
-              {error !== null ? <div className="login-error">{error}</div> : ""}
+
               <Button className="main-button" text="Add User" />
             </form>
           </div>
+          {error !== null ? <div className="error-box">{error}</div> : ""}
+
           <br />
           <br />
           <div className="card-container">
