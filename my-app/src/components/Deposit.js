@@ -22,6 +22,7 @@ const Deposit = ({ users, deposit, isAdmin }) => {
   const accountRef = useRef();
 
   const [message, setMessage] = useState(null);
+  const [loadingMessage, setLoadingMessage] = useState(null);
 
   const accountNos = users.map((user) => user.accountNo);
   const index = accountNos.findIndex((accountNo) => accountNo == 111111);
@@ -62,8 +63,8 @@ const Deposit = ({ users, deposit, isAdmin }) => {
               setTimeout(() => {
                 deposit(amount, account);
               }, 1500);
-              setMessage(`Depositing ₱${amount}...`);
-              setTimeout(() => setMessage(null), 2000);
+              setLoadingMessage(`Depositing ₱${amount.toLocaleString()}...`);
+              setTimeout(() => setLoadingMessage(null), 2000);
             }
           }}
         >
@@ -86,10 +87,18 @@ const Deposit = ({ users, deposit, isAdmin }) => {
 
             <label>
               <div className="input-label">Amount (₱)</div>
-              <input className="input-field" type="number" ref={amountRef} />
+              <input
+                className="input-field"
+                type="number"
+                ref={amountRef}
+                step=".01"
+              />
             </label>
           </div>
           {message !== null ? <div className="login-error">{message}</div> : ""}
+          {loadingMessage !== null ? (
+            <div className="login-error">{loadingMessage}</div>
+          ) : null}
           <Button className="main-button" text="Deposit" />
         </form>
       </div>

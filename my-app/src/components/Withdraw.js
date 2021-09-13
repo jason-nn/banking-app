@@ -22,6 +22,7 @@ const Withdraw = ({ users, withdraw, isAdmin }) => {
   const accountRef = useRef();
 
   const [message, setMessage] = useState(null);
+  const [loadingMessage, setLoadingMessage] = useState(null);
 
   const accountNos = users.map((user) => user.accountNo);
   const index = accountNos.findIndex((accountNo) => accountNo == 111111);
@@ -71,8 +72,8 @@ const Withdraw = ({ users, withdraw, isAdmin }) => {
               setTimeout(() => {
                 withdraw(amount, account);
               }, 1500);
-              setMessage(`Withdrawing ₱${amount}...`);
-              setTimeout(() => setMessage(null), 2000);
+              setLoadingMessage(`Withdrawing ₱${amount.toLocaleString()}...`);
+              setTimeout(() => setLoadingMessage(null), 2000);
             }
           }}
         >
@@ -96,10 +97,18 @@ const Withdraw = ({ users, withdraw, isAdmin }) => {
             </div>
             <label>
               <div className="input-label">Amount (₱)</div>
-              <input className="input-field" type="number" ref={amountRef} />
+              <input
+                className="input-field"
+                type="number"
+                ref={amountRef}
+                step=".01"
+              />
             </label>
           </div>
           {message !== null ? <div className="login-error">{message}</div> : ""}
+          {loadingMessage !== null ? (
+            <div className="login-error">{loadingMessage}</div>
+          ) : null}
           <Button className="main-button" text="Withdraw" />
         </form>
       </div>
