@@ -126,18 +126,22 @@ export default function Login({
                 />
               </label>
             </div>
-            <Button className="loginSubmitButton login-button" text="Log In" />
+            <div className="button-container">
+              <Button className="loginSubmitButton login-button" text="Log In" />
+              <Button
+                className="secondary-button"
+                text="Sign Up"
+                onClick={() => {
+                  setRegister(true);
+                  usernameInputRef.current.value = "";
+                  passwordInputRef.current.value = "";
+                }} />
+            </div>
             {error !== "" ? <div className="login-error">{error}</div> : ""}
           </form>
 
-          <Button
-            text="Sign Up"
-            onClick={() => {
-              setRegister(true);
-              usernameInputRef.current.value = "";
-              passwordInputRef.current.value = "";
-            }}
-          />
+
+
         </div>
       ) : (
         <div className="form-container">
@@ -238,7 +242,11 @@ export default function Login({
                 />
               </label>
             </div>
-            <Button className="loginSubmitButton login-button" text="Sign Up" />
+            <div className="button-container">
+              <Button className="loginSubmitButton login-button" text="Sign Up" />
+
+              <Button className="secondary-button" text="Cancel" onClick={() => setRegister(false)} />
+            </div>
             {signupError !== "" ? (
               <div className="login-error">{signupError}</div>
             ) : (
@@ -246,7 +254,7 @@ export default function Login({
             )}
           </form>
 
-          <Button text="Return to Log In" onClick={() => setRegister(false)} />
+
         </div>
       )}
     </div>

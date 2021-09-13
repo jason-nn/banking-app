@@ -86,7 +86,7 @@ const Deposit = ({ users, deposit, isAdmin }) => {
 
             <label>
               <div className="input-label">Amount (₱)</div>
-              <input className="input-field" type="number" ref={amountRef} />
+              <input className="input-field" type="number" step="0.01" ref={amountRef} />
             </label>
           </div>
           {message !== null ? <div className="login-error">{message}</div> : ""}
