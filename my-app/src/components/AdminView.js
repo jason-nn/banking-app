@@ -97,7 +97,7 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
                 }
               }}
             >
-              <div className="form-input-container">
+              <div className="transaction-form">
                 <label>
                   <div className="input-label">First Name</div>
                   <input
@@ -115,15 +115,6 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
                   ></input>
                 </label>
                 <label>
-                  <div className="input-label">Balance (₱)</div>
-                  <input
-                    type="number"
-                    ref={balanceRef}
-                    className="input-field"
-                    step=".01"
-                  ></input>
-                </label>
-                <label>
                   <div className="input-label">Username</div>
                   <input
                     type="text"
@@ -137,6 +128,15 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
                     type="text"
                     ref={passwordRef}
                     className="input-field input-password"
+                  ></input>
+                </label>
+                <label>
+                  <div className="input-label">Balance (₱)</div>
+                  <input
+                    type="number"
+                    ref={balanceRef}
+                    className="input-field"
+                    step=".01"
                   ></input>
                 </label>
               </div>
