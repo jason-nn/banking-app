@@ -102,7 +102,7 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
                 }
               }}
             >
-              <div className="form-input-container">
+              <div className="transaction-form">
                 <label>
                   <div className="input-label">First Name</div>
                   <input
