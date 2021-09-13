@@ -44,6 +44,14 @@ const Help = () => {
         <br />
         <p className="faq-answer">There is also no initial deposit or minimum balance required to open an account.</p>
       </div>
+      <br />
+      <div className="card-container">
+        <div className="main-header">
+          <h1 className="main-title">How do you pronounce <span className="name-logo">banque.</span>? What does it mean?</h1>
+        </div>
+        <br />
+        <p className="faq-answer"><span className="name-logo">banque.</span> is pronounced as /bɑ̃k/ [bangk]. It means "bank" in French, nothing special.</p>
+      </div>
     </>
   )
 }
