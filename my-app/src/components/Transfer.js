@@ -23,6 +23,7 @@ const Transfer = ({ users, transfer, isAdmin }) => {
   const toRef = useRef();
 
   const [message, setMessage] = useState(null);
+  const [loadingMessage, setLoadingMessage] = useState(null);
 
   const accountNos = users.map((user) => user.accountNo);
   const index = accountNos.findIndex((accountNo) => accountNo == 111111);
@@ -78,8 +79,8 @@ const Transfer = ({ users, transfer, isAdmin }) => {
               setTimeout(() => {
                 transfer(amount, from, to);
               }, 1500);
-              setMessage(`Transferring ₱${amount}...`);
-              setTimeout(() => setMessage(null), 2000);
+              setLoadingMessage(`Transferring ₱${amount.toLocaleString()}...`);
+              setTimeout(() => setLoadingMessage(null), 2000);
             }
           }}
         >
@@ -102,7 +103,12 @@ const Transfer = ({ users, transfer, isAdmin }) => {
 
             <label>
               <div className="input-label">Amount (₱)</div>
-              <input className="input-field" type="number" ref={amountRef} />
+              <input
+                className="input-field"
+                type="number"
+                ref={amountRef}
+                step=".01"
+              />
             </label>
             <label>
               <div className="input-label">To</div>
@@ -123,6 +129,9 @@ const Transfer = ({ users, transfer, isAdmin }) => {
             <br />
           </div>
           {message !== null ? <div className="login-error">{message}</div> : ""}
+          {loadingMessage !== null ? (
+            <div className="login-error">{loadingMessage}</div>
+          ) : null}
           <Button className="main-button" text="Transfer" />
         </form>
       </div>

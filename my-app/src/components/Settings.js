@@ -16,6 +16,7 @@ const Settings = ({ LogoutFunction, users, editUser, isAdmin }) => {
   }
 
   const [error, setError] = useState(null);
+  const [loadingMessage, setLoadingMessage] = useState(null);
 
   const usernameRef = useRef();
   const newUsernameRef = useRef();
@@ -49,8 +50,8 @@ const Settings = ({ LogoutFunction, users, editUser, isAdmin }) => {
                 newUsernameRef.current.value = null;
                 newPasswordRef.current.value = null;
                 newPasswordRef2.current.value = null;
-                setError("Changing details...");
-                setTimeout(() => setError(null), 4000);
+                setLoadingMessage("Changing details...");
+                setTimeout(() => setLoadingMessage(null), 4000);
               } else {
                 setError("Passwords do not match. Try again.");
                 setTimeout(() => setError(null), 2000);
@@ -91,6 +92,7 @@ const Settings = ({ LogoutFunction, users, editUser, isAdmin }) => {
             </div>
             <Button className="main-button" text="Submit" />
             <div>{error}</div>
+            {loadingMessage !== null ? <div>{loadingMessage}</div> : null}
           </form>
         </div>
         <div className="button-container">
@@ -114,6 +116,7 @@ const Settings = ({ LogoutFunction, users, editUser, isAdmin }) => {
     );
   } else {
     return (
+
       <>
         <div className="button-container">
           <NavLink
@@ -130,6 +133,7 @@ const Settings = ({ LogoutFunction, users, editUser, isAdmin }) => {
               <span>Logout</span>
             </div>
           </NavLink>
+
         </div>
       </>
     )

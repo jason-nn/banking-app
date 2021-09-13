@@ -120,6 +120,7 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
                     type="number"
                     ref={balanceRef}
                     className="input-field"
+                    step=".01"
                   ></input>
                 </label>
                 <label>
