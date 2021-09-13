@@ -8,7 +8,7 @@
   justify-content: center;
   padding: 10px;
   text-decoration: none;
-  box-shadow: 0 0 5vmin 0vmin rgba(0,0,0,0.05);
+  box-shadow: 0 0 2vmin 0vmin var(--darker-shade);
 }
 
 .navbar-logo {

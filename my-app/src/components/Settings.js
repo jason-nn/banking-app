@@ -91,11 +91,26 @@ const Settings = ({ LogoutFunction, users, editUser, isAdmin }) => {
 
             </div>
             <Button className="main-button" text="Submit" />
-            <div>{error}</div>
-            {loadingMessage !== null ? <div>{loadingMessage}</div> : null}
+
           </form>
         </div>
-        <div className="button-container">
+        {error !== null ? <div className="error-box">{error}</div> : null}
+        {loadingMessage !== null ? <div className="loading-box">{loadingMessage}</div> : null}
+        <br />
+        <hr />
+
+        <div className="option-container">
+          <NavLink
+            to="/help"
+            exact
+            className="logout-button"
+
+          >
+            <div className="logout-button-content">
+              <span className="material-icons logout-icon">help</span>
+              <span>Help</span>
+            </div>
+          </NavLink>
           <NavLink
             to="/"
 
@@ -118,7 +133,18 @@ const Settings = ({ LogoutFunction, users, editUser, isAdmin }) => {
     return (
 
       <>
-        <div className="button-container">
+        <div className="option-container">
+          <NavLink
+            to="/help"
+            exact
+            className="logout-button"
+
+          >
+            <div className="logout-button-content">
+              <span className="material-icons logout-icon">help</span>
+              <span>Help</span>
+            </div>
+          </NavLink>
           <NavLink
             to="/"
 
