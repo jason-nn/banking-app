@@ -31,6 +31,7 @@ const Settings = ({ LogoutFunction, users, editUser, isAdmin }) => {
             <h1 className="main-title">Edit users</h1>
           </div>
           <form
+
             onSubmit={(e) => {
               e.preventDefault();
 
@@ -60,70 +61,82 @@ const Settings = ({ LogoutFunction, users, editUser, isAdmin }) => {
               }
             }}
           >
-            <label>
-              <div className="input-label">Select a user</div>
-              <select className="input-field" ref={usernameRef}>
-                {renderSelectOptions()}
-              </select>
-            </label>
-            <label>
-              <div className="input-label">New username</div>
-              <input className="input-field" ref={newUsernameRef} type="text" />
-            </label>
-            <label>
-              <div className="input-label">New password</div>
-              <input
-                className="input-field"
-                ref={newPasswordRef}
-                type="password"
-              />
-            </label>
-            <label>
-              <div className="input-label">Confirm new password</div>
-              <input
-                className="input-field"
-                ref={newPasswordRef2}
-                type="password"
-              />
-            </label>
+            <div className="transaction-form">
+              <label>
+                <div className="input-label">Select a user</div>
+                <select className="input-field" ref={usernameRef}>
+                  {renderSelectOptions()}
+                </select>
+              </label>
+              <label>
+                <div className="input-label">New username</div>
+                <input className="input-field" ref={newUsernameRef} type="text" />
+              </label>
+              <label>
+                <div className="input-label">New password</div>
+                <input
+                  className="input-field"
+                  ref={newPasswordRef}
+                  type="password"
+                />
+              </label>
+              <label>
+                <div className="input-label">Confirm new password</div>
+                <input
+                  className="input-field"
+                  ref={newPasswordRef2}
+                  type="password"
+                />
+              </label>
+
+            </div>
             <Button className="main-button" text="Submit" />
             <div>{error}</div>
             {loadingMessage !== null ? <div>{loadingMessage}</div> : null}
           </form>
         </div>
+        <div className="button-container">
+          <NavLink
+            to="/"
 
-        <NavLink
-          to="/"
-          activeClassName="nav-active"
-          exact
-          className="nav-link"
-          onClick={() => {
-            LogoutFunction();
-          }}
-        >
-          <div className="nav-link-content">
-            <span className="material-icons">logout</span>
-            <span>Logout</span>
-          </div>
-        </NavLink>
+            exact
+            className="logout-button"
+            onClick={() => {
+              LogoutFunction();
+            }}
+          >
+            <div className="logout-button-content">
+              <span className="material-icons logout-icon">logout</span>
+              <span>Logout</span>
+            </div>
+          </NavLink>
+        </div>
+
       </>
     );
   } else {
     return (
-      <NavLink
-        to="/"
-        exact
-        className="logout-button"
-        onClick={() => {
-          LogoutFunction();
-        }}
-      >
-        <div className="logout-button-content">
-          <span className="material-icons logout-icon">logout</span>
-          <span>Logout</span>
+
+      <>
+        <div className="button-container">
+          <NavLink
+            to="/"
+
+            exact
+            className="logout-button"
+            onClick={() => {
+              LogoutFunction();
+            }}
+          >
+            <div className="logout-button-content">
+              <span className="material-icons logout-icon">logout</span>
+              <span>Logout</span>
+            </div>
+          </NavLink>
+
         </div>
-      </NavLink>
-    );
+      </>
+    )
   }
 };
 
