@@ -95,6 +95,8 @@ button {
   transition: 0.2s ease;
 }
 
+
+
 @media screen and (min-width: 900px) {
   .navbar{
     position: relative;

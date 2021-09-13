@@ -5,7 +5,7 @@ export default function TransactionRow2({ transaction }) {
     <>
       <tr>
         <td>
-          {transaction.date} <p className="account-number">{transaction.time}</p>
+          <p className="transaction-date">{transaction.date}</p><p className="transaction-time">{transaction.time}</p>
         </td>
         <td>
           {transaction.fromFirstName}{" "}
