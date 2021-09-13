@@ -79,7 +79,12 @@ const Transfer = ({ users, transfer, isAdmin }) => {
               setTimeout(() => {
                 transfer(amount, from, to);
               }, 1500);
-              setLoadingMessage(`Transferring ₱${amount.toLocaleString()}...`);
+              setLoadingMessage(
+                `Transferring ${amount.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "PHP",
+                })}...`
+              );
               setTimeout(() => setLoadingMessage(null), 2000);
             }
           }}
@@ -97,19 +102,14 @@ const Transfer = ({ users, transfer, isAdmin }) => {
                 {renderSelectOptions()}
               </select>
               <div className="current-balance">
-                Current Balance: ₱{displayBalance1.toLocaleString()}
+                Current Balance:{" "}
+                {displayBalance1.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "PHP",
+                })}
               </div>
             </label>
 
-            <label>
-              <div className="input-label">Amount (₱)</div>
-              <input
-                className="input-field"
-                type="number"
-                ref={amountRef}
-                step=".01"
-              />
-            </label>
             <label>
               <div className="input-label">To</div>
               <select
@@ -122,10 +122,23 @@ const Transfer = ({ users, transfer, isAdmin }) => {
                 {renderSelectOptions()}
               </select>
               <div className="current-balance">
-                Current Balance: ₱{displayBalance2.toLocaleString()}
+                Current Balance:{" "}
+                {displayBalance2.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "PHP",
+                })}
               </div>
             </label>
 
+            <label>
+              <div className="input-label">Amount (₱)</div>
+              <input
+                className="input-field"
+                type="number"
+                ref={amountRef}
+                step=".01"
+              />
+            </label>
             <br />
           </div>
           {message !== null ? <div className="login-error">{message}</div> : ""}

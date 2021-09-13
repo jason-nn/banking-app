@@ -331,6 +331,8 @@ function App() {
   //state for error message if login failed
   const [error, setError] = useState("");
 
+  const [successfulSignUp, setSuccessfulSignup] = useState("");
+
   //function for logging in
   // const LoginFunction = (details) => {
   //   console.log(details);
@@ -499,6 +501,8 @@ function App() {
           error={error}
           setError={(a) => setError(a)}
           setUser={(a) => setUser(a)}
+          successfulSignUp={successfulSignUp}
+          setSuccessfulSignup={(a) => setSuccessfulSignup(a)}
           addUser={(firstName, lastName, balance, username, password) => {
             addUser(firstName, lastName, balance, username, password);
           }}

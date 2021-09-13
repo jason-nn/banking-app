@@ -72,7 +72,12 @@ const Withdraw = ({ users, withdraw, isAdmin }) => {
               setTimeout(() => {
                 withdraw(amount, account);
               }, 1500);
-              setLoadingMessage(`Withdrawing ₱${amount.toLocaleString()}...`);
+              setLoadingMessage(
+                `Withdrawing ${amount.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "PHP",
+                })}...`
+              );
               setTimeout(() => setLoadingMessage(null), 2000);
             }
           }}
@@ -92,7 +97,11 @@ const Withdraw = ({ users, withdraw, isAdmin }) => {
                 </select>
               </label>
               <div className="current-balance">
-                Current Balance: ₱{displayBalance.toLocaleString()}
+                Current Balance:{" "}
+                {displayBalance.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "PHP",
+                })}
               </div>
             </div>
             <label>

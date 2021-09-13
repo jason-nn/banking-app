@@ -23,6 +23,7 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
   const balanceRef = useRef();
 
   const [error, setError] = useState(null);
+  const [loadingMessage, setLoadingMessage] = useState(null);
 
   if (isAdmin) {
     return (
@@ -92,8 +93,12 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
                   setTimeout(() => setError(null), 2000);
                   balanceRef.current.value = null;
                 } else {
-                  addUser(firstName, lastName, balance, username, password);
-                  setError(null);
+                  setLoadingMessage("Creating account...");
+                  setTimeout(() => {
+                    addUser(firstName, lastName, balance, username, password);
+                    setLoadingMessage(null);
+                    setError(null);
+                  }, 2000);
                 }
               }}
             >
@@ -115,15 +120,6 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
                   ></input>
                 </label>
                 <label>
-                  <div className="input-label">Balance (₱)</div>
-                  <input
-                    type="number"
-                    ref={balanceRef}
-                    className="input-field"
-                    step=".01"
-                  ></input>
-                </label>
-                <label>
                   <div className="input-label">Username</div>
                   <input
                     type="text"
@@ -139,12 +135,26 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
                     className="input-field input-password"
                   ></input>
                 </label>
+                <label>
+                  <div className="input-label">Balance (₱)</div>
+                  <input
+                    type="number"
+                    ref={balanceRef}
+                    className="input-field"
+                    step=".01"
+                  ></input>
+                </label>
               </div>
 
               <Button className="main-button" text="Add User" />
             </form>
           </div>
           {error !== null ? <div className="error-box">{error}</div> : ""}
+          {loadingMessage !== null ? (
+            <div className="error-box">{loadingMessage}</div>
+          ) : (
+            ""
+          )}
 
           <br />
           <br />

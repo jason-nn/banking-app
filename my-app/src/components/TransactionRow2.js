@@ -5,18 +5,25 @@ export default function TransactionRow2({ transaction }) {
     <>
       <tr>
         <td>
-          <p className="transaction-date">{transaction.date}</p><p className="transaction-time">{transaction.time}</p>
+          <p className="transaction-date">{transaction.date}</p>
+          <p className="transaction-time">{transaction.time}</p>
         </td>
         <td>
-          {transaction.fromFirstName}{" "}
-          {transaction.fromLastName}<p className="account-number">{transaction.from}</p>
+          {transaction.fromFirstName} {transaction.fromLastName}
+          <p className="account-number">{transaction.from}</p>
         </td>
 
         <td>
-          {transaction.toFirstName} {transaction.toLastName}<p className="account-number">{transaction.to}</p>
+          {transaction.toFirstName} {transaction.toLastName}
+          <p className="account-number">{transaction.to}</p>
         </td>
 
-        <td>₱{transaction.amount.toLocaleString()}</td>
+        <td>
+          {transaction.amount.toLocaleString("en-US", {
+            style: "currency",
+            currency: "PHP",
+          })}
+        </td>
       </tr>
     </>
   );

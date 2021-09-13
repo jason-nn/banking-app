@@ -5,9 +5,15 @@ export default function UserRow({ client }) {
     <>
       <tr>
         <td>
-          {client.firstName} {client.lastName} <p className="account-number">{client.accountNo}</p>
+          {client.firstName} {client.lastName}{" "}
+          <p className="account-number">{client.accountNo}</p>
         </td>
-        <td>₱{client.balance.toLocaleString()}</td>
+        <td>
+          {client.balance.toLocaleString("en-US", {
+            style: "currency",
+            currency: "PHP",
+          })}
+        </td>
       </tr>
     </>
   );

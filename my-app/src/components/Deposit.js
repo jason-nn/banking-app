@@ -63,7 +63,12 @@ const Deposit = ({ users, deposit, isAdmin }) => {
               setTimeout(() => {
                 deposit(amount, account);
               }, 1500);
-              setLoadingMessage(`Depositing ₱${amount.toLocaleString()}...`);
+              setLoadingMessage(
+                `Depositing ${amount.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "PHP",
+                })}...`
+              );
               setTimeout(() => setLoadingMessage(null), 2000);
             }
           }}
@@ -81,7 +86,11 @@ const Deposit = ({ users, deposit, isAdmin }) => {
                 {renderSelectOptions()}
               </select>
               <div className="current-balance">
-                Current Balance: ₱{displayBalance.toLocaleString()}
+                Current Balance:{" "}
+                {displayBalance.toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "PHP",
+                })}
               </div>
             </label>
 
@@ -94,7 +103,6 @@ const Deposit = ({ users, deposit, isAdmin }) => {
                 ref={amountRef}
                 step=".01"
               />
-
             </label>
           </div>
           {message !== null ? <div className="login-error">{message}</div> : ""}

@@ -10,6 +10,8 @@ export default function Login({
   users,
   addUser,
   setIsAdmin,
+  setSuccessfulSignup,
+  successfulSignUp,
 }) {
   // const [details, setDetails] = useState({
   //   usernameInput: "",
@@ -127,7 +129,10 @@ export default function Login({
               </label>
             </div>
             <div className="button-container">
-              <Button className="loginSubmitButton login-button" text="Log In" />
+              <Button
+                className="loginSubmitButton login-button"
+                text="Log In"
+              />
               <Button
                 className="secondary-button"
                 text="Sign Up"
@@ -135,13 +140,16 @@ export default function Login({
                   setRegister(true);
                   usernameInputRef.current.value = "";
                   passwordInputRef.current.value = "";
-                }} />
+                }}
+              />
             </div>
             {error !== "" ? <div className="login-error">{error}</div> : ""}
+            {successfulSignUp !== "" ? (
+              <div className="login-error">{successfulSignUp}</div>
+            ) : (
+              ""
+            )}
           </form>
-
-
-
         </div>
       ) : (
         <div className="form-container">
@@ -193,8 +201,8 @@ export default function Login({
                 addUser(firstName, lastName, 0, username, password);
                 setSignupError("");
                 setRegister(false);
-                setError("Account successfully created.");
-                setTimeout(() => setError(""), 3000);
+                setSuccessfulSignup("Account successfully created.");
+                setTimeout(() => setSuccessfulSignup(""), 3000);
                 signupFirstNameRef.current.value = null;
                 signupLastNameRef.current.value = null;
                 signupUsernameRef.current.value = null;
@@ -243,9 +251,16 @@ export default function Login({
               </label>
             </div>
             <div className="button-container">
-              <Button className="loginSubmitButton login-button" text="Sign Up" />
+              <Button
+                className="loginSubmitButton login-button"
+                text="Sign Up"
+              />
 
-              <Button className="secondary-button" text="Cancel" onClick={() => setRegister(false)} />
+              <Button
+                className="secondary-button"
+                text="Cancel"
+                onClick={() => setRegister(false)}
+              />
             </div>
             {signupError !== "" ? (
               <div className="login-error">{signupError}</div>
@@ -253,8 +268,6 @@ export default function Login({
               ""
             )}
           </form>
-
-
         </div>
       )}
     </div>
