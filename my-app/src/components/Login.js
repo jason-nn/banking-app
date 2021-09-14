@@ -145,7 +145,7 @@ export default function Login({
             </div>
             {error !== "" ? <div className="login-error">{error}</div> : ""}
             {successfulSignUp !== "" ? (
-              <div className="login-error">{successfulSignUp}</div>
+              <div className="signup-success">{successfulSignUp}</div>
             ) : (
               ""
             )}

@@ -26,7 +26,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 2vmin;
+  border-radius: 15px;
 }
 
 /* .login-error {
@@ -48,26 +48,45 @@
   color: white;
   position: absolute;
   top: 5%;
+  left: 50%;
   font-weight: bold;
   border-radius: 10px;
   background-color: var(--dark-accent);
   padding: 1em;
   width:80%;
-  transform: translate(0,-10%);
+  transform: translate(-50%,-10%);
   opacity: 0;
   animation: error 0.2s ease forwards;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
 @keyframes error {
   0% {
     opacity: 0;
-    transform: translateY(-10%);
+    transform: translateY(-50%,-10%);
   }
   100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, 0);
   }
+}
+
+.signup-success {
+  color: var(--dark-shade);
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: var(--light-accent);
+  padding: 1em;
+  width:80%;
+  transform: translate(-50%,-10%);
+  opacity: 0;
+  animation: error 0.2s ease forwards;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
 .login-hero {
@@ -157,7 +176,7 @@
   border: none;
   background: none;
   background-color: var(--light-accent);
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   border-radius: 1vmin;
   justify-content: center;
@@ -187,7 +206,7 @@
   border: none;
   background: none;
   background-color: none;
-  margin-top: 30px;
+  margin-top: 20px;
   margin-left: 10%;
   display: flex;
   border-radius: 1vmin;
@@ -261,5 +280,8 @@
     width: 60%;
     font-size: 4vmin;
     margin-bottom: 3vmin;
+  }
+  .login-error {
+    width: 50%;
   }
 }

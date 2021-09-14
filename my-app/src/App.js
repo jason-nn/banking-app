@@ -9,6 +9,7 @@ import Withdraw from "./components/Withdraw";
 import Transfer from "./components/Transfer";
 import Transactions from "./components/Transactions";
 import Settings from "./components/Settings";
+import Help from "./components/Help";
 
 function App() {
   const months = [
@@ -490,6 +491,9 @@ function App() {
                   />
                 )}
               />
+              <Route path="/help">
+                <Help />
+              </Route>
             </Switch>
           </div>
         </Router>

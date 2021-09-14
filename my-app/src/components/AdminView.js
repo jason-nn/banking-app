@@ -151,7 +151,7 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
           </div>
           {error !== null ? <div className="error-box">{error}</div> : ""}
           {loadingMessage !== null ? (
-            <div className="error-box">{loadingMessage}</div>
+            <div className="loading-box">{loadingMessage}</div>
           ) : (
             ""
           )}
