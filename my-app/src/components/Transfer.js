@@ -26,7 +26,9 @@ const Transfer = ({ users, transfer, isAdmin }) => {
   const [loadingMessage, setLoadingMessage] = useState(null);
 
   const accountNos = users.map((user) => user.accountNo);
-  const index = accountNos.findIndex((accountNo) => accountNo == 111111);
+  const index = accountNos.findIndex(
+    (accountNo) => parseInt(accountNo) === 111111
+  );
   const juanbalance = users[index].balance;
 
   const [displayBalance1, setDisplayBalance1] = useState(juanbalance);
@@ -36,7 +38,7 @@ const Transfer = ({ users, transfer, isAdmin }) => {
     const userCopy = [...users];
     const accountNos = userCopy.map((user) => user.accountNo);
     const index = accountNos.findIndex(
-      (accountNo) => accountNo == userToDisplay
+      (accountNo) => parseInt(accountNo) === parseInt(userToDisplay)
     );
     n === 1
       ? setDisplayBalance1(userCopy[index].balance)
@@ -60,7 +62,7 @@ const Transfer = ({ users, transfer, isAdmin }) => {
 
               const accountNos = users.map((user) => user.accountNo);
               const fromIndex = accountNos.findIndex(
-                (accountNo) => accountNo == from
+                (accountNo) => parseInt(accountNo) === parseInt(from)
               );
               const fromBalance = users[fromIndex].balance;
 
@@ -86,7 +88,7 @@ const Transfer = ({ users, transfer, isAdmin }) => {
                     currency: "PHP",
                   })}...`
                 );
-                setTimeout(() => setLoadingMessage(null), 2000);
+                // setTimeout(() => setLoadingMessage(null), 2000);
               }
             }}
           >
@@ -144,7 +146,6 @@ const Transfer = ({ users, transfer, isAdmin }) => {
             </div>
             <Button className="main-button" text="Transfer" />
           </form>
-
         </div>
         {message !== null ? <div className="error-box">{message}</div> : ""}
         {loadingMessage !== null ? (

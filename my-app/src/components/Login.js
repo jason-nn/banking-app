@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Button from "./Button";
 import "./Login.css";
-import Logo from "./bank-logo.svg";
+// import Logo from "./bank-logo.svg";
 
 export default function Login({
   setError,
@@ -36,7 +36,7 @@ export default function Login({
     const usernames = users.map((user) => user.username);
     const passwords = users.map((user) => user.password);
     const firstNames = users.map((user) => user.firstName);
-    const lastNames = users.map((user) => user.lastName);
+    // const lastNames = users.map((user) => user.lastName);
 
     const usernameIndex = usernames.findIndex((i) => i === usernameInput);
     const passwordIndex = passwords.findIndex((i) => i === passwordInput);
