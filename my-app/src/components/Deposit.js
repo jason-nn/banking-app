@@ -25,7 +25,9 @@ const Deposit = ({ users, deposit, isAdmin }) => {
   const [loadingMessage, setLoadingMessage] = useState(null);
 
   const accountNos = users.map((user) => user.accountNo);
-  const index = accountNos.findIndex((accountNo) => accountNo == 111111);
+  const index = accountNos.findIndex(
+    (accountNo) => parseInt(accountNo) === 111111
+  );
   const juanbalance = users[index].balance;
 
   const [displayBalance, setDisplayBalance] = useState(juanbalance);
@@ -34,7 +36,7 @@ const Deposit = ({ users, deposit, isAdmin }) => {
     const userCopy = [...users];
     const accountNos = userCopy.map((user) => user.accountNo);
     const index = accountNos.findIndex(
-      (accountNo) => accountNo == userToDisplay
+      (accountNo) => parseInt(accountNo) === parseInt(userToDisplay)
     );
 
     setDisplayBalance(userCopy[index].balance);
@@ -70,7 +72,7 @@ const Deposit = ({ users, deposit, isAdmin }) => {
                     currency: "PHP",
                   })}...`
                 );
-                setTimeout(() => setLoadingMessage(null), 2000);
+                // setTimeout(() => setLoadingMessage(null), 2000);
               }
             }}
           >

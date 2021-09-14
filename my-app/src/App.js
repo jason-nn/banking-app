@@ -194,7 +194,7 @@ function App() {
     const date = new Date();
     const hours = formatDate(twelveHour(date.getHours()));
     const minutes = formatDate(date.getMinutes());
-    const seconds = formatDate(date.getSeconds());
+    // const seconds = formatDate(date.getSeconds());
     const month = months[date.getMonth()];
     const day = formatDate(date.getDate());
     const suffix = getSuffix(date.getHours(), date.getMinutes());
@@ -219,8 +219,12 @@ function App() {
   function transfer(amount, from, to) {
     const userCopy = [...users];
     const accountNos = userCopy.map((user) => user.accountNo);
-    const fromIndex = accountNos.findIndex((accountNo) => accountNo == from);
-    const toIndex = accountNos.findIndex((accountNo) => accountNo == to);
+    const fromIndex = accountNos.findIndex(
+      (accountNo) => parseInt(accountNo) === parseInt(from)
+    );
+    const toIndex = accountNos.findIndex(
+      (accountNo) => parseInt(accountNo) === parseInt(to)
+    );
     userCopy[fromIndex].balance -= amount;
     userCopy[toIndex].balance += amount;
     setUserList(userCopy);
@@ -228,7 +232,7 @@ function App() {
     const date = new Date();
     const hours = formatDate(twelveHour(date.getHours()));
     const minutes = formatDate(date.getMinutes());
-    const seconds = formatDate(date.getSeconds());
+    // const seconds = formatDate(date.getSeconds());
     const month = months[date.getMonth()];
     const day = formatDate(date.getDate());
     const suffix = getSuffix(date.getHours(), date.getMinutes());
@@ -258,7 +262,7 @@ function App() {
     const userCopy = [...users];
     const accountNos = userCopy.map((user) => user.accountNo);
     const accountIndex = accountNos.findIndex(
-      (accountNo) => accountNo == account
+      (accountNo) => parseInt(accountNo) === parseInt(account)
     );
     userCopy[accountIndex].balance += amount;
     setUserList(userCopy);
@@ -266,7 +270,7 @@ function App() {
     const date = new Date();
     const hours = formatDate(twelveHour(date.getHours()));
     const minutes = formatDate(date.getMinutes());
-    const seconds = formatDate(date.getSeconds());
+    // const seconds = formatDate(date.getSeconds());
     const month = months[date.getMonth()];
     const day = formatDate(date.getDate());
     const suffix = getSuffix(date.getHours(), date.getMinutes());
@@ -293,7 +297,7 @@ function App() {
     const userCopy = [...users];
     const accountNos = userCopy.map((user) => user.accountNo);
     const accountIndex = accountNos.findIndex(
-      (accountNo) => accountNo == account
+      (accountNo) => parseInt(accountNo) === parseInt(account)
     );
     userCopy[accountIndex].balance -= amount;
     setUserList(userCopy);
@@ -301,7 +305,7 @@ function App() {
     const date = new Date();
     const hours = formatDate(twelveHour(date.getHours()));
     const minutes = formatDate(date.getMinutes());
-    const seconds = formatDate(date.getSeconds());
+    // const seconds = formatDate(date.getSeconds());
     const month = months[date.getMonth()];
     const day = formatDate(date.getDate());
     const suffix = getSuffix(date.getHours(), date.getMinutes());
