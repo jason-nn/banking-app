@@ -35,7 +35,7 @@ export default function Login({
 
     const usernames = users.map((user) => user.username);
     const passwords = users.map((user) => user.password);
-    const firstNames = users.map((user) => user.firstName);
+
     // const lastNames = users.map((user) => user.lastName);
 
     const usernameIndex = usernames.findIndex((i) => i === usernameInput);
@@ -52,10 +52,7 @@ export default function Login({
       usernameIndex >= 0 &&
       passwordIndex >= 0
     ) {
-      setUser({
-        name: firstNames[usernameIndex] /* + " " + lastNames[usernameIndex] */,
-        username: usernameInput,
-      });
+      setUser(users[usernameIndex]);
       if (users[usernameIndex].isAdmin) {
         setIsAdmin(true);
       } else {
