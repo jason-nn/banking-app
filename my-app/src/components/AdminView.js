@@ -1,9 +1,18 @@
 import "./AdminView.css";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Button from "./Button";
 import UserRow from "./UserRow";
+import UserInfoCard from "./UserInfoCard";
+import ExpenseRow from "./ExpenseRow";
 
-const AdminView = ({ name, users, addUser, isAdmin }) => {
+const AdminView = ({
+  currentUser,
+  users,
+  addUser,
+  isAdmin,
+  addExpense,
+  allExpenses,
+}) => {
   const nonAdminUsers = users.filter((user) => !user.isAdmin);
 
   function renderRows() {
@@ -22,14 +31,65 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
   const passwordRef = useRef();
   const balanceRef = useRef();
 
+  const descriptionRef = useRef();
+  const amountRef = useRef();
+
   const [error, setError] = useState(null);
   const [loadingMessage, setLoadingMessage] = useState(null);
+
+  const expenses = allExpenses.filter(
+    (expense) => parseInt(expense.account) === parseInt(currentUser.accountNo)
+  );
+
+  function renderExpenses() {
+    const rows = [];
+    for (let i = 0; i < expenses.length; i++) {
+      rows.push(<ExpenseRow key={expenses[i].key} expense={expenses[i]} />);
+    }
+    return rows;
+  }
+
+  const [displayExpenses, setDisplayExpenses] = useState(false);
+
+  function checkExpenses() {
+    const expenses = allExpenses.filter(
+      (expense) => parseInt(expense.account) === parseInt(currentUser.accountNo)
+    );
+
+    if (expenses.length > 0) {
+      setDisplayExpenses(true);
+    } else {
+      setDisplayExpenses(false);
+    }
+  }
+
+  useEffect(() => {
+    let mounted = true;
+
+    if (mounted) {
+      checkExpenses();
+    }
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let mounted = true;
+
+    if (mounted) {
+      checkExpenses();
+    }
+    return () => {
+      mounted = false;
+    };
+  }, [allExpenses]);
 
   if (isAdmin) {
     return (
       <>
         <h3 className="greeting-text">
-          Welcome, <p className="greeting-name">{name}</p>
+          Welcome, <p className="greeting-name">{currentUser.firstName}</p>
         </h3>
         <div className="admin-dashboard">
           <div className="card-container">
@@ -177,9 +237,92 @@ const AdminView = ({ name, users, addUser, isAdmin }) => {
     );
   } else {
     return (
-      <h3 className="greeting-text">
-        Welcome, <p className="greeting-name">{name}</p>
-      </h3>
+      <>
+        <h3 className="greeting-text">
+          Welcome, <p className="greeting-name">{currentUser.firstName}</p>
+        </h3>
+
+        <UserInfoCard currentUser={currentUser} />
+
+        <br />
+        <br />
+
+        <div className="card-container">
+          <div className="main-header">
+            <h1 className="main-title">Add an expense</h1>
+          </div>
+          <form
+            className="account-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              const account = currentUser.accountNo;
+              const description = descriptionRef.current.value;
+              const amount = amountRef.current.value;
+
+              if (!description || !amount) {
+                setError("Incomplete information. Please fill in all fields.");
+                setTimeout(() => setError(null), 2000);
+              } else {
+                setLoadingMessage("Adding expense...");
+                setTimeout(() => {
+                  addExpense(account, description, amount);
+                }, 2000);
+              }
+            }}
+          >
+            <div className="transaction-form">
+              <label>
+                <div className="input-label">Description</div>
+                <input
+                  type="text"
+                  ref={descriptionRef}
+                  className="input-field"
+                />
+              </label>
+              <label>
+                <div className="input-label">Amount (₱)</div>
+                <input
+                  type="number"
+                  ref={amountRef}
+                  className="input-field"
+                  step=".01"
+                ></input>
+              </label>
+            </div>
+
+            <Button className="main-button" text="Add Expense" />
+          </form>
+        </div>
+        {error !== null ? <div className="error-box">{error}</div> : ""}
+        {loadingMessage !== null ? (
+          <div className="loading-box">{loadingMessage}</div>
+        ) : (
+          ""
+        )}
+
+        <br />
+        <br />
+
+        <div className="card-container">
+          <div className="main-header">
+            <h1 className="main-title">
+              {displayExpenses ? "All Expenses" : "No Existing Expenses"}
+            </h1>
+          </div>
+          {displayExpenses ? (
+            <table>
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Amount</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>{renderExpenses()}</tbody>
+            </table>
+          ) : null}
+        </div>
+      </>
     );
   }
 };

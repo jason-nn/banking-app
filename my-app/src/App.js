@@ -132,6 +132,18 @@ function App() {
     localStorage.transactionKey = 222223;
   }
 
+  if (localStorage.expenseKey) {
+    console.log("expenseKey already exists in local storage.");
+  } else {
+    localStorage.expenseKey = 333330;
+  }
+
+  if (localStorage.allExpenses) {
+    console.log("allExpenses already exists in local storage.");
+  } else {
+    localStorage.allExpenses = JSON.stringify([]);
+  }
+
   function formatDate(number) {
     if (number < 10) {
       return "0" + number;
@@ -171,6 +183,13 @@ function App() {
     const newTransactionKey = oldTransactionKey + 1;
     localStorage.transactionKey = newTransactionKey;
     return newTransactionKey;
+  }
+
+  function generateExpenseKey() {
+    const oldExpenseKey = parseInt(localStorage.expenseKey);
+    const newExpenseKey = oldExpenseKey + 1;
+    localStorage.expenseKey = newExpenseKey;
+    return newExpenseKey;
   }
 
   function addUser(firstName, lastName, balance, username, password) {
@@ -328,10 +347,36 @@ function App() {
     localStorage.bankUsers = JSON.stringify(userCopy);
   }
 
+  function addExpense(account, description, amount) {
+    const allExpensesCopy = [...allExpenses];
+
+    allExpensesCopy.push({
+      account: account,
+      description: description,
+      amount: amount,
+      key: generateExpenseKey(),
+    });
+
+    setAllExpenses(allExpensesCopy);
+    localStorage.allExpenses = JSON.stringify(allExpensesCopy);
+
+    const userCopy = [...users];
+    const accountNos = userCopy.map((user) => user.accountNo);
+    const accountIndex = accountNos.findIndex(
+      (accountNo) => parseInt(accountNo) === parseInt(account)
+    );
+    userCopy[accountIndex].balance -= amount;
+    setUserList(userCopy);
+  }
+
+  const [allExpenses, setAllExpenses] = useState(
+    JSON.parse(localStorage.allExpenses)
+  );
+
   const [users, setUserList] = useState(JSON.parse(localStorage.bankUsers));
 
   //state for user details
-  const [currentUser, setUser] = useState({ name: "", username: "" });
+  const [currentUser, setUser] = useState(null);
 
   //state for error message if login failed
   const [error, setError] = useState("");
@@ -394,7 +439,7 @@ function App() {
 
   //function for logging out
   const Logout = () => {
-    setUser({ name: "", username: "" });
+    setUser(null);
     setIsAdmin(false);
   };
 
@@ -416,7 +461,7 @@ function App() {
   return (
     <div className="body">
       {/* If the user info is not blank, show dashboard */}
-      {currentUser.username !== "" ? (
+      {currentUser ? (
         <Router>
           <Navbar LogoutFunction={Logout} isAdmin={isAdmin} />
           <div className="main-content">
@@ -426,7 +471,7 @@ function App() {
                 exact
                 component={() => (
                   <AdminView
-                    name={currentUser.name}
+                    currentUser={currentUser}
                     users={users}
                     addUser={(
                       firstName,
@@ -438,6 +483,10 @@ function App() {
                       addUser(firstName, lastName, balance, username, password);
                     }}
                     isAdmin={isAdmin}
+                    addExpense={(account, expense, amount) =>
+                      addExpense(account, expense, amount)
+                    }
+                    allExpenses={allExpenses}
                   />
                 )}
               />
@@ -445,11 +494,13 @@ function App() {
                 path="/deposit"
                 component={() => (
                   <Deposit
+                    currentUser={currentUser}
                     users={users}
                     deposit={(amount, account) => {
                       deposit(amount, account);
                     }}
                     isAdmin={isAdmin}
+                    transactions={transactions}
                   />
                 )}
               />
@@ -457,11 +508,13 @@ function App() {
                 path="/withdraw"
                 component={() => (
                   <Withdraw
+                    currentUser={currentUser}
                     users={users}
                     withdraw={(amount, account) => {
                       withdraw(amount, account);
                     }}
                     isAdmin={isAdmin}
+                    transactions={transactions}
                   />
                 )}
               />
@@ -469,11 +522,13 @@ function App() {
                 path="/transfer"
                 component={() => (
                   <Transfer
+                    currentUser={currentUser}
                     users={users}
                     transfer={(amount, from, to) => {
                       transfer(amount, from, to);
                     }}
                     isAdmin={isAdmin}
+                    transactions={transactions}
                   />
                 )}
               />
@@ -486,6 +541,7 @@ function App() {
                 path="/settings"
                 component={() => (
                   <Settings
+                    currentUser={currentUser}
                     LogoutFunction={Logout}
                     users={users}
                     editUser={(username, newUsername, newPassword) =>
@@ -505,6 +561,7 @@ function App() {
         /* If there is no current user, show login page */
         <Login
           // LoginFunction={LoginFunction}
+          currentUser={currentUser}
           users={users}
           error={error}
           setError={(a) => setError(a)}
