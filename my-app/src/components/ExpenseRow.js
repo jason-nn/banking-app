@@ -1,5 +1,5 @@
-import React from 'react';
-import Button from './Button';
+import React from "react";
+import Button from "./Button";
 
 export default function ExpenseRow({ expense }) {
     return (
@@ -7,15 +7,15 @@ export default function ExpenseRow({ expense }) {
             <tr>
                 <td>{expense.description}</td>
                 <td>
-                    {expense.amount.toLocaleString('en-US', {
-                        style: 'currency',
-                        currency: 'PHP',
+                    {expense.amount.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "PHP",
                     })}
                 </td>
                 <td>
                     <Button
-                        className='edit-expense-button material-icons'
-                        text='edit'
+                        className="edit-expense-button material-icons"
+                        text="logout"
                     />
                 </td>
             </tr>
