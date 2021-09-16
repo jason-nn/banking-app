@@ -5,7 +5,9 @@ import UserInfoCard from "./UserInfoCard";
 import TransactionRow4 from "./TransactionRow4";
 
 const Transfer = ({ currentUser, users, transfer, isAdmin, transactions }) => {
-    const nonAdminUsers = users.filter((user) => !user.isAdmin);
+    const nonAdminUsers = users.filter(
+        (user) => !user.isAdmin && user !== currentUser
+    );
 
     function renderSelectOptions() {
         const rows = [];

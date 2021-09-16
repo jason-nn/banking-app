@@ -4,6 +4,7 @@ import Button from "./Button";
 import UserRow from "./UserRow";
 import UserInfoCard from "./UserInfoCard";
 import ExpenseRow from "./ExpenseRow";
+import ExpenseRow2 from "./ExpenseRow2";
 
 const AdminView = ({
     currentUser,
@@ -111,6 +112,49 @@ const AdminView = ({
         setNewDescription(expense.description);
         setNewAmount(expense.amount);
         setDisplayModal(true);
+    }
+
+    // ORGANIZING EXPENSES
+    const organizedExpenses = [];
+    let total = 0;
+    let key = 0;
+
+    for (const expense of expenses) {
+        const description = expense.description;
+        const descriptions = organizedExpenses.map((i) => i.description);
+        const index = descriptions.findIndex((i) => i === description);
+        if (index === -1) {
+            organizedExpenses.push({
+                key,
+                description,
+                amount: expense.amount,
+            });
+            key += 1;
+        } else {
+            organizedExpenses[index].amount += expense.amount;
+        }
+        total += expense.amount;
+    }
+
+    organizedExpenses.push({ key, description: "TOTAL", amount: total });
+
+    for (const i of organizedExpenses) {
+        i["percentage"] = (i.amount / total) * 100;
+    }
+
+    console.log(organizedExpenses);
+
+    function renderSummary() {
+        const rows = [];
+        for (let i = 0; i < organizedExpenses.length; i++) {
+            rows.push(
+                <ExpenseRow2
+                    key={organizedExpenses[i].key}
+                    expense={organizedExpenses[i]}
+                />
+            );
+        }
+        return rows;
     }
 
     if (isAdmin) {
@@ -330,7 +374,7 @@ const AdminView = ({
                     >
                         <div className="transaction-form">
                             <label>
-                                <div className="input-label">Description</div>
+                                <div className="input-label">Expense</div>
                                 <input
                                     type="text"
                                     ref={descriptionRef}
@@ -373,12 +417,34 @@ const AdminView = ({
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Description</th>
+                                    <th>Expense</th>
                                     <th>Amount</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>{renderExpenses()}</tbody>
+                        </table>
+                    ) : null}
+                </div>
+                <br />
+                <div className="card-container">
+                    <div className="main-header">
+                        <h1 className="main-title">
+                            {displayExpenses
+                                ? "Expense Summary"
+                                : "No Existing Expenses"}
+                        </h1>
+                    </div>
+                    {displayExpenses ? (
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Expense</th>
+                                    <th>Amount</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>{renderSummary()}</tbody>
                         </table>
                     ) : null}
                 </div>
