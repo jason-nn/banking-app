@@ -58,6 +58,7 @@ const AdminView = ({
                 />
             );
         }
+        return rows;
     }
 
     const [displayExpenses, setDisplayExpenses] = useState(false);
