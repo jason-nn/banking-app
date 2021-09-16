@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 
-export default function ExpenseRow({ expense }) {
+export default function ExpenseRow({ expense, showModal }) {
   return (
     <>
       <tr>
@@ -13,7 +13,11 @@ export default function ExpenseRow({ expense }) {
           })}
         </td>
         <td>
-          <Button className="main-button" text="Edit" />
+          <Button
+            className="main-button"
+            text="Edit"
+            onClick={() => showModal(expense)}
+          />
         </td>
       </tr>
     </>

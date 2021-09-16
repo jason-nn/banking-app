@@ -12,6 +12,8 @@ const AdminView = ({
   isAdmin,
   addExpense,
   allExpenses,
+  editExpense,
+  deleteExpense,
 }) => {
   const nonAdminUsers = users.filter((user) => !user.isAdmin);
 
@@ -44,7 +46,13 @@ const AdminView = ({
   function renderExpenses() {
     const rows = [];
     for (let i = 0; i < expenses.length; i++) {
-      rows.push(<ExpenseRow key={expenses[i].key} expense={expenses[i]} />);
+      rows.push(
+        <ExpenseRow
+          key={expenses[i].key}
+          expense={expenses[i]}
+          showModal={(expense) => showModal(expense)}
+        />
+      );
     }
     return rows;
   }
@@ -84,6 +92,21 @@ const AdminView = ({
       mounted = false;
     };
   }, [allExpenses]);
+
+  const [displayModal, setDisplayModal] = useState(false);
+
+  const [currentExpense, setCurrentExpense] = useState(null);
+
+  const [newDescription, setNewDescription] = useState(null);
+  const [newAmount, setNewAmount] = useState(null);
+
+  function showModal(expense) {
+    console.log(expense);
+    setCurrentExpense(expense);
+    setNewDescription(expense.description);
+    setNewAmount(expense.amount);
+    setDisplayModal(true);
+  }
 
   if (isAdmin) {
     return (
@@ -322,6 +345,65 @@ const AdminView = ({
             </table>
           ) : null}
         </div>
+
+        {displayModal ? (
+          <div>
+            <div>---</div>
+
+            <div onClick={() => setDisplayModal(false)}>x</div>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                editExpense(currentExpense, newDescription, newAmount);
+              }}
+            >
+              <div>
+                <input
+                  type="text"
+                  value={newDescription}
+                  onChange={(e) => {
+                    setNewDescription(e.target.value);
+                  }}
+                />
+              </div>
+              {/* <div>{newDescription}</div> */}
+
+              <div>
+                <input
+                  type="number"
+                  value={newAmount}
+                  step=".01"
+                  onChange={(e) => {
+                    setNewAmount(e.target.value);
+                  }}
+                />
+              </div>
+              {/* <div>{newAmount}</div> */}
+
+              <div>
+                <button>Confirm Edit</button>
+              </div>
+            </form>
+
+            <br />
+            <br />
+            <br />
+
+            <div>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  deleteExpense(currentExpense);
+                }}
+              >
+                Delete
+              </button>
+            </div>
+
+            <div>---</div>
+          </div>
+        ) : null}
       </>
     );
   }

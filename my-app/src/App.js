@@ -458,6 +458,33 @@ function App() {
     localStorage.bankUsers = JSON.stringify(userCopy);
   }
 
+  function editExpense(currentExpense, newDescription, newAmount) {
+    const currentKey = currentExpense.key;
+    const keys = allExpenses.map((expense) => expense.key);
+    const index = keys.findIndex(
+      (key) => parseInt(key) === parseInt(currentKey)
+    );
+    const allExpensesCopy = [...allExpenses];
+    allExpensesCopy[index].description = newDescription;
+    allExpensesCopy[index].amount = newAmount;
+    setAllExpenses(allExpensesCopy);
+    localStorage.allExpenses = JSON.stringify(allExpensesCopy);
+  }
+
+  function deleteExpense(currentExpense) {
+    const currentKey = currentExpense.key;
+    const keys = allExpenses.map((expense) => expense.key);
+    const index = keys.findIndex(
+      (key) => parseInt(key) === parseInt(currentKey)
+    );
+    const allExpensesCopy = [...allExpenses];
+
+    allExpensesCopy.splice(index, 1);
+
+    setAllExpenses(allExpensesCopy);
+    localStorage.allExpenses = JSON.stringify(allExpensesCopy);
+  }
+
   return (
     <div className="body">
       {/* If the user info is not blank, show dashboard */}
@@ -487,6 +514,16 @@ function App() {
                       addExpense(account, expense, amount)
                     }
                     allExpenses={allExpenses}
+                    deleteExpense={(currentExpense) => {
+                      deleteExpense(currentExpense);
+                    }}
+                    editExpense={(
+                      currentExpense,
+                      newDescription,
+                      newAmount
+                    ) => {
+                      editExpense(currentExpense, newDescription, newAmount);
+                    }}
                   />
                 )}
               />
