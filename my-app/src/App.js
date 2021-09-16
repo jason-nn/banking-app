@@ -367,6 +367,7 @@ function App() {
         );
         userCopy[accountIndex].balance -= amount;
         setUserList(userCopy);
+        localStorage.bankUsers = JSON.stringify(userCopy);
     }
 
     const [allExpenses, setAllExpenses] = useState(
