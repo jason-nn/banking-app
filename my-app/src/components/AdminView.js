@@ -6,16 +6,14 @@ import UserInfoCard from "./UserInfoCard";
 import ExpenseRow from "./ExpenseRow";
 
 const AdminView = ({
-
-  currentUser,
-  users,
-  addUser,
-  isAdmin,
-  addExpense,
-  allExpenses,
-  editExpense,
-  deleteExpense,
-
+    currentUser,
+    users,
+    addUser,
+    isAdmin,
+    addExpense,
+    allExpenses,
+    editExpense,
+    deleteExpense,
 }) => {
     const nonAdminUsers = users.filter((user) => !user.isAdmin);
 
@@ -49,17 +47,17 @@ const AdminView = ({
             parseInt(expense.account) === parseInt(currentUser.accountNo)
     );
 
-
-  function renderExpenses() {
-    const rows = [];
-    for (let i = 0; i < expenses.length; i++) {
-      rows.push(
-        <ExpenseRow
-          key={expenses[i].key}
-          expense={expenses[i]}
-          showModal={(expense) => showModal(expense)}
-        />
-      );
+    function renderExpenses() {
+        const rows = [];
+        for (let i = 0; i < expenses.length; i++) {
+            rows.push(
+                <ExpenseRow
+                    key={expenses[i].key}
+                    expense={expenses[i]}
+                    showModal={(expense) => showModal(expense)}
+                />
+            );
+        }
     }
 
     const [displayExpenses, setDisplayExpenses] = useState(false);
@@ -99,43 +97,46 @@ const AdminView = ({
         };
     }, [allExpenses]);
 
+    const [displayModal, setDisplayModal] = useState(false);
 
-  const [displayModal, setDisplayModal] = useState(false);
+    const [currentExpense, setCurrentExpense] = useState(null);
 
-  const [currentExpense, setCurrentExpense] = useState(null);
+    const [newDescription, setNewDescription] = useState(null);
+    const [newAmount, setNewAmount] = useState(null);
 
-  const [newDescription, setNewDescription] = useState(null);
-  const [newAmount, setNewAmount] = useState(null);
+    function showModal(expense) {
+        console.log(expense);
+        setCurrentExpense(expense);
+        setNewDescription(expense.description);
+        setNewAmount(expense.amount);
+        setDisplayModal(true);
+    }
 
-  function showModal(expense) {
-    console.log(expense);
-    setCurrentExpense(expense);
-    setNewDescription(expense.description);
-    setNewAmount(expense.amount);
-    setDisplayModal(true);
-  }
-
-  if (isAdmin) {
-    return (
-      <>
-        <h3 className="greeting-text">
-          Welcome, <p className="greeting-name">{currentUser.firstName}</p>
-        </h3>
-        <div className="admin-dashboard">
-          <div className="card-container">
-            <div className="main-header">
-              <h1 className="main-title">Add an account</h1>
-            </div>
-            <form
-              className="account-form"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const firstName = firstNameRef.current.value.toUpperCase();
-                const lastName = lastNameRef.current.value.toUpperCase();
-                const username = usernameRef.current.value;
-                const password = passwordRef.current.value;
-                const balance = parseFloat(balanceRef.current.value);
-
+    if (isAdmin) {
+        return (
+            <>
+                <h3 className="greeting-text">
+                    Welcome,{" "}
+                    <p className="greeting-name">{currentUser.firstName}</p>
+                </h3>
+                <div className="admin-dashboard">
+                    <div className="card-container">
+                        <div className="main-header">
+                            <h1 className="main-title">Add an account</h1>
+                        </div>
+                        <form
+                            className="account-form"
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                const firstName =
+                                    firstNameRef.current.value.toUpperCase();
+                                const lastName =
+                                    lastNameRef.current.value.toUpperCase();
+                                const username = usernameRef.current.value;
+                                const password = passwordRef.current.value;
+                                const balance = parseFloat(
+                                    balanceRef.current.value
+                                );
 
                                 const firstNames = users.map(
                                     (user) => user.firstName
@@ -359,90 +360,93 @@ const AdminView = ({
                 <br />
                 <br />
 
+                <div className="card-container">
+                    <div className="main-header">
+                        <h1 className="main-title">
+                            {displayExpenses
+                                ? "All Expenses"
+                                : "No Existing Expenses"}
+                        </h1>
+                    </div>
+                    {displayExpenses ? (
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>{renderExpenses()}</tbody>
+                        </table>
+                    ) : null}
+                </div>
 
-        <div className="card-container">
-          <div className="main-header">
-            <h1 className="main-title">
-              {displayExpenses ? "All Expenses" : "No Existing Expenses"}
-            </h1>
-          </div>
-          {displayExpenses ? (
-            <table>
-              <thead>
-                <tr>
-                  <th>Description</th>
-                  <th>Amount</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>{renderExpenses()}</tbody>
-            </table>
-          ) : null}
-        </div>
+                {displayModal ? (
+                    <div>
+                        <div>---</div>
 
-        {displayModal ? (
-          <div>
-            <div>---</div>
+                        <div onClick={() => setDisplayModal(false)}>x</div>
 
-            <div onClick={() => setDisplayModal(false)}>x</div>
+                        <form
+                            onSubmit={(e) => {
+                                e.preventDefault();
+                                editExpense(
+                                    currentExpense,
+                                    newDescription,
+                                    newAmount
+                                );
+                            }}
+                        >
+                            <div>
+                                <input
+                                    type="text"
+                                    value={newDescription}
+                                    onChange={(e) => {
+                                        setNewDescription(e.target.value);
+                                    }}
+                                />
+                            </div>
+                            {/* <div>{newDescription}</div> */}
 
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                editExpense(currentExpense, newDescription, newAmount);
-              }}
-            >
-              <div>
-                <input
-                  type="text"
-                  value={newDescription}
-                  onChange={(e) => {
-                    setNewDescription(e.target.value);
-                  }}
-                />
-              </div>
-              {/* <div>{newDescription}</div> */}
+                            <div>
+                                <input
+                                    type="number"
+                                    value={newAmount}
+                                    step=".01"
+                                    onChange={(e) => {
+                                        setNewAmount(e.target.value);
+                                    }}
+                                />
+                            </div>
+                            {/* <div>{newAmount}</div> */}
 
-              <div>
-                <input
-                  type="number"
-                  value={newAmount}
-                  step=".01"
-                  onChange={(e) => {
-                    setNewAmount(e.target.value);
-                  }}
-                />
-              </div>
-              {/* <div>{newAmount}</div> */}
+                            <div>
+                                <button>Confirm Edit</button>
+                            </div>
+                        </form>
 
-              <div>
-                <button>Confirm Edit</button>
-              </div>
-            </form>
+                        <br />
+                        <br />
+                        <br />
 
-            <br />
-            <br />
-            <br />
+                        <div>
+                            <button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    deleteExpense(currentExpense);
+                                }}
+                            >
+                                Delete
+                            </button>
+                        </div>
 
-            <div>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  deleteExpense(currentExpense);
-                }}
-              >
-                Delete
-              </button>
-            </div>
-
-            <div>---</div>
-          </div>
-        ) : null}
-      </>
-    );
-  }
-
-            
+                        <div>---</div>
+                    </div>
+                ) : null}
+            </>
+        );
+    }
 };
 
 export default AdminView;

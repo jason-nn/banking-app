@@ -14,11 +14,9 @@ export default function ExpenseRow({ expense, showModal }) {
                 </td>
                 <td>
                     <Button
-
-                        className='edit-expense-button material-icons'
-                        text='edit'
+                        className="edit-expense-button material-icons"
+                        text="edit"
                         onClick={() => showModal(expense)}
-
                     />
                 </td>
             </tr>
