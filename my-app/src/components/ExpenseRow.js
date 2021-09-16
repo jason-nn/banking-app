@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 
-export default function ExpenseRow({ expense }) {
+export default function ExpenseRow({ expense, showModal }) {
     return (
         <>
             <tr>
@@ -14,8 +14,11 @@ export default function ExpenseRow({ expense }) {
                 </td>
                 <td>
                     <Button
-                        className="edit-expense-button material-icons"
-                        text="logout"
+
+                        className='edit-expense-button material-icons'
+                        text='edit'
+                        onClick={() => showModal(expense)}
+
                     />
                 </td>
             </tr>
