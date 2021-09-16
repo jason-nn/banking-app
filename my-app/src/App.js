@@ -448,13 +448,16 @@ function App() {
         JSON.parse(localStorage.transactionHistory)
     );
 
-    function editUser(username, newUsername, newPassword) {
+    function editUser(accountNo, firstName, lastName, username, password) {
         const userCopy = [...users];
-        const usernames = userCopy.map((user) => user.username);
-        const usernameIndex = usernames.findIndex((i) => i === username);
+        const accountNos = userCopy.map((user) => user.accountNo);
+        const index = accountNos.findIndex((i) => i === accountNo);
 
-        userCopy[usernameIndex].username = newUsername;
-        userCopy[usernameIndex].password = newPassword;
+        userCopy[index].firstName = firstName;
+        userCopy[index].lastName = lastName;
+        userCopy[index].username = username;
+        userCopy[index].password = password;
+
         setUserList(userCopy);
         localStorage.bankUsers = JSON.stringify(userCopy);
     }
@@ -599,14 +602,18 @@ function App() {
                                         LogoutFunction={Logout}
                                         users={users}
                                         editUser={(
+                                            accountNo,
+                                            firstName,
+                                            lastName,
                                             username,
-                                            newUsername,
-                                            newPassword
+                                            password
                                         ) =>
                                             editUser(
+                                                accountNo,
+                                                firstName,
+                                                lastName,
                                                 username,
-                                                newUsername,
-                                                newPassword
+                                                password
                                             )
                                         }
                                         isAdmin={isAdmin}
