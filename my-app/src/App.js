@@ -353,7 +353,7 @@ function App() {
         allExpensesCopy.push({
             account: account,
             description: description,
-            amount: parseInt(amount),
+            amount: parseFloat(amount),
             key: generateExpenseKey(),
         });
 
@@ -469,10 +469,30 @@ function App() {
             (key) => parseInt(key) === parseInt(currentKey)
         );
         const allExpensesCopy = [...allExpenses];
+
+        const userCopy = [...users];
+        const account = currentExpense.account;
+        const accountNos = userCopy.map((user) => user.accountNo);
+        const userIndex = accountNos.findIndex(
+            (accountNo) => parseInt(accountNo) === parseInt(account)
+        );
+
+        if (parseFloat(currentExpense.amount) < parseFloat(newAmount)) {
+            userCopy[userIndex].balance -=
+                parseFloat(newAmount) - parseFloat(currentExpense.amount);
+        }
+
+        if (parseFloat(currentExpense.amount) > parseFloat(newAmount)) {
+            userCopy[userIndex].balance +=
+                parseFloat(currentExpense.amount) - parseFloat(newAmount);
+        }
+
         allExpensesCopy[index].description = newDescription;
-        allExpensesCopy[index].amount = newAmount;
+        allExpensesCopy[index].amount = parseFloat(newAmount);
         setAllExpenses(allExpensesCopy);
         localStorage.allExpenses = JSON.stringify(allExpensesCopy);
+        setUserList(userCopy);
+        localStorage.bankUsers = JSON.stringify(userCopy);
     }
 
     function deleteExpense(currentExpense) {
@@ -485,8 +505,18 @@ function App() {
 
         allExpensesCopy.splice(index, 1);
 
+        const userCopy = [...users];
+        const account = currentExpense.account;
+        const accountNos = userCopy.map((user) => user.accountNo);
+        const userIndex = accountNos.findIndex(
+            (accountNo) => parseInt(accountNo) === parseInt(account)
+        );
+        userCopy[userIndex].balance += currentExpense.amount;
+
         setAllExpenses(allExpensesCopy);
         localStorage.allExpenses = JSON.stringify(allExpensesCopy);
+        setUserList(userCopy);
+        localStorage.bankUsers = JSON.stringify(userCopy);
     }
 
     return (
