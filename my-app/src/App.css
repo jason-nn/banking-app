@@ -105,6 +105,32 @@
     position: relative;
 }
 
+.summary-card-container {
+    padding: 20px;
+    width: 100%;
+    background-color: var(--darker-shade);
+    border-radius: 2vmin;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    display: flex;
+    overflow: scroll;
+    flex-wrap: wrap;
+    transform: translateY(5%);
+    opacity: 0;
+    animation: card 0.2s ease forwards;
+    position: relative;
+}
+
+.summary-container {
+    width: 100%;
+}
+
+.chart-container {
+    padding-top: 15px;
+    margin-top: 15px;
+    width: 100%;
+}
+
 .user-account-info {
     width: 100%;
 }
@@ -606,10 +632,12 @@ hr {
         flex-direction: row;
         justify-content: flex-start;
     }
-    .user-account-info {
+    .user-account-info,
+    .summary-container {
         width: 50%;
     }
-    .user-account-balance {
+    .user-account-balance,
+    .chart-container {
         width: calc(50% - 30px);
         padding-top: unset;
         margin-top: unset;
