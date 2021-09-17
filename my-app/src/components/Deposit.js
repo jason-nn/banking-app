@@ -1,8 +1,8 @@
-import React, { useRef, useState, useEffect } from "react";
-import SelectOptions from "./SelectOptions";
-import Button from "./Button";
-import UserInfoCard from "./UserInfoCard";
-import TransactionRow3 from "./TransactionRow3";
+import React, { useRef, useState, useEffect } from 'react';
+import SelectOptions from './SelectOptions';
+import Button from './Button';
+import UserInfoCard from './UserInfoCard';
+import TransactionRow3 from './TransactionRow3';
 
 const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
     const nonAdminUsers = users.filter((user) => !user.isAdmin);
@@ -46,7 +46,7 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
 
     const deposits = transactions.filter(
         (transaction) =>
-            transaction.type === "deposit" &&
+            transaction.type === 'deposit' &&
             transaction.accountNo === currentUser.accountNo
     );
 
@@ -68,7 +68,7 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
     function checkTransactions() {
         const deposits = transactions.filter(
             (transaction) =>
-                transaction.type === "deposit" &&
+                transaction.type === 'deposit' &&
                 transaction.accountNo === currentUser.accountNo
         );
 
@@ -104,9 +104,9 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
     if (isAdmin) {
         return (
             <>
-                <div className="card-container">
-                    <div className="main-header">
-                        <h1 className="main-title">Deposit</h1>
+                <div className='card-container'>
+                    <div className='main-header'>
+                        <h1 className='main-title'>Deposit</h1>
                     </div>
 
                     <form
@@ -117,11 +117,11 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
 
                             if (amount <= 0) {
                                 setMessage(
-                                    "Please enter an amount greater than 0."
+                                    'Please enter an amount greater than 0.'
                                 );
                                 setTimeout(() => setMessage(null), 2000);
                             } else if (!amount) {
-                                setMessage("Please enter an amount.");
+                                setMessage('Please enter an amount.');
                                 setTimeout(() => setMessage(null), 2000);
                             } else {
                                 setTimeout(() => {
@@ -129,10 +129,10 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
                                 }, 1500);
                                 setLoadingMessage(
                                     `Depositing ${amount.toLocaleString(
-                                        "en-US",
+                                        'en-US',
                                         {
-                                            style: "currency",
-                                            currency: "PHP",
+                                            style: 'currency',
+                                            currency: 'PHP',
                                         }
                                     )}...`
                                 );
@@ -140,11 +140,11 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
                             }
                         }}
                     >
-                        <div className="transaction-form">
+                        <div className='transaction-form'>
                             <label>
-                                <div className="input-label">Account</div>
+                                <div className='input-label'>Account</div>
                                 <select
-                                    className="input-field"
+                                    className='input-field'
                                     ref={accountRef}
                                     onChange={(e) => {
                                         handleChange(e.target.value);
@@ -152,37 +152,37 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
                                 >
                                     {renderSelectOptions()}
                                 </select>
-                                <div className="current-balance">
-                                    Current Balance:{" "}
-                                    {displayBalance.toLocaleString("en-US", {
-                                        style: "currency",
-                                        currency: "PHP",
+                                <div className='current-balance'>
+                                    Current Balance:{' '}
+                                    {displayBalance.toLocaleString('en-US', {
+                                        style: 'currency',
+                                        currency: 'PHP',
                                     })}
                                 </div>
                             </label>
 
                             <label>
-                                <div className="input-label">Amount (₱)</div>
+                                <div className='input-label'>Amount (₱)</div>
 
                                 <input
-                                    className="input-field"
-                                    type="number"
+                                    className='input-field'
+                                    type='number'
                                     ref={amountRef}
-                                    step=".01"
+                                    step='.01'
                                 />
                             </label>
                         </div>
 
-                        <Button className="main-button" text="Deposit" />
+                        <Button className='main-button' text='Deposit' />
                     </form>
                 </div>
                 {message !== null ? (
-                    <div className="error-box">{message}</div>
+                    <div className='error-box'>{message}</div>
                 ) : (
-                    ""
+                    ''
                 )}
                 {loadingMessage !== null ? (
-                    <div className="loading-box">{loadingMessage}</div>
+                    <div className='loading-box'>{loadingMessage}</div>
                 ) : null}
             </>
         );
@@ -194,9 +194,9 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
                 <br />
                 <br />
 
-                <div className="card-container">
-                    <div className="main-header">
-                        <h1 className="main-title">Deposit</h1>
+                <div className='card-container'>
+                    <div className='main-header'>
+                        <h1 className='main-title'>Deposit</h1>
                     </div>
 
                     <form
@@ -207,11 +207,11 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
 
                             if (amount <= 0) {
                                 setMessage(
-                                    "Please enter an amount greater than 0."
+                                    'Please enter an amount greater than 0.'
                                 );
                                 setTimeout(() => setMessage(null), 2000);
                             } else if (!amount) {
-                                setMessage("Please enter an amount.");
+                                setMessage('Please enter an amount.');
                                 setTimeout(() => setMessage(null), 2000);
                             } else {
                                 setTimeout(() => {
@@ -219,10 +219,10 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
                                 }, 1500);
                                 setLoadingMessage(
                                     `Depositing ${amount.toLocaleString(
-                                        "en-US",
+                                        'en-US',
                                         {
-                                            style: "currency",
-                                            currency: "PHP",
+                                            style: 'currency',
+                                            currency: 'PHP',
                                         }
                                     )}...`
                                 );
@@ -230,40 +230,40 @@ const Deposit = ({ currentUser, users, deposit, isAdmin, transactions }) => {
                             }
                         }}
                     >
-                        <div className="user-transaction-form">
+                        <div className='user-transaction-form'>
                             <label>
-                                <div className="input-label">Amount (₱)</div>
+                                <div className='input-label'>Amount (₱)</div>
                                 <input
-                                    className="input-field"
-                                    type="number"
+                                    className='input-field'
+                                    type='number'
                                     ref={amountRef}
-                                    step=".01"
+                                    step='.01'
                                 />
                             </label>
                         </div>
 
-                        <Button className="main-button" text="Deposit" />
+                        <Button className='main-button' text='Deposit' />
                     </form>
                 </div>
 
                 {message !== null ? (
-                    <div className="error-box">{message}</div>
+                    <div className='error-box'>{message}</div>
                 ) : (
-                    ""
+                    ''
                 )}
                 {loadingMessage !== null ? (
-                    <div className="loading-box">{loadingMessage}</div>
+                    <div className='loading-box'>{loadingMessage}</div>
                 ) : null}
 
                 <br />
                 <br />
 
-                <div className="card-container">
-                    <div className="main-header">
-                        <h1 className="main-title">
+                <div className='card-container'>
+                    <div className='main-header'>
+                        <h1 className='main-title'>
                             {displayHistory
-                                ? "Deposit History"
-                                : "No Existing Deposits"}
+                                ? 'Deposit History'
+                                : 'No Existing Deposits'}
                         </h1>
                     </div>
                     {displayHistory ? (

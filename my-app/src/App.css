@@ -34,6 +34,7 @@
 .main-content {
     padding: 0vmin 0vmin 20vmin 0vmin;
     width: 100%;
+    height: auto;
     overflow: scroll;
     padding: 50px 25px 100px 25px;
     position: relative;
@@ -47,6 +48,7 @@
     position: sticky;
     top: 0;
     left: 0;
+    margin-bottom: 10px;
 }
 
 .main-title {
@@ -109,7 +111,9 @@
 
 .user-account-balance {
     width: 100%;
-    margin-top: 30px;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid rgba(233, 242, 248, 0.1);
 }
 
 @keyframes card {
@@ -125,8 +129,9 @@
 
 .error-box {
     color: white;
-    position: absolute;
+    position: fixed;
     top: 0;
+    z-index: 100;
     left: 50%;
     font-weight: bold;
     border-radius: 15px;
@@ -144,8 +149,9 @@
 
 .loading-box {
     color: var(--dark-shade);
-    position: absolute;
+    position: fixed;
     top: 0;
+    z-index: 100;
     left: 50%;
     font-weight: bold;
     border-radius: 15px;
@@ -302,6 +308,42 @@ input[type='number'] {
     transform: scale(0.9);
 }
 
+.secondary-button {
+    border: none;
+    background: none;
+    background-color: none;
+    display: flex;
+    border-radius: 1vmin;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-weight: bolder;
+    padding: 10px 1em 10px 1em;
+    align-self: flex-start;
+    transition: 0.1s ease;
+    cursor: pointer;
+    color: var(--light-accent);
+    box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1),
+        inset 0 0vmin 0vmin 0.05em var(--light-accent);
+}
+
+.secondary-button:hover {
+    background: var(--darker-light-accent);
+    box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1),
+        inset 0 0vmin 0vmin 0.05em var(--darker-light-accent);
+    color: var(--darkest-shade);
+}
+
+.secondary-button:active {
+    background: var(--darkest-light-accent);
+    box-shadow: 0 0.5vmin 1vmin 0vmin rgba(0, 0, 0, 0.1),
+        inset 0 0vmin 0vmin 0.05em var(--darkest-light-accent);
+    color: var(--darkest-shade);
+    transform: scale(0.9);
+}
+
 table {
     width: 100%;
     border-spacing: 0 0px;
@@ -446,9 +488,12 @@ hr {
 .close-button {
     width: auto;
     display: flex;
+    background: none;
+    border: none;
     flex-direction: row;
     justify-content: flex-start;
     padding: 10px;
+    margin-right: 10px;
     border-radius: 1vmin;
     align-items: flex-end;
     text-decoration: none;
@@ -470,8 +515,8 @@ hr {
 
 .faq-header {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 5px;
 }
 
@@ -492,6 +537,59 @@ hr {
     column-gap: 10px;
 }
 
+.expense-summary:last-child {
+    row-gap: 10px;
+}
+
+.expense-summary:last-child td {
+    background: #28242f;
+    color: var(--lighter-color);
+}
+
+.expense-summary:nth-last-child(2) td {
+    border: none;
+}
+
+.expense-summary:last-child td:first-child {
+    border-radius: 1vmin 0 0 1vmin;
+}
+
+.expense-summary:last-child td:last-child {
+    border-radius: 0vmin 1vmin 1vmin 0vmin;
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: #19161d79;
+    backdrop-filter: blur(10px);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    padding: 20px;
+    width: 90%;
+    background-color: var(--darker-shade);
+    border-radius: 2vmin;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: scroll;
+    flex-wrap: wrap;
+    transform: translateY(5%);
+    opacity: 0;
+    animation: card 0.2s ease forwards;
+    position: relative;
+}
+
 @media screen and (min-width: 900px) {
     .form-input-container {
         grid-template-columns: repeat(3, 1fr);
@@ -499,6 +597,22 @@ hr {
     .transaction-form,
     .user-info {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .user-card-container {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .user-account-info {
+        width: 30%;
+    }
+    .user-account-balance {
+        width: 30%;
+        padding-top: unset;
+        margin-top: unset;
+        padding-left: 15px;
+        margin-left: 15px;
+        border-left: 1px solid rgba(233, 242, 248, 0.1);
+        border-top: none;
     }
     .error-box {
         width: auto;
@@ -508,5 +622,8 @@ hr {
     }
     .logout-button {
         margin-top: 10px;
+    }
+    .modal-box {
+        width: 50%;
     }
 }
