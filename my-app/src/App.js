@@ -505,8 +505,18 @@ function App() {
 
         allExpensesCopy.splice(index, 1);
 
+        const userCopy = [...users];
+        const account = currentExpense.account;
+        const accountNos = userCopy.map((user) => user.accountNo);
+        const userIndex = accountNos.findIndex(
+            (accountNo) => parseInt(accountNo) === parseInt(account)
+        );
+        userCopy[userIndex].balance += currentExpense.amount;
+
         setAllExpenses(allExpensesCopy);
         localStorage.allExpenses = JSON.stringify(allExpensesCopy);
+        setUserList(userCopy);
+        localStorage.bankUsers = JSON.stringify(userCopy);
     }
 
     return (
