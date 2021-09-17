@@ -5,6 +5,7 @@ import UserRow from "./UserRow";
 import UserInfoCard from "./UserInfoCard";
 import ExpenseRow from "./ExpenseRow";
 import ExpenseRow2 from "./ExpenseRow2";
+import Chart from "react-google-charts";
 
 const AdminView = ({
     currentUser,
@@ -142,7 +143,17 @@ const AdminView = ({
         i["percentage"] = (i.amount / total) * 100;
     }
 
-    console.log(organizedExpenses);
+    const chartExpenses = [...organizedExpenses];
+    chartExpenses.pop();
+
+    const chartData = [["Expense", "Amount Spent"]];
+
+    for (const i of chartExpenses) {
+        const temp = [];
+        temp.push(i.description);
+        temp.push(i.amount);
+        chartData.push(temp);
+    }
 
     function renderSummary() {
         const rows = [];
@@ -437,12 +448,28 @@ const AdminView = ({
                             <thead>
                                 <tr>
                                     <th>Expense</th>
-                                    <th>Amount</th>
+                                    <th>Total Amount</th>
                                     <th>Percentage</th>
                                 </tr>
                             </thead>
                             <tbody>{renderSummary()}</tbody>
                         </table>
+                        <br />
+                        <br />
+                        <Chart
+                            width={"100%"}
+                            height={"300px"}
+                            chartType="PieChart"
+                            loader={<div>Loading Chart</div>}
+                            data={chartData}
+                            options={{
+                                title: "My Expenses",
+                                is3D: true,
+                            }}
+                            rootProps={{ "data-testid": "2" }}
+                        />
+                        <br />
+                        <br />
                     </div>
                 ) : null}
 
