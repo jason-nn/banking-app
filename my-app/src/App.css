@@ -603,10 +603,10 @@ hr {
         justify-content: flex-start;
     }
     .user-account-info {
-        width: 30%;
+        width: 50%;
     }
     .user-account-balance {
-        width: 30%;
+        width: calc(50% - 30px);
         padding-top: unset;
         margin-top: unset;
         padding-left: 15px;
