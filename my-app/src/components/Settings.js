@@ -1,8 +1,8 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import SettingsSelect from './SettingsSelect';
-import { useState, useRef } from 'react';
-import Button from './Button';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import SettingsSelect from "./SettingsSelect";
+import { useState, useRef } from "react";
+import Button from "./Button";
 
 const Settings = ({
     LogoutFunction,
@@ -208,10 +208,10 @@ const Settings = ({
 
     return (
         <>
-            <div className='card-container'>
-                <div className='main-header'>
-                    <h1 className='main-title'>
-                        {isAdmin ? 'Admin' : 'User'} Account Details
+            <div className="card-container">
+                <div className="main-header">
+                    <h1 className="main-title">
+                        {isAdmin ? "Admin" : "User"} Account Details
                     </h1>
                 </div>
 
@@ -232,7 +232,7 @@ const Settings = ({
                                     clientSidePassword.length < 1 ||
                                     clientSideConfirmPassword.length < 1))
                         ) {
-                            setError('Please fill out all fields.');
+                            setError("Please fill out all fields.");
                             setTimeout(() => setError(null), 2000);
                         } else if (
                             clientSidePassword === clientSideConfirmPassword
@@ -246,19 +246,19 @@ const Settings = ({
                                     clientSidePassword
                                 );
                             }, 2000);
-                            setLoadingMessage('Changing details...');
+                            setLoadingMessage("Changing details...");
                         } else {
-                            setError('Passwords do not match. Try again.');
+                            setError("Passwords do not match. Try again.");
                             setTimeout(() => setError(null), 2000);
                         }
                     }}
                 >
-                    <div className='form-input-container'>
+                    <div className="form-input-container">
                         <label>
-                            <div className='input-label'>First Name</div>
+                            <div className="input-label">First Name</div>
                             <input
-                                className='input-field'
-                                type='text'
+                                className="input-field"
+                                type="text"
                                 value={clientSideFirstName}
                                 onChange={(e) => {
                                     setClientSideFirstName(e.target.value);
@@ -266,10 +266,10 @@ const Settings = ({
                             />
                         </label>
                         <label>
-                            <div className='input-label'>Last Name</div>
+                            <div className="input-label">Last Name</div>
                             <input
-                                className='input-field'
-                                type='text'
+                                className="input-field"
+                                type="text"
                                 value={clientSideLastName}
                                 onChange={(e) => {
                                     setClientSideLastName(e.target.value);
@@ -277,10 +277,10 @@ const Settings = ({
                             />
                         </label>
                         <label>
-                            <div className='input-label'>Username</div>
+                            <div className="input-label">Username</div>
                             <input
-                                className='input-field'
-                                type='text'
+                                className="input-field"
+                                type="text"
                                 value={clientSideUsername}
                                 onChange={(e) => {
                                     setClientSideUsername(e.target.value);
@@ -288,10 +288,10 @@ const Settings = ({
                             />
                         </label>
                         <label>
-                            <div className='input-label'>Password</div>
+                            <div className="input-label">Password</div>
                             <input
-                                className='input-field'
-                                type='password'
+                                className="input-field"
+                                type="password"
                                 value={clientSidePassword}
                                 onChange={(e) => {
                                     setClientSidePassword(e.target.value);
@@ -299,10 +299,10 @@ const Settings = ({
                             />
                         </label>
                         <label>
-                            <div className='input-label'>Confirm Password</div>
+                            <div className="input-label">Confirm Password</div>
                             <input
-                                className='input-field'
-                                type='password'
+                                className="input-field"
+                                type="password"
                                 value={clientSideConfirmPassword}
                                 onChange={(e) => {
                                     setClientSideConfirmPassword(
@@ -312,16 +312,17 @@ const Settings = ({
                             />
                         </label>
                     </div>
-                    <Button className='main-button' text='Edit' />
+                    <Button className="main-button" text="Edit" />
                 </form>
             </div>
 
             {isAdmin ? (
                 <>
                     <br />
-                    <div className='card-container'>
-                        <div className='main-header'>
-                            <h1 className='main-title'>Edit User Accounts</h1>
+                    <br />
+                    <div className="card-container">
+                        <div className="main-header">
+                            <h1 className="main-title">Edit User Accounts</h1>
                         </div>
 
                         <form
@@ -335,7 +336,7 @@ const Settings = ({
                                     adminSidePassword.length < 1 ||
                                     adminSideConfirmPassword.length < 1
                                 ) {
-                                    setError('Please fill out all fields.');
+                                    setError("Please fill out all fields.");
                                     setTimeout(() => setError(null), 2000);
                                 } else if (
                                     adminSidePassword ===
@@ -350,22 +351,22 @@ const Settings = ({
                                             adminSidePassword
                                         );
                                     }, 2000);
-                                    setLoadingMessage('Changing details...');
+                                    setLoadingMessage("Changing details...");
                                 } else {
                                     setError(
-                                        'Passwords do not match. Try again.'
+                                        "Passwords do not match. Try again."
                                     );
                                     setTimeout(() => setError(null), 2000);
                                 }
                             }}
                         >
-                            <div className='transaction-form'>
+                            <div className="transaction-form">
                                 <label>
-                                    <div className='input-label'>
+                                    <div className="input-label">
                                         Select a user
                                     </div>
                                     <select
-                                        className='input-field'
+                                        className="input-field"
                                         onChange={(e) => {
                                             handleChange(e.target.value);
                                         }}
@@ -375,12 +376,12 @@ const Settings = ({
                                 </label>
 
                                 <label>
-                                    <div className='input-label'>
+                                    <div className="input-label">
                                         First Name
                                     </div>
                                     <input
-                                        className='input-field'
-                                        type='text'
+                                        className="input-field"
+                                        type="text"
                                         value={adminSideFirstName}
                                         onChange={(e) => {
                                             setAdminSideFirstName(
@@ -390,10 +391,10 @@ const Settings = ({
                                     />
                                 </label>
                                 <label>
-                                    <div className='input-label'>Last Name</div>
+                                    <div className="input-label">Last Name</div>
                                     <input
-                                        className='input-field'
-                                        type='text'
+                                        className="input-field"
+                                        type="text"
                                         value={adminSideLastName}
                                         onChange={(e) => {
                                             setAdminSideLastName(
@@ -403,10 +404,10 @@ const Settings = ({
                                     />
                                 </label>
                                 <label>
-                                    <div className='input-label'>Username</div>
+                                    <div className="input-label">Username</div>
                                     <input
-                                        className='input-field'
-                                        type='text'
+                                        className="input-field"
+                                        type="text"
                                         value={adminSideUsername}
                                         onChange={(e) => {
                                             setAdminSideUsername(
@@ -416,10 +417,10 @@ const Settings = ({
                                     />
                                 </label>
                                 <label>
-                                    <div className='input-label'>Password</div>
+                                    <div className="input-label">Password</div>
                                     <input
-                                        className='input-field'
-                                        type='password'
+                                        className="input-field"
+                                        type="password"
                                         value={adminSidePassword}
                                         onChange={(e) => {
                                             setAdminSidePassword(
@@ -429,12 +430,12 @@ const Settings = ({
                                     />
                                 </label>
                                 <label>
-                                    <div className='input-label'>
+                                    <div className="input-label">
                                         Confirm Password
                                     </div>
                                     <input
-                                        className='input-field'
-                                        type='password'
+                                        className="input-field"
+                                        type="password"
                                         value={adminSideConfirmPassword}
                                         onChange={(e) => {
                                             setAdminSideConfirmPassword(
@@ -444,36 +445,36 @@ const Settings = ({
                                     />
                                 </label>
                             </div>
-                            <Button className='main-button' text='Edit' />
+                            <Button className="main-button" text="Edit" />
                         </form>
                     </div>
                 </>
             ) : null}
 
-            {error !== null ? <div className='error-box'>{error}</div> : null}
+            {error !== null ? <div className="error-box">{error}</div> : null}
             {loadingMessage !== null ? (
-                <div className='loading-box'>{loadingMessage}</div>
+                <div className="loading-box">{loadingMessage}</div>
             ) : null}
             <br />
             <hr />
 
-            <div className='option-container'>
-                <NavLink to='/help' exact className='logout-button'>
-                    <div className='logout-button-content'>
-                        <span className='material-icons logout-icon'>help</span>
+            <div className="option-container">
+                <NavLink to="/help" exact className="logout-button">
+                    <div className="logout-button-content">
+                        <span className="material-icons logout-icon">help</span>
                         <span>Help</span>
                     </div>
                 </NavLink>
                 <NavLink
-                    to='/'
+                    to="/"
                     exact
-                    className='logout-button'
+                    className="logout-button"
                     onClick={() => {
                         LogoutFunction();
                     }}
                 >
-                    <div className='logout-button-content'>
-                        <span className='material-icons logout-icon'>
+                    <div className="logout-button-content">
+                        <span className="material-icons logout-icon">
                             logout
                         </span>
                         <span>Logout</span>

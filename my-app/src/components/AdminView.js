@@ -427,6 +427,7 @@ const AdminView = ({
                     ) : null}
                 </div>
                 <br />
+                <br />
                 {displayExpenses ? (
                     <div className="card-container">
                         <div className="main-header">
