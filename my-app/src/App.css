@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
 
 :root {
     --light-color: #e0e9ef;
@@ -20,7 +20,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Urbanist', sans-serif;
+    font-family: "Urbanist", sans-serif;
 }
 
 .body {
@@ -224,7 +224,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-input[type='number'] {
+input[type="number"] {
     -moz-appearance: textfield;
 }
 
@@ -477,7 +477,7 @@ hr {
 }
 
 .name-logo {
-    font-family: 'Quicksand', sans-serif;
+    font-family: "Quicksand", sans-serif;
     font-size: 1.2em;
     color: var(--light-color);
     margin: 0 3px;
@@ -537,13 +537,9 @@ hr {
     column-gap: 10px;
 }
 
-.expense-summary:last-child {
-    row-gap: 10px;
-}
-
 .expense-summary:last-child td {
     background: #28242f;
-    color: var(--lighter-color);
+    color: var(--light-accent);
 }
 
 .expense-summary:nth-last-child(2) td {
