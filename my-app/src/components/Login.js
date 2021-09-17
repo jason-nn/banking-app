@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
-import Button from "./Button";
-import "./Login.css";
+import React, { useState, useRef } from 'react';
+import Button from './Button';
+import './Login.css';
 // import Logo from "./bank-logo.svg";
 
 export default function Login({
@@ -41,12 +41,12 @@ export default function Login({
         const usernameIndex = usernames.findIndex((i) => i === usernameInput);
         const passwordIndex = passwords.findIndex((i) => i === passwordInput);
 
-        if (usernameInput === "") {
-            setError("Please enter a username.");
-            setTimeout(() => setError(""), 2000);
-        } else if (passwordInput === "") {
-            setError("Please enter a password.");
-            setTimeout(() => setError(""), 2000);
+        if (usernameInput === '') {
+            setError('Please enter a username.');
+            setTimeout(() => setError(''), 2000);
+        } else if (passwordInput === '') {
+            setError('Please enter a password.');
+            setTimeout(() => setError(''), 2000);
         } else if (
             usernameIndex === passwordIndex &&
             usernameIndex >= 0 &&
@@ -58,28 +58,28 @@ export default function Login({
             } else {
                 setIsAdmin(false);
             }
-            setError("");
+            setError('');
         } else if (usernameIndex === -1) {
-            setError("User does not exist.");
-            usernameInputRef.current.value = "";
-            passwordInputRef.current.value = "";
-            setTimeout(() => setError(""), 2000);
+            setError('User does not exist.');
+            usernameInputRef.current.value = '';
+            passwordInputRef.current.value = '';
+            setTimeout(() => setError(''), 2000);
         } else if (usernameIndex >= 0) {
-            setError("Incorrect password.");
-            passwordInputRef.current.value = "";
-            setTimeout(() => setError(""), 2000);
+            setError('Incorrect password.');
+            passwordInputRef.current.value = '';
+            setTimeout(() => setError(''), 2000);
         } else {
-            setError("Login failed. Please try again.");
-            usernameInputRef.current.value = "";
-            passwordInputRef.current.value = "";
-            setTimeout(() => setError(""), 2000);
+            setError('Login failed. Please try again.');
+            usernameInputRef.current.value = '';
+            passwordInputRef.current.value = '';
+            setTimeout(() => setError(''), 2000);
         }
         // LoginFunction(usernameInput, passwordInput);
     }
 
     const [register, setRegister] = useState(false);
 
-    const [signupError, setSignupError] = useState("");
+    const [signupError, setSignupError] = useState('');
 
     const signupFirstNameRef = useRef();
     const signupLastNameRef = useRef();
@@ -87,14 +87,14 @@ export default function Login({
     const signupPasswordRef = useRef();
 
     return (
-        <div className="login-component">
-            <div className="login-hero">
-                <h1 className="login-logo">banque.</h1>
-                <div className="hero-content">
-                    <h1 className="login-hero-title">
+        <div className='login-component'>
+            <div className='login-hero'>
+                <h1 className='login-logo'>banque.</h1>
+                <div className='hero-content'>
+                    <h1 className='login-hero-title'>
                         The bank you can trust.
                     </h1>
-                    <p className="login-hero-text">
+                    <p className='login-hero-text'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Nunc a nisl molestie, pretium eros sit amet,
                         sollicitudin risus. Etiam finibus non libero et
@@ -104,72 +104,72 @@ export default function Login({
                 </div>
             </div>
             {!register ? (
-                <div className="form-container">
-                    <h1 className="login-logo-mobile">banque.</h1>
-                    <h2 className="login-message">Log in to your account</h2>
+                <div className='form-container'>
+                    <h1 className='login-logo-mobile'>banque.</h1>
+                    <h2 className='login-message'>Log in to your account</h2>
                     <form
-                        className="login-form"
+                        className='login-form'
                         onSubmit={(e) => submitDetails(e)}
                     >
-                        <div className="input-container">
+                        <div className='input-container'>
                             <label>
-                                <div className="login-input-label">
+                                <div className='login-input-label'>
                                     Username
                                 </div>
                                 <input
-                                    className="usernameInput input"
+                                    className='usernameInput input'
                                     ref={usernameInputRef}
-                                    type="text"
+                                    type='text'
                                 />
                             </label>
                         </div>
-                        <div className="input-container">
+                        <div className='input-container'>
                             <label>
-                                <div className="login-input-label">
+                                <div className='login-input-label'>
                                     Password
                                 </div>
                                 <input
-                                    className="passwordInput input"
+                                    className='passwordInput input'
                                     ref={passwordInputRef}
-                                    type="password"
+                                    type='password'
                                 />
                             </label>
                         </div>
-                        <div className="button-container">
+                        <div className='button-container'>
                             <Button
-                                className="loginSubmitButton login-button"
-                                text="Log In"
+                                className='loginSubmitButton login-button'
+                                text='Log In'
                             />
                             <Button
-                                className="secondary-button"
-                                text="Sign Up"
+                                className='secondary-login-button'
+                                text='Sign Up'
                                 onClick={() => {
                                     setRegister(true);
-                                    usernameInputRef.current.value = "";
-                                    passwordInputRef.current.value = "";
+                                    usernameInputRef.current.value = '';
+                                    passwordInputRef.current.value = '';
                                 }}
                             />
                         </div>
-                        {error !== "" ? (
-                            <div className="login-error">{error}</div>
+                        {error !== '' ? (
+                            <div className='login-error'>{error}</div>
                         ) : (
-                            ""
+                            ''
                         )}
-                        {successfulSignUp !== "" ? (
-                            <div className="signup-success">
+                        {successfulSignUp !== '' ? (
+                            <div className='signup-success'>
                                 {successfulSignUp}
                             </div>
                         ) : (
-                            ""
+                            ''
                         )}
                     </form>
                 </div>
             ) : (
-                <div className="form-container">
-                    <h1 className="login-logo-mobile">banque.</h1>
-                    <h2 className="login-message">Sign up for an account</h2>
+                <div className='form-container'>
+                    <h1 className='login-logo-mobile'>banque.</h1>
+                    <h2 className='login-message'>Sign up for an account</h2>
                     <form
-                        className="login-form"
+                        className='login-form'
                         onSubmit={(e) => {
                             e.preventDefault();
                             const firstName =
@@ -206,19 +206,19 @@ export default function Login({
                                 !password
                             ) {
                                 setSignupError(
-                                    "Incomplete information. Please fill in all fields."
+                                    'Incomplete information. Please fill in all fields.'
                                 );
-                                setTimeout(() => setSignupError(""), 2000);
+                                setTimeout(() => setSignupError(''), 2000);
                             } else if (usernameIndex >= 0) {
-                                setSignupError("Username has been taken.");
-                                setTimeout(() => setSignupError(""), 2000);
+                                setSignupError('Username has been taken.');
+                                setTimeout(() => setSignupError(''), 2000);
                                 signupUsernameRef.current.value = null;
                             } else if (
                                 firstNameIndex === lastNameIndex &&
                                 firstNameIndex >= 0
                             ) {
-                                setSignupError("User already exists");
-                                setTimeout(() => setSignupError(""), 2000);
+                                setSignupError('User already exists');
+                                setTimeout(() => setSignupError(''), 2000);
                                 signupFirstNameRef.current.value = null;
                                 signupLastNameRef.current.value = null;
                                 signupUsernameRef.current.value = null;
@@ -231,12 +231,12 @@ export default function Login({
                                     username,
                                     password
                                 );
-                                setSignupError("");
+                                setSignupError('');
                                 setRegister(false);
                                 setSuccessfulSignup(
-                                    "Account successfully created."
+                                    'Account successfully created.'
                                 );
-                                setTimeout(() => setSuccessfulSignup(""), 3000);
+                                setTimeout(() => setSuccessfulSignup(''), 3000);
                                 signupFirstNameRef.current.value = null;
                                 signupLastNameRef.current.value = null;
                                 signupUsernameRef.current.value = null;
@@ -244,70 +244,70 @@ export default function Login({
                             }
                         }}
                     >
-                        <div className="input-container">
+                        <div className='input-container'>
                             <label>
-                                <div className="login-input-label">
+                                <div className='login-input-label'>
                                     First Name
                                 </div>
                                 <input
-                                    className="usernameInput input"
+                                    className='usernameInput input'
                                     ref={signupFirstNameRef}
-                                    type="text"
+                                    type='text'
                                 />
                             </label>
                         </div>
-                        <div className="input-container">
+                        <div className='input-container'>
                             <label>
-                                <div className="login-input-label">
+                                <div className='login-input-label'>
                                     Last Name
                                 </div>
                                 <input
-                                    className="usernameInput input"
+                                    className='usernameInput input'
                                     ref={signupLastNameRef}
-                                    type="text"
+                                    type='text'
                                 />
                             </label>
                         </div>
-                        <div className="input-container">
+                        <div className='input-container'>
                             <label>
-                                <div className="login-input-label">
+                                <div className='login-input-label'>
                                     Username
                                 </div>
                                 <input
-                                    className="usernameInput input"
+                                    className='usernameInput input'
                                     ref={signupUsernameRef}
-                                    type="text"
+                                    type='text'
                                 />
                             </label>
                         </div>
-                        <div className="input-container">
+                        <div className='input-container'>
                             <label>
-                                <div className="login-input-label">
+                                <div className='login-input-label'>
                                     Password
                                 </div>
                                 <input
-                                    className="passwordInput input"
+                                    className='passwordInput input'
                                     ref={signupPasswordRef}
-                                    type="password"
+                                    type='password'
                                 />
                             </label>
                         </div>
-                        <div className="button-container">
+                        <div className='button-container'>
                             <Button
-                                className="loginSubmitButton login-button"
-                                text="Sign Up"
+                                className='loginSubmitButton login-button'
+                                text='Sign Up'
                             />
 
                             <Button
-                                className="secondary-button"
-                                text="Cancel"
+                                className='secondary-login-button'
+                                text='Cancel'
                                 onClick={() => setRegister(false)}
                             />
                         </div>
-                        {signupError !== "" ? (
-                            <div className="login-error">{signupError}</div>
+                        {signupError !== '' ? (
+                            <div className='login-error'>{signupError}</div>
                         ) : (
-                            ""
+                            ''
                         )}
                     </form>
                 </div>
