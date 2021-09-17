@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap');
 
 :root {
     --light-color: #e0e9ef;
@@ -20,7 +20,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Urbanist", sans-serif;
+    font-family: 'Urbanist', sans-serif;
 }
 
 .body {
@@ -48,7 +48,7 @@
     position: sticky;
     top: 0;
     left: 0;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .main-title {
@@ -114,6 +114,14 @@
     padding-top: 15px;
     margin-top: 15px;
     border-top: 1px solid rgba(233, 242, 248, 0.1);
+}
+
+.user-account-name {
+    margin-top: 10px;
+}
+
+.user-account-balance h2 {
+    margin-top: 10px;
 }
 
 @keyframes card {
@@ -224,7 +232,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-input[type="number"] {
+input[type='number'] {
     -moz-appearance: textfield;
 }
 
@@ -477,7 +485,7 @@ hr {
 }
 
 .name-logo {
-    font-family: "Quicksand", sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-size: 1.2em;
     color: var(--light-color);
     margin: 0 3px;
