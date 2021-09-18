@@ -210,29 +210,31 @@ function App() {
         setUserList(newUserList);
         localStorage.bankUsers = JSON.stringify(newUserList);
 
-        const date = new Date();
-        const hours = formatDate(twelveHour(date.getHours()));
-        const minutes = formatDate(date.getMinutes());
-        // const seconds = formatDate(date.getSeconds());
-        const month = months[date.getMonth()];
-        const day = formatDate(date.getDate());
-        const suffix = getSuffix(date.getHours(), date.getMinutes());
+        if (balance > 0) {
+            const date = new Date();
+            const hours = formatDate(twelveHour(date.getHours()));
+            const minutes = formatDate(date.getMinutes());
+            // const seconds = formatDate(date.getSeconds());
+            const month = months[date.getMonth()];
+            const day = formatDate(date.getDate());
+            const suffix = getSuffix(date.getHours(), date.getMinutes());
 
-        const newTransactions = [
-            ...transactions,
-            {
-                key: generateTransactionKey(),
-                type: "deposit",
-                accountNo: newAccountNumber,
-                firstName: firstName,
-                lastName: lastName,
-                amount: balance,
-                date: `${month} ${day}`,
-                time: `${hours}:${minutes} ${suffix}`,
-            },
-        ];
-        setTransactions(newTransactions);
-        localStorage.transactionHistory = JSON.stringify(newTransactions);
+            const newTransactions = [
+                ...transactions,
+                {
+                    key: generateTransactionKey(),
+                    type: "deposit",
+                    accountNo: newAccountNumber,
+                    firstName: firstName,
+                    lastName: lastName,
+                    amount: balance,
+                    date: `${month} ${day}`,
+                    time: `${hours}:${minutes} ${suffix}`,
+                },
+            ];
+            setTransactions(newTransactions);
+            localStorage.transactionHistory = JSON.stringify(newTransactions);
+        }
     }
 
     function transfer(amount, from, to) {

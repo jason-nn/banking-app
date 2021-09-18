@@ -1,11 +1,11 @@
-import './AdminView.css';
-import React, { useRef, useState, useEffect } from 'react';
-import Button from './Button';
-import UserRow from './UserRow';
-import UserInfoCard from './UserInfoCard';
-import ExpenseRow from './ExpenseRow';
-import ExpenseRow2 from './ExpenseRow2';
-import Chart from 'react-google-charts';
+import "./AdminView.css";
+import React, { useRef, useState, useEffect } from "react";
+import Button from "./Button";
+import UserRow from "./UserRow";
+import UserInfoCard from "./UserInfoCard";
+import ExpenseRow from "./ExpenseRow";
+import ExpenseRow2 from "./ExpenseRow2";
+import Chart from "react-google-charts";
 
 const AdminView = ({
     currentUser,
@@ -137,16 +137,16 @@ const AdminView = ({
         total += expense.amount;
     }
 
-    organizedExpenses.push({ key, description: 'TOTAL', amount: total });
+    organizedExpenses.push({ key, description: "TOTAL", amount: total });
 
     for (const i of organizedExpenses) {
-        i['percentage'] = (i.amount / total) * 100;
+        i["percentage"] = (i.amount / total) * 100;
     }
 
     const chartExpenses = [...organizedExpenses];
     chartExpenses.pop();
 
-    const chartData = [['Expense', 'Amount Spent']];
+    const chartData = [["Expense", "Amount Spent"]];
 
     for (const i of chartExpenses) {
         const temp = [];
@@ -171,17 +171,17 @@ const AdminView = ({
     if (isAdmin) {
         return (
             <>
-                <h3 className='greeting-text'>
-                    Welcome,{' '}
-                    <p className='greeting-name'>{currentUser.firstName}</p>
+                <h3 className="greeting-text">
+                    Welcome,{" "}
+                    <p className="greeting-name">{currentUser.firstName}</p>
                 </h3>
-                <div className='admin-dashboard'>
-                    <div className='card-container'>
-                        <div className='main-header'>
-                            <h1 className='main-title'>Add an account</h1>
+                <div className="admin-dashboard">
+                    <div className="card-container">
+                        <div className="main-header">
+                            <h1 className="main-title">Add an account</h1>
                         </div>
                         <form
-                            className='account-form'
+                            className="account-form"
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 const firstName =
@@ -224,18 +224,18 @@ const AdminView = ({
                                     !balance
                                 ) {
                                     setError(
-                                        'Incomplete information. Please fill in all fields.'
+                                        "Incomplete information. Please fill in all fields."
                                     );
                                     setTimeout(() => setError(null), 2000);
                                 } else if (usernameIndex >= 0) {
-                                    setError('Username has been taken.');
+                                    setError("Username has been taken.");
                                     setTimeout(() => setError(null), 2000);
                                     usernameRef.current.value = null;
                                 } else if (
                                     firstNameIndex === lastNameIndex &&
                                     firstNameIndex >= 0
                                 ) {
-                                    setError('User already exists');
+                                    setError("User already exists");
                                     setTimeout(() => setError(null), 2000);
                                     firstNameRef.current.value = null;
                                     lastNameRef.current.value = null;
@@ -244,12 +244,12 @@ const AdminView = ({
                                     balanceRef.current.value = null;
                                 } else if (balance <= 0) {
                                     setError(
-                                        'Please enter an amount greater than 0.'
+                                        "Please enter an amount greater than 0."
                                     );
                                     setTimeout(() => setError(null), 2000);
                                     balanceRef.current.value = null;
                                 } else {
-                                    setLoadingMessage('Creating account...');
+                                    setLoadingMessage("Creating account...");
                                     setTimeout(() => {
                                         addUser(
                                             firstName,
@@ -264,73 +264,73 @@ const AdminView = ({
                                 }
                             }}
                         >
-                            <div className='transaction-form'>
+                            <div className="transaction-form">
                                 <label>
-                                    <div className='input-label'>
+                                    <div className="input-label">
                                         First Name
                                     </div>
                                     <input
-                                        type='text'
+                                        type="text"
                                         ref={firstNameRef}
-                                        className='input-field'
+                                        className="input-field"
                                     />
                                 </label>
                                 <label>
-                                    <div className='input-label'>Last Name</div>
+                                    <div className="input-label">Last Name</div>
                                     <input
-                                        type='text'
+                                        type="text"
                                         ref={lastNameRef}
-                                        className='input-field'
+                                        className="input-field"
                                     ></input>
                                 </label>
                                 <label>
-                                    <div className='input-label'>Username</div>
+                                    <div className="input-label">Username</div>
                                     <input
-                                        type='text'
+                                        type="text"
                                         ref={usernameRef}
-                                        className='input-field'
+                                        className="input-field"
                                     ></input>
                                 </label>
                                 <label>
-                                    <div className='input-label'>Password</div>
+                                    <div className="input-label">Password</div>
                                     <input
-                                        type='text'
+                                        type="text"
                                         ref={passwordRef}
-                                        className='input-field input-password'
+                                        className="input-field input-password"
                                     ></input>
                                 </label>
                                 <label>
-                                    <div className='input-label'>
+                                    <div className="input-label">
                                         Balance (₱)
                                     </div>
                                     <input
-                                        type='number'
+                                        type="number"
                                         ref={balanceRef}
-                                        className='input-field'
-                                        step='.01'
+                                        className="input-field"
+                                        step=".01"
                                     ></input>
                                 </label>
                             </div>
 
-                            <Button className='main-button' text='Add User' />
+                            <Button className="main-button" text="Add User" />
                         </form>
                     </div>
                     {error !== null ? (
-                        <div className='error-box'>{error}</div>
+                        <div className="error-box">{error}</div>
                     ) : (
-                        ''
+                        ""
                     )}
                     {loadingMessage !== null ? (
-                        <div className='loading-box'>{loadingMessage}</div>
+                        <div className="loading-box">{loadingMessage}</div>
                     ) : (
-                        ''
+                        ""
                     )}
 
                     <br />
                     <br />
-                    <div className='card-container'>
-                        <div className='main-header'>
-                            <h1 className='main-title'>Accounts</h1>
+                    <div className="card-container">
+                        <div className="main-header">
+                            <h1 className="main-title">Accounts</h1>
                         </div>
                         <table>
                             <thead>
@@ -348,9 +348,9 @@ const AdminView = ({
     } else {
         return (
             <>
-                <h3 className='greeting-text'>
-                    Welcome,{' '}
-                    <p className='greeting-name'>{currentUser.firstName}</p>
+                <h3 className="greeting-text">
+                    Welcome,{" "}
+                    <p className="greeting-name">{currentUser.firstName}</p>
                 </h3>
 
                 <UserInfoCard currentUser={currentUser} />
@@ -358,12 +358,12 @@ const AdminView = ({
                 <br />
                 <br />
 
-                <div className='card-container'>
-                    <div className='main-header'>
-                        <h1 className='main-title'>Add an expense</h1>
+                <div className="card-container">
+                    <div className="main-header">
+                        <h1 className="main-title">Add an expense</h1>
                     </div>
                     <form
-                        className='account-form'
+                        className="account-form"
                         onSubmit={(e) => {
                             e.preventDefault();
                             const account = currentUser.accountNo;
@@ -372,56 +372,56 @@ const AdminView = ({
 
                             if (!description || !amount) {
                                 setError(
-                                    'Incomplete information. Please fill in all fields.'
+                                    "Incomplete information. Please fill in all fields."
                                 );
                                 setTimeout(() => setError(null), 2000);
                             } else {
-                                setLoadingMessage('Adding expense...');
+                                setLoadingMessage("Adding expense...");
                                 setTimeout(() => {
                                     addExpense(account, description, amount);
                                 }, 2000);
                             }
                         }}
                     >
-                        <div className='transaction-form'>
+                        <div className="transaction-form">
                             <label>
-                                <div className='input-label'>Expense</div>
+                                <div className="input-label">Expense</div>
                                 <input
-                                    type='text'
+                                    type="text"
                                     ref={descriptionRef}
-                                    className='input-field'
+                                    className="input-field"
                                 />
                             </label>
                             <label>
-                                <div className='input-label'>Amount (₱)</div>
+                                <div className="input-label">Amount (₱)</div>
                                 <input
-                                    type='number'
+                                    type="number"
                                     ref={amountRef}
-                                    className='input-field'
-                                    step='.01'
+                                    className="input-field"
+                                    step=".01"
                                 ></input>
                             </label>
                         </div>
 
-                        <Button className='main-button' text='Add Expense' />
+                        <Button className="main-button" text="Add Expense" />
                     </form>
                 </div>
-                {error !== null ? <div className='error-box'>{error}</div> : ''}
+                {error !== null ? <div className="error-box">{error}</div> : ""}
                 {loadingMessage !== null ? (
-                    <div className='loading-box'>{loadingMessage}</div>
+                    <div className="loading-box">{loadingMessage}</div>
                 ) : (
-                    ''
+                    ""
                 )}
 
                 <br />
                 <br />
 
-                <div className='card-container'>
-                    <div className='main-header'>
-                        <h1 className='main-title'>
+                <div className="card-container">
+                    <div className="main-header">
+                        <h1 className="main-title">
                             {displayExpenses
-                                ? 'All Expenses'
-                                : 'No Existing Expenses'}
+                                ? "All Expenses"
+                                : "No Existing Expenses"}
                         </h1>
                     </div>
                     {displayExpenses ? (
@@ -440,10 +440,10 @@ const AdminView = ({
                 <br />
                 <br />
                 {displayExpenses ? (
-                    <div className='summary-card-container'>
-                        <div className='summary-container'>
-                            <div className='main-header'>
-                                <h1 className='main-title'>Expense Summary</h1>
+                    <div className="summary-card-container">
+                        <div className="summary-container">
+                            <div className="main-header">
+                                <h1 className="main-title">Expense Summary</h1>
                             </div>
                             <table>
                                 <thead>
@@ -456,66 +456,66 @@ const AdminView = ({
                                 <tbody>{renderSummary()}</tbody>
                             </table>
                         </div>
-                        <div className='chart-container'>
-                            <div className='main-header'>
-                                <h1 className='main-title'>Expense Chart</h1>
+                        <div className="chart-container">
+                            <div className="main-header">
+                                <h1 className="main-title">Expense Chart</h1>
                             </div>
                             <Chart
-                                width={'100%'}
-                                height={'250px'}
-                                chartType='PieChart'
+                                width={"100%"}
+                                height={"250px"}
+                                chartType="PieChart"
                                 loader={<div>Loading Chart</div>}
                                 data={chartData}
                                 options={{
-                                    backgroundColor: 'none',
+                                    backgroundColor: "none",
                                     pieHole: 0.7,
                                     animation: {
                                         startup: true,
-                                        easing: 'in',
+                                        easing: "in",
                                         duration: 1500,
                                     },
                                     chartArea: {
-                                        width: '70%',
-                                        height: '70%',
+                                        width: "70%",
+                                        height: "70%",
                                     },
                                     colors: [
-                                        '#f0b549',
-                                        '#b94247',
-                                        '#7d96b3',
-                                        '#a87e30',
-                                        '#9c373c',
+                                        "#f0b549",
+                                        "#b94247",
+                                        "#7d96b3",
+                                        "#a87e30",
+                                        "#9c373c",
                                     ],
                                     pieSliceTextStyle: {
-                                        color: '#e0e9ef',
+                                        color: "#e0e9ef",
                                     },
-                                    pieSliceBorderColor: '#3f394a',
-                                    pieSliceText: 'none',
+                                    pieSliceBorderColor: "#3f394a",
+                                    pieSliceText: "none",
                                     legend: {
-                                        position: 'right',
+                                        position: "right",
                                         maxLines: 5,
-                                        alignment: 'center',
-                                        textStyle: { color: 'white' },
+                                        alignment: "center",
+                                        textStyle: { color: "white" },
                                     },
                                 }}
-                                rootProps={{ 'data-testid': '2' }}
+                                rootProps={{ "data-testid": "2" }}
                             />
                         </div>
                     </div>
                 ) : null}
 
                 {displayModal ? (
-                    <div className='modal-container'>
-                        <div className='modal-box'>
-                            <div className='faq-header'>
+                    <div className="modal-container">
+                        <div className="modal-box">
+                            <div className="faq-header">
                                 <Button
                                     onClick={() => setDisplayModal(false)}
-                                    className='close-button material-icons'
-                                    text='close'
+                                    className="close-button material-icons"
+                                    text="close"
                                 />
-                                <h1 className='main-title'>Edit expense</h1>
+                                <h1 className="main-title">Edit expense</h1>
                             </div>
                             <form
-                                className='transaction-form'
+                                className="transaction-form"
                                 onSubmit={(e) => {
                                     e.preventDefault();
                                     editExpense(
@@ -526,13 +526,13 @@ const AdminView = ({
                                 }}
                             >
                                 <label>
-                                    <div className='input-label'>
+                                    <div className="input-label">
                                         Description
                                     </div>
                                     <input
-                                        type='text'
+                                        type="text"
                                         value={newDescription}
-                                        className='input-field'
+                                        className="input-field"
                                         onChange={(e) => {
                                             setNewDescription(e.target.value);
                                         }}
@@ -541,14 +541,14 @@ const AdminView = ({
                                 {/* <div>{newDescription}</div> */}
 
                                 <label>
-                                    <div className='input-label'>
+                                    <div className="input-label">
                                         Amount (₱)
                                     </div>
                                     <input
-                                        type='number'
+                                        type="number"
                                         value={newAmount}
-                                        step='.01'
-                                        className='input-field'
+                                        step=".01"
+                                        className="input-field"
                                         onChange={(e) => {
                                             setNewAmount(e.target.value);
                                         }}
@@ -556,18 +556,18 @@ const AdminView = ({
                                 </label>
                                 {/* <div>{newAmount}</div> */}
 
-                                <div className='button-container'>
+                                <div className="button-container">
                                     <Button
-                                        className='main-button'
-                                        text='Confirm'
+                                        className="main-button"
+                                        text="Confirm"
                                     />
                                     <Button
-                                        className='secondary-button'
+                                        className="secondary-button"
                                         onClick={(e) => {
                                             e.preventDefault();
                                             deleteExpense(currentExpense);
                                         }}
-                                        text='Delete'
+                                        text="Delete"
                                     />
                                 </div>
                             </form>

@@ -345,8 +345,8 @@ const Settings = ({
                                     setTimeout(() => {
                                         editUser(
                                             adminSideDisplayUser.accountNo,
-                                            adminSideFirstName,
-                                            adminSideLastName,
+                                            adminSideFirstName.toUpperCase(),
+                                            adminSideLastName.toUpperCase(),
                                             adminSideUsername,
                                             adminSidePassword
                                         );
