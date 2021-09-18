@@ -224,23 +224,37 @@ export default function Login({
                                 signupUsernameRef.current.value = null;
                                 signupPasswordRef.current.value = null;
                             } else {
-                                addUser(
-                                    firstName,
-                                    lastName,
-                                    0,
-                                    username,
-                                    password
-                                );
-                                setSignupError("");
-                                setRegister(false);
-                                setSuccessfulSignup(
-                                    "Account successfully created."
-                                );
-                                setTimeout(() => setSuccessfulSignup(""), 3000);
-                                signupFirstNameRef.current.value = null;
-                                signupLastNameRef.current.value = null;
-                                signupUsernameRef.current.value = null;
-                                signupPasswordRef.current.value = null;
+                                if (
+                                    firstName.match(/^[A-Za-z]+$/) &&
+                                    lastName.match(/^[A-Za-z]+$/) &&
+                                    username.match(/^[A-Za-z]+$/)
+                                ) {
+                                    addUser(
+                                        firstName,
+                                        lastName,
+                                        0,
+                                        username,
+                                        password
+                                    );
+                                    setSignupError("");
+                                    setRegister(false);
+                                    setSuccessfulSignup(
+                                        "Account successfully created."
+                                    );
+                                    setTimeout(
+                                        () => setSuccessfulSignup(""),
+                                        3000
+                                    );
+                                    signupFirstNameRef.current.value = null;
+                                    signupLastNameRef.current.value = null;
+                                    signupUsernameRef.current.value = null;
+                                    signupPasswordRef.current.value = null;
+                                } else {
+                                    setSignupError(
+                                        "Please use letters only for first name, last name and username"
+                                    );
+                                    setTimeout(() => setSignupError(""), 2000);
+                                }
                             }
                         }}
                     >

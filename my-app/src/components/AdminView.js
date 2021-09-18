@@ -249,18 +249,31 @@ const AdminView = ({
                                     setTimeout(() => setError(null), 2000);
                                     balanceRef.current.value = null;
                                 } else {
-                                    setLoadingMessage("Creating account...");
-                                    setTimeout(() => {
-                                        addUser(
-                                            firstName,
-                                            lastName,
-                                            balance,
-                                            username,
-                                            password
+                                    if (
+                                        firstName.match(/^[A-Za-z]+$/) &&
+                                        lastName.match(/^[A-Za-z]+$/) &&
+                                        username.match(/^[A-Za-z]+$/)
+                                    ) {
+                                        setLoadingMessage(
+                                            "Creating account..."
                                         );
-                                        setLoadingMessage(null);
-                                        setError(null);
-                                    }, 2000);
+                                        setTimeout(() => {
+                                            addUser(
+                                                firstName,
+                                                lastName,
+                                                balance,
+                                                username,
+                                                password
+                                            );
+                                            setLoadingMessage(null);
+                                            setError(null);
+                                        }, 2000);
+                                    } else {
+                                        setError(
+                                            "Please use letters only for first name, last name and username"
+                                        );
+                                        setTimeout(() => setError(null), 2000);
+                                    }
                                 }
                             }}
                         >
