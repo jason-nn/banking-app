@@ -480,10 +480,10 @@ const AdminView = ({
                                     },
                                     colors: [
                                         '#f0b549',
-                                        '#4e465c',
-                                        '#7d96b3',
                                         '#b94247',
-                                        '#3f394a',
+                                        '#7d96b3',
+                                        '#a87e30',
+                                        '#9c373c',
                                     ],
                                     pieSliceTextStyle: {
                                         color: '#e0e9ef',
