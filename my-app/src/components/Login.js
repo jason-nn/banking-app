@@ -226,8 +226,7 @@ export default function Login({
                             } else {
                                 if (
                                     firstName.match(/^[A-Za-z]+$/) &&
-                                    lastName.match(/^[A-Za-z]+$/) &&
-                                    username.match(/^[A-Za-z]+$/)
+                                    lastName.match(/^[A-Za-z]+$/)
                                 ) {
                                     addUser(
                                         firstName,
@@ -251,7 +250,7 @@ export default function Login({
                                     signupPasswordRef.current.value = null;
                                 } else {
                                     setSignupError(
-                                        "Please use letters only for first name, last name and username"
+                                        "Please use letters only for first name and last name"
                                     );
                                     setTimeout(() => setSignupError(""), 2000);
                                 }
