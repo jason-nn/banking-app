@@ -106,7 +106,7 @@ export default function Login({
             {!register ? (
                 <div className="form-container">
                     <h1 className="login-logo-mobile">banque.</h1>
-                    <h2 className="login-message">Log in </h2>
+                    <h2 className="login-message">Log in to your account</h2>
                     <form
                         className="login-form"
                         onSubmit={(e) => submitDetails(e)}
