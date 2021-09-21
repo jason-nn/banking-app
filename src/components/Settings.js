@@ -1,8 +1,8 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import SettingsSelect from "./SettingsSelect";
-import { useState, useRef } from "react";
-import Button from "./Button";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import SettingsSelect from './SettingsSelect';
+import { useState, useRef } from 'react';
+import Button from './Button';
 
 const Settings = ({
     LogoutFunction,
@@ -211,7 +211,7 @@ const Settings = ({
             <div className="card-container">
                 <div className="main-header">
                     <h1 className="main-title">
-                        {isAdmin ? "Admin" : "User"} Account Details
+                        {isAdmin ? 'Admin' : 'User'} Account Details
                     </h1>
                 </div>
 
@@ -232,7 +232,7 @@ const Settings = ({
                                     clientSidePassword.length < 1 ||
                                     clientSideConfirmPassword.length < 1))
                         ) {
-                            setError("Please fill out all fields.");
+                            setError('Please fill out all fields.');
                             setTimeout(() => setError(null), 2000);
                         } else if (
                             clientSidePassword === clientSideConfirmPassword
@@ -246,9 +246,9 @@ const Settings = ({
                                     clientSidePassword
                                 );
                             }, 2000);
-                            setLoadingMessage("Changing details...");
+                            setLoadingMessage('Changing details...');
                         } else {
-                            setError("Passwords do not match. Try again.");
+                            setError('Passwords do not match. Try again.');
                             setTimeout(() => setError(null), 2000);
                         }
                     }}
@@ -336,7 +336,7 @@ const Settings = ({
                                     adminSidePassword.length < 1 ||
                                     adminSideConfirmPassword.length < 1
                                 ) {
-                                    setError("Please fill out all fields.");
+                                    setError('Please fill out all fields.');
                                     setTimeout(() => setError(null), 2000);
                                 } else if (
                                     adminSidePassword ===
@@ -351,10 +351,10 @@ const Settings = ({
                                             adminSidePassword
                                         );
                                     }, 2000);
-                                    setLoadingMessage("Changing details...");
+                                    setLoadingMessage('Changing details...');
                                 } else {
                                     setError(
-                                        "Passwords do not match. Try again."
+                                        'Passwords do not match. Try again.'
                                     );
                                     setTimeout(() => setError(null), 2000);
                                 }
@@ -459,14 +459,14 @@ const Settings = ({
             <hr />
 
             <div className="option-container">
-                <NavLink to="/help" exact className="logout-button">
+                <NavLink to="/bankingApp/help" exact className="logout-button">
                     <div className="logout-button-content">
                         <span className="material-icons logout-icon">help</span>
                         <span>Help</span>
                     </div>
                 </NavLink>
                 <NavLink
-                    to="/"
+                    to="/bankingApp"
                     exact
                     className="logout-button"
                     onClick={() => {

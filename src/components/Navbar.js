@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 // import Button from "./Button";
-import { NavLink } from "react-router-dom";
-import "./Navbar.css";
+import { NavLink } from 'react-router-dom';
+import './Navbar.css';
 
 export default function Navbar({ isAdmin }) {
     return (
@@ -9,7 +9,7 @@ export default function Navbar({ isAdmin }) {
             <div className="main-nav">
                 <h1 className="navbar-logo">banque.</h1>
                 <NavLink
-                    to="/"
+                    to="/bankingApp"
                     activeClassName="nav-active"
                     exact
                     className="nav-link"
@@ -20,7 +20,7 @@ export default function Navbar({ isAdmin }) {
                     </div>
                 </NavLink>
                 <NavLink
-                    to="/deposit"
+                    to="/bankingApp/deposit"
                     activeClassName="nav-active"
                     className="nav-link"
                 >
@@ -30,7 +30,7 @@ export default function Navbar({ isAdmin }) {
                     </div>
                 </NavLink>
                 <NavLink
-                    to="/withdraw"
+                    to="/bankingApp/withdraw"
                     activeClassName="nav-active"
                     className="nav-link"
                 >
@@ -40,7 +40,7 @@ export default function Navbar({ isAdmin }) {
                     </div>
                 </NavLink>
                 <NavLink
-                    to="/transfer"
+                    to="/bankingApp/transfer"
                     activeClassName="nav-active"
                     className="nav-link"
                 >
@@ -51,7 +51,7 @@ export default function Navbar({ isAdmin }) {
                 </NavLink>
                 {isAdmin && (
                     <NavLink
-                        to="/transactions"
+                        to="/bankingApp/transactions"
                         activeClassName="nav-active"
                         className="nav-link"
                     >
@@ -64,7 +64,7 @@ export default function Navbar({ isAdmin }) {
             </div>
 
             <NavLink
-                to="/settings"
+                to="/bankingApp/settings"
                 className="nav-link"
                 activeClassName="nav-active"
             >

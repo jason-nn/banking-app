@@ -1,11 +1,15 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Help = () => {
     return (
         <>
             <div className="faq-header">
-                <NavLink to="/settings" exact className="close-button">
+                <NavLink
+                    to="/bankingApp/settings"
+                    exact
+                    className="close-button"
+                >
                     <div className="logout-button-content">
                         <span className="material-icons logout-icon">
                             close
@@ -35,7 +39,7 @@ const Help = () => {
             <div className="card-container">
                 <div className="main-header">
                     <h1 className="main-title">
-                        What are the fees when transacting with{" "}
+                        What are the fees when transacting with{' '}
                         <span className="name-logo">banque.</span>?
                     </h1>
                 </div>
@@ -63,7 +67,7 @@ const Help = () => {
             <div className="card-container">
                 <div className="main-header">
                     <h1 className="main-title">
-                        How do you pronounce{" "}
+                        How do you pronounce{' '}
                         <span className="name-logo">banque.</span>? What does it
                         mean?
                     </h1>

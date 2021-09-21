@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import "./App.css";
-import Login from "./components/Login.js";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import AdminView from "./components/AdminView";
-import Deposit from "./components/Deposit";
-import Withdraw from "./components/Withdraw";
-import Transfer from "./components/Transfer";
-import Transactions from "./components/Transactions";
-import Settings from "./components/Settings";
-import Help from "./components/Help";
+import React, { useState } from 'react';
+import './App.css';
+import Login from './components/Login.js';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import AdminView from './components/AdminView';
+import Deposit from './components/Deposit';
+import Withdraw from './components/Withdraw';
+import Transfer from './components/Transfer';
+import Transactions from './components/Transactions';
+import Settings from './components/Settings';
+import Help from './components/Help';
 
 function App() {
     const months = [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC",
+        'JAN',
+        'FEB',
+        'MAR',
+        'APR',
+        'MAY',
+        'JUN',
+        'JUL',
+        'AUG',
+        'SEP',
+        'OCT',
+        'NOV',
+        'DEC',
     ];
 
     // localStorage.clear();
@@ -35,38 +35,38 @@ function App() {
     const userList = [
         {
             accountNo: null,
-            firstName: "ADMINISTRATOR",
-            lastName: "",
+            firstName: 'ADMINISTRATOR',
+            lastName: '',
             balance: null,
-            username: "admin",
-            password: "pass123",
+            username: 'admin',
+            password: 'pass123',
             isAdmin: true,
         },
         {
             accountNo: 111111,
-            firstName: "JUAN",
-            lastName: "DE LA CRUZ",
+            firstName: 'JUAN',
+            lastName: 'DE LA CRUZ',
             balance: 2000,
-            username: "juan",
-            password: "juan23",
+            username: 'juan',
+            password: 'juan23',
             isAdmin: false,
         },
         {
             accountNo: 111112,
-            firstName: "JASON",
-            lastName: "HO",
+            firstName: 'JASON',
+            lastName: 'HO',
             balance: 6900,
-            username: "jason",
-            password: "jason123",
+            username: 'jason',
+            password: 'jason123',
             isAdmin: false,
         },
         {
             accountNo: 111113,
-            firstName: "EMAN",
-            lastName: "SIA",
+            firstName: 'EMAN',
+            lastName: 'SIA',
             balance: 4200,
-            username: "eman",
-            password: "eman123",
+            username: 'eman',
+            password: 'eman123',
             isAdmin: false,
         },
     ];
@@ -74,79 +74,79 @@ function App() {
     const transactionList = [
         {
             key: 222221,
-            type: "deposit",
+            type: 'deposit',
             accountNo: 111111,
-            firstName: "JUAN",
-            lastName: "DE LA CRUZ",
+            firstName: 'JUAN',
+            lastName: 'DE LA CRUZ',
             amount: 2000,
-            date: "SEP 08",
-            time: "8:08 PM",
+            date: 'SEP 08',
+            time: '8:08 PM',
         },
         {
             key: 222222,
-            type: "deposit",
+            type: 'deposit',
             accountNo: 111112,
-            firstName: "JASON",
-            lastName: "HO",
+            firstName: 'JASON',
+            lastName: 'HO',
             amount: 6900,
-            date: "SEP 08",
-            time: "8:08 PM",
+            date: 'SEP 08',
+            time: '8:08 PM',
         },
         {
             key: 222223,
-            type: "deposit",
+            type: 'deposit',
             accountNo: 111113,
-            firstName: "EMAN",
-            lastName: "SIA",
+            firstName: 'EMAN',
+            lastName: 'SIA',
             amount: 4200,
-            date: "SEP 08",
-            time: "8:08 PM",
+            date: 'SEP 08',
+            time: '8:08 PM',
         },
     ];
 
     if (localStorage.bankUsers) {
-        console.log("bankUsers exists in local storage");
+        console.log('bankUsers exists in local storage');
     } else {
         localStorage.bankUsers = JSON.stringify(userList);
-        console.log("bankUsers does not exist in local storage, just created.");
+        console.log('bankUsers does not exist in local storage, just created.');
     }
 
     if (localStorage.transactionHistory) {
-        console.log("transactionHistory exists in local storage");
+        console.log('transactionHistory exists in local storage');
     } else {
         localStorage.transactionHistory = JSON.stringify(transactionList);
         console.log(
-            "transactionHistory does not exist in local storage, just created."
+            'transactionHistory does not exist in local storage, just created.'
         );
     }
 
     if (localStorage.accountNumber) {
-        console.log("accountNumber already exists in local storage.");
+        console.log('accountNumber already exists in local storage.');
     } else {
         localStorage.accountNumber = 111113;
     }
 
     if (localStorage.transactionKey) {
-        console.log("transactionKey already exists in local storage.");
+        console.log('transactionKey already exists in local storage.');
     } else {
         localStorage.transactionKey = 222223;
     }
 
     if (localStorage.expenseKey) {
-        console.log("expenseKey already exists in local storage.");
+        console.log('expenseKey already exists in local storage.');
     } else {
         localStorage.expenseKey = 333330;
     }
 
     if (localStorage.allExpenses) {
-        console.log("allExpenses already exists in local storage.");
+        console.log('allExpenses already exists in local storage.');
     } else {
         localStorage.allExpenses = JSON.stringify([]);
     }
 
     function formatDate(number) {
         if (number < 10) {
-            return "0" + number;
+            return '0' + number;
         } else {
             return number;
         }
@@ -154,11 +154,11 @@ function App() {
 
     function getSuffix(hour, minutes) {
         if (hour === 12 && minutes === 0) {
-            return "NN";
+            return 'NN';
         } else if (hour >= 12) {
-            return "PM";
+            return 'PM';
         } else {
-            return "AM";
+            return 'AM';
         }
     }
 
@@ -223,7 +223,7 @@ function App() {
                 ...transactions,
                 {
                     key: generateTransactionKey(),
-                    type: "deposit",
+                    type: 'deposit',
                     accountNo: newAccountNumber,
                     firstName: firstName,
                     lastName: lastName,
@@ -262,7 +262,7 @@ function App() {
             ...transactions,
             {
                 key: generateTransactionKey(),
-                type: "transfer",
+                type: 'transfer',
                 from: from,
                 fromFirstName: userCopy[fromIndex].firstName,
                 fromLastName: userCopy[fromIndex].lastName,
@@ -300,7 +300,7 @@ function App() {
             ...transactions,
             {
                 key: generateTransactionKey(),
-                type: "deposit",
+                type: 'deposit',
                 accountNo: account,
                 firstName: userCopy[accountIndex].firstName,
                 lastName: userCopy[accountIndex].lastName,
@@ -335,7 +335,7 @@ function App() {
             ...transactions,
             {
                 key: generateTransactionKey(),
-                type: "withdrawal",
+                type: 'withdrawal',
                 accountNo: account,
                 firstName: userCopy[accountIndex].firstName,
                 lastName: userCopy[accountIndex].lastName,
@@ -382,9 +382,9 @@ function App() {
     const [currentUser, setUser] = useState(null);
 
     //state for error message if login failed
-    const [error, setError] = useState("");
+    const [error, setError] = useState('');
 
-    const [successfulSignUp, setSuccessfulSignup] = useState("");
+    const [successfulSignUp, setSuccessfulSignup] = useState('');
 
     //function for logging in
     // const LoginFunction = (details) => {
@@ -530,7 +530,7 @@ function App() {
                     <div className="main-content">
                         <Switch>
                             <Route
-                                path="/"
+                                path="/bankingApp"
                                 exact
                                 component={() => (
                                     <AdminView
@@ -578,7 +578,7 @@ function App() {
                                 )}
                             />
                             <Route
-                                path="/deposit"
+                                path="/bankingApp/deposit"
                                 component={() => (
                                     <Deposit
                                         currentUser={currentUser}
@@ -592,7 +592,7 @@ function App() {
                                 )}
                             />
                             <Route
-                                path="/withdraw"
+                                path="/bankingApp/withdraw"
                                 component={() => (
                                     <Withdraw
                                         currentUser={currentUser}
@@ -606,7 +606,7 @@ function App() {
                                 )}
                             />
                             <Route
-                                path="/transfer"
+                                path="/bankingApp/transfer"
                                 component={() => (
                                     <Transfer
                                         currentUser={currentUser}
@@ -620,14 +620,14 @@ function App() {
                                 )}
                             />
                             <Route
-                                path="/transactions"
+                                path="/bankingApp/transactions"
                                 component={() => (
                                     <Transactions transactions={transactions} />
                                 )}
                                 isAdmin={isAdmin}
                             />
                             <Route
-                                path="/settings"
+                                path="/bankingApp/settings"
                                 component={() => (
                                     <Settings
                                         currentUser={currentUser}
@@ -652,7 +652,7 @@ function App() {
                                     />
                                 )}
                             />
-                            <Route path="/help">
+                            <Route path="/bankingApp/help">
                                 <Help />
                             </Route>
                         </Switch>
