@@ -530,7 +530,7 @@ function App() {
                     <div className="main-content">
                         <Switch>
                             <Route
-                                path="/bankingApp"
+                                path="/banking-app"
                                 exact
                                 component={() => (
                                     <AdminView
@@ -578,7 +578,7 @@ function App() {
                                 )}
                             />
                             <Route
-                                path="/bankingApp/deposit"
+                                path="/banking-app/deposit"
                                 component={() => (
                                     <Deposit
                                         currentUser={currentUser}
@@ -592,7 +592,7 @@ function App() {
                                 )}
                             />
                             <Route
-                                path="/bankingApp/withdraw"
+                                path="/banking-app/withdraw"
                                 component={() => (
                                     <Withdraw
                                         currentUser={currentUser}
@@ -606,7 +606,7 @@ function App() {
                                 )}
                             />
                             <Route
-                                path="/bankingApp/transfer"
+                                path="/banking-app/transfer"
                                 component={() => (
                                     <Transfer
                                         currentUser={currentUser}
@@ -620,14 +620,14 @@ function App() {
                                 )}
                             />
                             <Route
-                                path="/bankingApp/transactions"
+                                path="/banking-app/transactions"
                                 component={() => (
                                     <Transactions transactions={transactions} />
                                 )}
                                 isAdmin={isAdmin}
                             />
                             <Route
-                                path="/bankingApp/settings"
+                                path="/banking-app/settings"
                                 component={() => (
                                     <Settings
                                         currentUser={currentUser}
@@ -652,7 +652,7 @@ function App() {
                                     />
                                 )}
                             />
-                            <Route path="/bankingApp/help">
+                            <Route path="/banking-app/help">
                                 <Help />
                             </Route>
                         </Switch>
