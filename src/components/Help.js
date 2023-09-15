@@ -6,7 +6,7 @@ const Help = () => {
         <>
             <div className="faq-header">
                 <NavLink
-                    to="/bankingApp/settings"
+                    to="/banking-app/settings"
                     exact
                     className="close-button"
                 >

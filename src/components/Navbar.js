@@ -9,7 +9,7 @@ export default function Navbar({ isAdmin }) {
             <div className="main-nav">
                 <h1 className="navbar-logo">banque.</h1>
                 <NavLink
-                    to="/bankingApp"
+                    to="/banking-app"
                     activeClassName="nav-active"
                     exact
                     className="nav-link"
@@ -20,7 +20,7 @@ export default function Navbar({ isAdmin }) {
                     </div>
                 </NavLink>
                 <NavLink
-                    to="/bankingApp/deposit"
+                    to="/banking-app/deposit"
                     activeClassName="nav-active"
                     className="nav-link"
                 >
@@ -30,7 +30,7 @@ export default function Navbar({ isAdmin }) {
                     </div>
                 </NavLink>
                 <NavLink
-                    to="/bankingApp/withdraw"
+                    to="/banking-app/withdraw"
                     activeClassName="nav-active"
                     className="nav-link"
                 >
@@ -40,7 +40,7 @@ export default function Navbar({ isAdmin }) {
                     </div>
                 </NavLink>
                 <NavLink
-                    to="/bankingApp/transfer"
+                    to="/banking-app/transfer"
                     activeClassName="nav-active"
                     className="nav-link"
                 >
@@ -51,7 +51,7 @@ export default function Navbar({ isAdmin }) {
                 </NavLink>
                 {isAdmin && (
                     <NavLink
-                        to="/bankingApp/transactions"
+                        to="/banking-app/transactions"
                         activeClassName="nav-active"
                         className="nav-link"
                     >
@@ -64,7 +64,7 @@ export default function Navbar({ isAdmin }) {
             </div>
 
             <NavLink
-                to="/bankingApp/settings"
+                to="/banking-app/settings"
                 className="nav-link"
                 activeClassName="nav-active"
             >

@@ -459,14 +459,14 @@ const Settings = ({
             <hr />
 
             <div className="option-container">
-                <NavLink to="/bankingApp/help" exact className="logout-button">
+                <NavLink to="/banking-app/help" exact className="logout-button">
                     <div className="logout-button-content">
                         <span className="material-icons logout-icon">help</span>
                         <span>Help</span>
                     </div>
                 </NavLink>
                 <NavLink
-                    to="/bankingApp"
+                    to="/banking-app"
                     exact
                     className="logout-button"
                     onClick={() => {
