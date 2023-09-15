@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
-import Button from "./Button";
-import "./Login.css";
+import React, { useState, useRef } from 'react';
+import Button from './Button';
+import './Login.css';
 // import Logo from "./bank-logo.svg";
 
 export default function Login({
@@ -41,12 +41,12 @@ export default function Login({
         const usernameIndex = usernames.findIndex((i) => i === usernameInput);
         const passwordIndex = passwords.findIndex((i) => i === passwordInput);
 
-        if (usernameInput === "") {
-            setError("Please enter a username.");
-            setTimeout(() => setError(""), 2000);
-        } else if (passwordInput === "") {
-            setError("Please enter a password.");
-            setTimeout(() => setError(""), 2000);
+        if (usernameInput === '') {
+            setError('Please enter a username.');
+            setTimeout(() => setError(''), 2000);
+        } else if (passwordInput === '') {
+            setError('Please enter a password.');
+            setTimeout(() => setError(''), 2000);
         } else if (
             usernameIndex === passwordIndex &&
             usernameIndex >= 0 &&
@@ -58,28 +58,28 @@ export default function Login({
             } else {
                 setIsAdmin(false);
             }
-            setError("");
+            setError('');
         } else if (usernameIndex === -1) {
-            setError("User does not exist.");
-            usernameInputRef.current.value = "";
-            passwordInputRef.current.value = "";
-            setTimeout(() => setError(""), 2000);
+            setError('User does not exist.');
+            usernameInputRef.current.value = '';
+            passwordInputRef.current.value = '';
+            setTimeout(() => setError(''), 2000);
         } else if (usernameIndex >= 0) {
-            setError("Incorrect password.");
-            passwordInputRef.current.value = "";
-            setTimeout(() => setError(""), 2000);
+            setError('Incorrect password.');
+            passwordInputRef.current.value = '';
+            setTimeout(() => setError(''), 2000);
         } else {
-            setError("Login failed. Please try again.");
-            usernameInputRef.current.value = "";
-            passwordInputRef.current.value = "";
-            setTimeout(() => setError(""), 2000);
+            setError('Login failed. Please try again.');
+            usernameInputRef.current.value = '';
+            passwordInputRef.current.value = '';
+            setTimeout(() => setError(''), 2000);
         }
         // LoginFunction(usernameInput, passwordInput);
     }
 
     const [register, setRegister] = useState(false);
 
-    const [signupError, setSignupError] = useState("");
+    const [signupError, setSignupError] = useState('');
 
     const signupFirstNameRef = useRef();
     const signupLastNameRef = useRef();
@@ -145,22 +145,22 @@ export default function Login({
                                 text="Sign Up"
                                 onClick={() => {
                                     setRegister(true);
-                                    usernameInputRef.current.value = "";
-                                    passwordInputRef.current.value = "";
+                                    usernameInputRef.current.value = '';
+                                    passwordInputRef.current.value = '';
                                 }}
                             />
                         </div>
-                        {error !== "" ? (
+                        {error !== '' ? (
                             <div className="login-error">{error}</div>
                         ) : (
-                            ""
+                            ''
                         )}
-                        {successfulSignUp !== "" ? (
+                        {successfulSignUp !== '' ? (
                             <div className="signup-success">
                                 {successfulSignUp}
                             </div>
                         ) : (
-                            ""
+                            ''
                         )}
                     </form>
                 </div>
@@ -206,19 +206,19 @@ export default function Login({
                                 !password
                             ) {
                                 setSignupError(
-                                    "Incomplete information. Please fill in all fields."
+                                    'Incomplete information. Please fill in all fields.'
                                 );
-                                setTimeout(() => setSignupError(""), 2000);
+                                setTimeout(() => setSignupError(''), 2000);
                             } else if (usernameIndex >= 0) {
-                                setSignupError("Username has been taken.");
-                                setTimeout(() => setSignupError(""), 2000);
+                                setSignupError('Username has been taken.');
+                                setTimeout(() => setSignupError(''), 2000);
                                 signupUsernameRef.current.value = null;
                             } else if (
                                 firstNameIndex === lastNameIndex &&
                                 firstNameIndex >= 0
                             ) {
-                                setSignupError("User already exists");
-                                setTimeout(() => setSignupError(""), 2000);
+                                setSignupError('User already exists');
+                                setTimeout(() => setSignupError(''), 2000);
                                 signupFirstNameRef.current.value = null;
                                 signupLastNameRef.current.value = null;
                                 signupUsernameRef.current.value = null;
@@ -235,13 +235,13 @@ export default function Login({
                                         username,
                                         password
                                     );
-                                    setSignupError("");
+                                    setSignupError('');
                                     setRegister(false);
                                     setSuccessfulSignup(
-                                        "Account successfully created."
+                                        'Account successfully created.'
                                     );
                                     setTimeout(
-                                        () => setSuccessfulSignup(""),
+                                        () => setSuccessfulSignup(''),
                                         3000
                                     );
                                     signupFirstNameRef.current.value = null;
@@ -250,9 +250,9 @@ export default function Login({
                                     signupPasswordRef.current.value = null;
                                 } else {
                                     setSignupError(
-                                        "Please use letters only for first name and last name"
+                                        'Please use letters only for first name and last name'
                                     );
-                                    setTimeout(() => setSignupError(""), 2000);
+                                    setTimeout(() => setSignupError(''), 2000);
                                 }
                             }
                         }}
@@ -317,10 +317,10 @@ export default function Login({
                                 onClick={() => setRegister(false)}
                             />
                         </div>
-                        {signupError !== "" ? (
+                        {signupError !== '' ? (
                             <div className="login-error">{signupError}</div>
                         ) : (
-                            ""
+                            ''
                         )}
                     </form>
                 </div>

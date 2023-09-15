@@ -1,11 +1,11 @@
-import "./AdminView.css";
-import React, { useRef, useState, useEffect } from "react";
-import Button from "./Button";
-import UserRow from "./UserRow";
-import UserInfoCard from "./UserInfoCard";
-import ExpenseRow from "./ExpenseRow";
-import ExpenseRow2 from "./ExpenseRow2";
-import Chart from "react-google-charts";
+import './AdminView.css';
+import React, { useRef, useState, useEffect } from 'react';
+import Button from './Button';
+import UserRow from './UserRow';
+import UserInfoCard from './UserInfoCard';
+import ExpenseRow from './ExpenseRow';
+import ExpenseRow2 from './ExpenseRow2';
+import Chart from 'react-google-charts';
 
 const AdminView = ({
     currentUser,
@@ -137,16 +137,16 @@ const AdminView = ({
         total += expense.amount;
     }
 
-    organizedExpenses.push({ key, description: "TOTAL", amount: total });
+    organizedExpenses.push({ key, description: 'TOTAL', amount: total });
 
     for (const i of organizedExpenses) {
-        i["percentage"] = (i.amount / total) * 100;
+        i['percentage'] = (i.amount / total) * 100;
     }
 
     const chartExpenses = [...organizedExpenses];
     chartExpenses.pop();
 
-    const chartData = [["Expense", "Amount Spent"]];
+    const chartData = [['Expense', 'Amount Spent']];
 
     for (const i of chartExpenses) {
         const temp = [];
@@ -172,7 +172,7 @@ const AdminView = ({
         return (
             <>
                 <h3 className="greeting-text">
-                    Welcome,{" "}
+                    Welcome,{' '}
                     <p className="greeting-name">{currentUser.firstName}</p>
                 </h3>
                 <div className="admin-dashboard">
@@ -224,18 +224,18 @@ const AdminView = ({
                                     !balance
                                 ) {
                                     setError(
-                                        "Incomplete information. Please fill in all fields."
+                                        'Incomplete information. Please fill in all fields.'
                                     );
                                     setTimeout(() => setError(null), 2000);
                                 } else if (usernameIndex >= 0) {
-                                    setError("Username has been taken.");
+                                    setError('Username has been taken.');
                                     setTimeout(() => setError(null), 2000);
                                     usernameRef.current.value = null;
                                 } else if (
                                     firstNameIndex === lastNameIndex &&
                                     firstNameIndex >= 0
                                 ) {
-                                    setError("User already exists");
+                                    setError('User already exists');
                                     setTimeout(() => setError(null), 2000);
                                     firstNameRef.current.value = null;
                                     lastNameRef.current.value = null;
@@ -244,7 +244,7 @@ const AdminView = ({
                                     balanceRef.current.value = null;
                                 } else if (balance <= 0) {
                                     setError(
-                                        "Please enter an amount greater than 0."
+                                        'Please enter an amount greater than 0.'
                                     );
                                     setTimeout(() => setError(null), 2000);
                                     balanceRef.current.value = null;
@@ -254,7 +254,7 @@ const AdminView = ({
                                         lastName.match(/^[A-Za-z]+$/)
                                     ) {
                                         setLoadingMessage(
-                                            "Creating account..."
+                                            'Creating account...'
                                         );
                                         setTimeout(() => {
                                             addUser(
@@ -269,7 +269,7 @@ const AdminView = ({
                                         }, 2000);
                                     } else {
                                         setError(
-                                            "Please use letters only for first name and last name"
+                                            'Please use letters only for first name and last name'
                                         );
                                         setTimeout(() => setError(null), 2000);
                                     }
@@ -330,12 +330,12 @@ const AdminView = ({
                     {error !== null ? (
                         <div className="error-box">{error}</div>
                     ) : (
-                        ""
+                        ''
                     )}
                     {loadingMessage !== null ? (
                         <div className="loading-box">{loadingMessage}</div>
                     ) : (
-                        ""
+                        ''
                     )}
 
                     <br />
@@ -361,7 +361,7 @@ const AdminView = ({
         return (
             <>
                 <h3 className="greeting-text">
-                    Welcome,{" "}
+                    Welcome,{' '}
                     <p className="greeting-name">{currentUser.firstName}</p>
                 </h3>
 
@@ -384,11 +384,11 @@ const AdminView = ({
 
                             if (!description || !amount) {
                                 setError(
-                                    "Incomplete information. Please fill in all fields."
+                                    'Incomplete information. Please fill in all fields.'
                                 );
                                 setTimeout(() => setError(null), 2000);
                             } else {
-                                setLoadingMessage("Adding expense...");
+                                setLoadingMessage('Adding expense...');
                                 setTimeout(() => {
                                     addExpense(account, description, amount);
                                 }, 2000);
@@ -418,11 +418,11 @@ const AdminView = ({
                         <Button className="main-button" text="Add Expense" />
                     </form>
                 </div>
-                {error !== null ? <div className="error-box">{error}</div> : ""}
+                {error !== null ? <div className="error-box">{error}</div> : ''}
                 {loadingMessage !== null ? (
                     <div className="loading-box">{loadingMessage}</div>
                 ) : (
-                    ""
+                    ''
                 )}
 
                 <br />
@@ -432,8 +432,8 @@ const AdminView = ({
                     <div className="main-header">
                         <h1 className="main-title">
                             {displayExpenses
-                                ? "All Expenses"
-                                : "No Existing Expenses"}
+                                ? 'All Expenses'
+                                : 'No Existing Expenses'}
                         </h1>
                     </div>
                     {displayExpenses ? (
@@ -473,43 +473,43 @@ const AdminView = ({
                                 <h1 className="main-title">Expense Chart</h1>
                             </div>
                             <Chart
-                                width={"100%"}
-                                height={"250px"}
+                                width={'100%'}
+                                height={'250px'}
                                 chartType="PieChart"
                                 loader={<div>Loading Chart</div>}
                                 data={chartData}
                                 options={{
-                                    backgroundColor: "none",
+                                    backgroundColor: 'none',
                                     pieHole: 0.7,
                                     animation: {
                                         startup: true,
-                                        easing: "in",
+                                        easing: 'in',
                                         duration: 1500,
                                     },
                                     chartArea: {
-                                        width: "70%",
-                                        height: "70%",
+                                        width: '70%',
+                                        height: '70%',
                                     },
                                     colors: [
-                                        "#f0b549",
-                                        "#b94247",
-                                        "#7d96b3",
-                                        "#a87e30",
-                                        "#9c373c",
+                                        '#f0b549',
+                                        '#b94247',
+                                        '#7d96b3',
+                                        '#a87e30',
+                                        '#9c373c',
                                     ],
                                     pieSliceTextStyle: {
-                                        color: "#e0e9ef",
+                                        color: '#e0e9ef',
                                     },
-                                    pieSliceBorderColor: "#3f394a",
-                                    pieSliceText: "none",
+                                    pieSliceBorderColor: '#3f394a',
+                                    pieSliceText: 'none',
                                     legend: {
-                                        position: "right",
+                                        position: 'right',
                                         maxLines: 5,
-                                        alignment: "center",
-                                        textStyle: { color: "white" },
+                                        alignment: 'center',
+                                        textStyle: { color: 'white' },
                                     },
                                 }}
-                                rootProps={{ "data-testid": "2" }}
+                                rootProps={{ 'data-testid': '2' }}
                             />
                         </div>
                     </div>
